@@ -631,6 +631,23 @@ p{ margin: 0; }
   letter-spacing: .12em;
   color: var(--grey-2);
 }
+/* Variante con captura real del sitio */
+.shot--photo{ grid-template-rows: auto 1fr; align-content: stretch; }
+.shot--photo .chrome{ margin-bottom: 0; }
+.shot-img{
+  width: 100%; height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+  background: var(--rule);
+  transition: transform .7s var(--ease);
+}
+.work:hover .shot-img{ transform: scale(1.02); }
+@media (prefers-reduced-motion: reduce){
+  .shot-img{ transition: none; }
+  .work:hover .shot-img{ transform: none; }
+}
+
 .skel{ display: grid; gap: .55rem; }
 .skel i{ display: block; height: 8px; background: var(--rule); border-radius: 1px; }
 .skel i.big{ height: 22px; width: 62%; background: var(--rule-2); }
@@ -1053,20 +1070,15 @@ p{ margin: 0; }
       <div class="works">
 
         <article class="work reveal">
-          <div class="shot" aria-hidden="true">
-            <div class="chrome"><b></b><b></b><b></b><span>mujeresunidas.site</span></div>
-            <div class="skel">
-              <i style="width:34%"></i>
-              <div class="row"><i></i><i></i><i></i></div>
-              <i class="big" style="width:58%;margin-top:.4rem"></i>
-              <i style="width:46%"></i>
-              <i class="ink" style="width:34%"></i>
-            </div>
+          <div class="shot shot--photo">
+            <div class="chrome" aria-hidden="true"><b></b><b></b><b></b><span>mujeresunidas.site</span></div>
+            <img class="shot-img" src="work/um-crm.webp" width="1200" height="900" loading="lazy" decoding="async"
+                 alt="Pantalla de acceso del sistema UM-CRM de Mujeres Unidas.">
           </div>
           <div class="work-body">
-            <span class="label">Mujeres Unidas — CRM</span>
+            <span class="label">Mujeres Unidas — Microcrédito</span>
             <h3>UM-CRM</h3>
-            <p>Plataforma privada de gestión para la organización: acceso por usuario, seguimiento del trabajo del equipo y reportes en un solo lugar.</p>
+            <p>Sistema interno para crédito grupal: control de grupos, clientas, avales y cobranza semanal. Cada movimiento queda registrado con la persona que lo capturó.</p>
             <a class="work-link" href="https://mujeresunidas.site/" target="_blank" rel="noopener">
               Ver el sitio
               <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10 L10 2 M4.2 2H10v5.8" stroke="currentColor" stroke-width="1.3"/></svg>
@@ -1075,18 +1087,15 @@ p{ margin: 0; }
         </article>
 
         <article class="work reveal">
-          <div class="shot" aria-hidden="true">
-            <div class="chrome"><b></b><b></b><b></b><span>girauniversitariard.com</span></div>
-            <div class="skel">
-              <i class="big" style="width:74%"></i><i style="width:52%"></i>
-              <i class="ink"></i>
-              <div class="row"><i></i><i></i><i></i></div>
-            </div>
+          <div class="shot shot--photo">
+            <div class="chrome" aria-hidden="true"><b></b><b></b><b></b><span>girauniversitariard.com</span></div>
+            <img class="shot-img" src="work/gira.webp" width="1200" height="900" loading="lazy" decoding="async"
+                 alt="Portada del sitio de Gira Universitaria 2026.">
           </div>
           <div class="work-body">
             <span class="label">Gira Universitaria RD — Evento</span>
-            <h3>Punto de Partida</h3>
-            <p>Sitio de la gira con dinámicas interactivas para el público y edición de textos e imágenes desde el propio sitio, sin tocar código.</p>
+            <h3>Gira Universitaria 2026</h3>
+            <p>Plataforma de la gira con registro de estudiantes, tienda, sorteos por ruleta y contenido editable desde el propio sitio, sin tocar código.</p>
             <a class="work-link" href="https://girauniversitariard.com/" target="_blank" rel="noopener">
               Ver el sitio
               <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10 L10 2 M4.2 2H10v5.8" stroke="currentColor" stroke-width="1.3"/></svg>
@@ -1095,18 +1104,15 @@ p{ margin: 0; }
         </article>
 
         <article class="work reveal">
-          <div class="shot" aria-hidden="true">
-            <div class="chrome"><b></b><b></b><b></b><span>sistema.hotelbuendia.net</span></div>
-            <div class="skel">
-              <i class="big"></i><i style="width:48%"></i>
-              <div class="row"><i></i><i></i><i></i></div>
-              <i class="ink" style="width:42%;margin-top:.4rem"></i>
-            </div>
+          <div class="shot shot--photo">
+            <div class="chrome" aria-hidden="true"><b></b><b></b><b></b><span>sistema.hotelbuendia.net</span></div>
+            <img class="shot-img" src="work/buendia.webp" width="1200" height="900" loading="lazy" decoding="async"
+                 alt="Portada de reservas de Hospedaje Buendía II con buscador de fechas.">
           </div>
           <div class="work-body">
             <span class="label">Hospedaje Buendía II — Hotelería</span>
             <h3>Pro8 · Reservas</h3>
-            <p>Landing de reservas con disponibilidad y precios en tiempo real: el huésped elige fechas y habitación y reserva online, sin llamadas.</p>
+            <p>Landing de reservas con disponibilidad y precios en tiempo real: el huésped busca por fechas y huéspedes, ve las habitaciones y reserva sin llamar.</p>
             <a class="work-link" href="https://sistema.hotelbuendia.net/" target="_blank" rel="noopener">
               Ver el sitio
               <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10 L10 2 M4.2 2H10v5.8" stroke="currentColor" stroke-width="1.3"/></svg>
