@@ -600,6 +600,9 @@ p{ margin: 0; }
 }
 @media (min-width: 900px){
   .work{ grid-template-columns: minmax(0,1.25fr) minmax(0,1fr); gap: clamp(3rem, 6vw, 5rem); }
+  /* En las pares la captura pasa a la derecha, pero conserva la columna ancha
+     para que todas las capturas midan igual. */
+  .work:nth-child(even){ grid-template-columns: minmax(0,1fr) minmax(0,1.25fr); }
   .work:nth-child(even) .shot{ order: 2; }
 }
 .shot{
@@ -1106,7 +1109,7 @@ p{ margin: 0; }
         <article class="work reveal">
           <div class="shot shot--photo">
             <div class="chrome" aria-hidden="true"><b></b><b></b><b></b><span>sistema.hotelbuendia.net</span></div>
-            <img class="shot-img" src="work/buendia.webp" width="1200" height="900" loading="lazy" decoding="async"
+            <img class="shot-img" src="work/buendia.png" width="1200" height="900" loading="lazy" decoding="async"
                  alt="Portada de reservas de Hospedaje Buendía II con buscador de fechas.">
           </div>
           <div class="work-body">
