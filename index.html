@@ -5,7 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Kyme Software — estudio de diseño y desarrollo web. Diseñamos y construimos sitios, tiendas y aplicaciones a medida.">
 <meta name="theme-color" content="#FEFEFE">
-<link rel="icon" href="brand/favicon.png">
+<link rel="icon" href="brand/favicon-light.png" media="(prefers-color-scheme: light)">
+<link rel="icon" href="brand/favicon-dark.png"  media="(prefers-color-scheme: dark)">
+<script>
+/* Firefox y Safari respetan el atributo media de rel="icon", pero Chrome lo
+   ignora y se queda con el último enlace. Así que dejamos un único icono
+   resuelto a mano, y lo repintamos si el sistema cambia de tema en caliente. */
+(function(){
+  var mq = window.matchMedia("(prefers-color-scheme: dark)");
+  var link = document.createElement("link");
+  link.rel = "icon";
+  function paint(){ link.href = mq.matches ? "brand/favicon-dark.png" : "brand/favicon-light.png"; }
+  paint();
+  var old = document.querySelectorAll('link[rel="icon"]');
+  for (var i = 0; i < old.length; i++) old[i].parentNode.removeChild(old[i]);
+  document.head.appendChild(link);
+  if (mq.addEventListener) mq.addEventListener("change", paint);
+  else if (mq.addListener) mq.addListener(paint);
+})();
+</script>
 <!--ARTIFACT-START-->
 <title>Kyme Software</title>
 <style>
