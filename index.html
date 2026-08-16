@@ -648,6 +648,22 @@ p{ margin: 0; }
 .work-metric b{ font-weight: 500; font-size: 1.25rem; letter-spacing: -.02em; }
 .work-metric span{ font-size: var(--t-label); letter-spacing: .18em; text-transform: uppercase; color: var(--grey); }
 
+.work-link{
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  justify-self: start;
+  padding-bottom: .3rem;
+  border-bottom: 1px solid var(--rule-2);
+  font-size: var(--t-sm);
+  font-weight: 500;
+  color: var(--ink);
+  transition: border-color .4s var(--ease);
+}
+.work-link:hover{ border-color: var(--ink); }
+.work-link svg{ width: 11px; height: 11px; flex: none; transition: transform .45s var(--ease); }
+.work-link:hover svg{ transform: translate(3px,-3px); }
+
 /* ==========================================================================
    NÚMEROS
    ========================================================================== */
@@ -1018,7 +1034,7 @@ p{ margin: 0; }
   </section>
 
   <!-- ============================== TRABAJO ==============================
-       PLACEHOLDER: reemplazá estos tres casos por proyectos reales.
+       Casos reales, con enlace al sitio en producción.
        Las maquetas son CSS puro; si tienes capturas, cambia el bloque
        .shot por <img src="..." alt="...">.
   -->
@@ -1038,53 +1054,63 @@ p{ margin: 0; }
 
         <article class="work reveal">
           <div class="shot" aria-hidden="true">
-            <div class="chrome"><b></b><b></b><b></b><span>nordika.com</span></div>
+            <div class="chrome"><b></b><b></b><b></b><span>mujeresunidas.site</span></div>
             <div class="skel">
-              <i class="big"></i><i style="width:48%"></i><i style="width:38%"></i>
+              <i style="width:34%"></i>
+              <div class="row"><i></i><i></i><i></i></div>
+              <i class="big" style="width:58%;margin-top:.4rem"></i>
+              <i style="width:46%"></i>
+              <i class="ink" style="width:34%"></i>
+            </div>
+          </div>
+          <div class="work-body">
+            <span class="label">Mujeres Unidas — CRM</span>
+            <h3>UM-CRM</h3>
+            <p>Plataforma privada de gestión para la organización: acceso por usuario, seguimiento del trabajo del equipo y reportes en un solo lugar.</p>
+            <a class="work-link" href="https://mujeresunidas.site/" target="_blank" rel="noopener">
+              Ver el sitio
+              <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10 L10 2 M4.2 2H10v5.8" stroke="currentColor" stroke-width="1.3"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="work reveal">
+          <div class="shot" aria-hidden="true">
+            <div class="chrome"><b></b><b></b><b></b><span>girauniversitariard.com</span></div>
+            <div class="skel">
+              <i class="big" style="width:74%"></i><i style="width:52%"></i>
               <i class="ink"></i>
               <div class="row"><i></i><i></i><i></i></div>
             </div>
           </div>
           <div class="work-body">
-            <span class="label">2026 — Indumentaria</span>
-            <h3>Nórdika</h3>
-            <p>Migración de una tienda lenta a un e-commerce headless con checkout propio, catálogo por talles y retiro en local.</p>
-            <div class="work-metric"><b>+38 %</b><span>Conversión móvil</span></div>
+            <span class="label">Gira Universitaria RD — Evento</span>
+            <h3>Punto de Partida</h3>
+            <p>Sitio de la gira con dinámicas interactivas para el público y edición de textos e imágenes desde el propio sitio, sin tocar código.</p>
+            <a class="work-link" href="https://girauniversitariard.com/" target="_blank" rel="noopener">
+              Ver el sitio
+              <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10 L10 2 M4.2 2H10v5.8" stroke="currentColor" stroke-width="1.3"/></svg>
+            </a>
           </div>
         </article>
 
         <article class="work reveal">
           <div class="shot" aria-hidden="true">
-            <div class="chrome"><b></b><b></b><b></b><span>rioplata.capital</span></div>
+            <div class="chrome"><b></b><b></b><b></b><span>sistema.hotelbuendia.net</span></div>
             <div class="skel">
-              <i class="big" style="width:74%"></i><i style="width:52%"></i>
-              <div class="row"><i></i><i></i><i></i></div>
-              <i style="width:44%;margin-top:.4rem"></i>
-            </div>
-          </div>
-          <div class="work-body">
-            <span class="label">2025 — Financiero</span>
-            <h3>Ríoplata Capital</h3>
-            <p>Sitio institucional bilingüe con panel de contenidos propio para que el equipo publique informes sin depender de nadie.</p>
-            <div class="work-metric"><b>98 / 100</b><span>Lighthouse</span></div>
-          </div>
-        </article>
-
-        <article class="work reveal">
-          <div class="shot" aria-hidden="true">
-            <div class="chrome"><b></b><b></b><b></b><span>app.turnos.ar</span></div>
-            <div class="skel">
-              <i style="width:34%"></i>
+              <i class="big"></i><i style="width:48%"></i>
               <div class="row"><i></i><i></i><i></i></div>
               <i class="ink" style="width:42%;margin-top:.4rem"></i>
-              <i style="width:56%"></i>
             </div>
           </div>
           <div class="work-body">
-            <span class="label">2025 — Salud</span>
-            <h3>Turnos.ar</h3>
-            <p>Aplicación web de reservas con calendario en tiempo real, recordatorios por WhatsApp y facturación integrada.</p>
-            <div class="work-metric"><b>−60 %</b><span>Ausencias a turnos</span></div>
+            <span class="label">Hospedaje Buendía II — Hotelería</span>
+            <h3>Pro8 · Reservas</h3>
+            <p>Landing de reservas con disponibilidad y precios en tiempo real: el huésped elige fechas y habitación y reserva online, sin llamadas.</p>
+            <a class="work-link" href="https://sistema.hotelbuendia.net/" target="_blank" rel="noopener">
+              Ver el sitio
+              <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10 L10 2 M4.2 2H10v5.8" stroke="currentColor" stroke-width="1.3"/></svg>
+            </a>
           </div>
         </article>
 
