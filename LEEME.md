@@ -43,9 +43,9 @@ Está marcado con comentarios `PLACEHOLDER` dentro de `index.html`:
    igual que sus métricas. Las maquetas son CSS puro: si tienes capturas,
    cambia el bloque `.shot` por `<img src="..." alt="...">`.
 2. **Los números** (48 proyectos, 6 años, 96 Lighthouse, 24 h) son de relleno.
-3. **Contacto**: `hola@kymesoftware.com`, el WhatsApp y el LinkedIn son de
-   ejemplo. Aparecen en tres lugares — la sección de contacto, el menú móvil
-   y el JavaScript del formulario.
+3. **Contacto**: el único canal es el correo `kymesolutions@gmail.com`.
+   Aparece en dos lugares — la sección de contacto y el JavaScript del
+   formulario.
 
 ## El formulario
 
