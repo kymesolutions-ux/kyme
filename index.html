@@ -3,8 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Kyme Software — estudio de diseño y desarrollo web. Diseñamos y construimos sitios, tiendas y aplicaciones a medida.">
-<meta name="theme-color" content="#FEFEFE">
+<meta name="description" content="Estudio peruano de diseño y desarrollo web. Diseñamos y construimos sitios, tiendas online y aplicaciones a medida — diseño y código bajo el mismo techo.">
+<meta name="author" content="Kyme Software">
+<meta name="theme-color" content="#FEFEFE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#181818" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://kymesolutions.dpdns.org/">
+
+<!-- ============ Open Graph — Facebook, WhatsApp, LinkedIn, Telegram ============
+     La imagen DEBE ser una URL absoluta: los scrapers no resuelven rutas
+     relativas. Si cambias og-image.png, sube el ?v= para que Facebook y
+     WhatsApp suelten la copia vieja de su caché.
+     Variante clara lista para usar: brand/og-image-light.png
+     ========================================================================== -->
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Kyme Software">
+<meta property="og:locale"      content="es_PE">
+<meta property="og:url"         content="https://kymesolutions.dpdns.org/">
+<meta property="og:title"       content="Kyme Software — Diseño y desarrollo web">
+<meta property="og:description" content="Sitios web que se ven tan bien como funcionan. Diseño y código bajo el mismo techo, precio cerrado y sin plantillas.">
+<meta property="og:image"       content="https://kymesolutions.dpdns.org/brand/og-image.png?v=1">
+<meta property="og:image:secure_url" content="https://kymesolutions.dpdns.org/brand/og-image.png?v=1">
+<meta property="og:image:type"   content="image/png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"    content="Logo de Kyme Software sobre fondo negro con el lema: sitios web que se ven tan bien como funcionan.">
+
+<!-- ============ Twitter / X ============ -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Kyme Software — Diseño y desarrollo web">
+<meta name="twitter:description" content="Sitios web que se ven tan bien como funcionan. Diseño y código bajo el mismo techo, precio cerrado y sin plantillas.">
+<meta name="twitter:image"       content="https://kymesolutions.dpdns.org/brand/og-image.png?v=1">
+<meta name="twitter:image:alt"   content="Logo de Kyme Software.">
+
+<link rel="apple-touch-icon" href="brand/favicon.png">
 <link rel="icon" href="brand/favicon-light.png" media="(prefers-color-scheme: light)">
 <link rel="icon" href="brand/favicon-dark.png"  media="(prefers-color-scheme: dark)">
 <script>
@@ -25,7 +56,7 @@
 })();
 </script>
 <!--ARTIFACT-START-->
-<title>Kyme Software</title>
+<title>Kyme Software — Diseño y desarrollo web</title>
 <style>
 /* ==========================================================================
    KYME SOFTWARE
@@ -823,7 +854,12 @@ p{ margin: 0; }
 .field input::placeholder,
 .field textarea::placeholder{ color: var(--grey-2); }
 .form .btn{ justify-content: center; margin-top: .5rem; }
-.form .note{ font-size: var(--t-label); letter-spacing: .12em; text-transform: uppercase; color: var(--grey-2); }
+.form .note{ font-size: var(--t-label); letter-spacing: .12em; text-transform: uppercase; color: var(--grey-2); transition: color .3s ease; }
+/* La nota bajo el botón hace de acuse de recibo: enviando, enviado o falló.
+   No hay color de acento en la marca, así que el estado lo da el contraste. */
+.form .note[data-estado="ok"]{ color: var(--ink); }
+.form .note[data-estado="error"]{ color: var(--ink); text-transform: none; letter-spacing: .01em; }
+.form .btn[disabled]{ opacity: .5; pointer-events: none; }
 
 /* ==========================================================================
    FOOTER
@@ -890,6 +926,45 @@ p{ margin: 0; }
   .js [data-morph]::before{ clip-path: none; }
 }
 </style>
+
+<!-- Datos estructurados: así Google sabe qué logo, qué correo y qué servicios
+     mostrar en el panel de la derecha cuando alguien busque "Kyme Software". -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://kymesolutions.dpdns.org/#kyme",
+  "name": "Kyme Software",
+  "alternateName": "Kyme",
+  "url": "https://kymesolutions.dpdns.org/",
+  "logo": "https://kymesolutions.dpdns.org/brand/kyme-lockup.png",
+  "image": "https://kymesolutions.dpdns.org/brand/og-image.png",
+  "email": "kymesolutions@gmail.com",
+  "description": "Estudio de diseño y desarrollo web. Sitios, tiendas online y aplicaciones a medida.",
+  "slogan": "Sitios web que se ven tan bien como funcionan.",
+  "priceRange": "$$",
+  "address": { "@type": "PostalAddress", "addressCountry": "PE" },
+  "areaServed": [
+    { "@type": "Country", "name": "Perú" },
+    { "@type": "Place",   "name": "Latinoamérica" },
+    { "@type": "Country", "name": "España" }
+  ],
+  "knowsLanguage": "es",
+  "sameAs": [],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diseño web e interfaz" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Desarrollo web a medida" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tiendas online" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landing pages" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Performance y SEO técnico" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Soporte y evolución" } }
+    ]
+  }
+}
+</script>
 </head>
 <body>
 <script>document.documentElement.classList.add("js");</script>
@@ -1210,14 +1285,27 @@ p{ margin: 0; }
           </div>
         </div>
 
-        <form class="form reveal" id="form" style="--d:100ms">
+        <!-- El formulario POSTea a FormSubmit (sin backend propio). Si el visitante
+             tiene JS, el envío va por fetch y no cambia de página; si no lo tiene,
+             el POST normal funciona igual y vuelve con ?enviado=1. -->
+        <form class="form reveal" id="form" style="--d:100ms"
+              action="https://formsubmit.co/kymesolutions@gmail.com"
+              method="POST">
+          <input type="hidden" name="_subject" value="Nueva consulta desde kymesolutions.dpdns.org">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://kymesolutions.dpdns.org/?enviado=1#contacto">
+          <!-- Trampa para bots: FormSubmit descarta el envío si viene con texto.
+               Nadie la ve, así que ninguna persona la llena. -->
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off"
+                 aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
           <div class="field">
             <label class="label" for="f-nombre">Nombre</label>
-            <input id="f-nombre" name="nombre" type="text" placeholder="Cómo te llamamos" required>
+            <input id="f-nombre" name="nombre" type="text" placeholder="Cómo te llamamos" required autocomplete="name">
           </div>
           <div class="field">
             <label class="label" for="f-mail">Correo</label>
-            <input id="f-mail" name="mail" type="email" placeholder="tu@empresa.com" required>
+            <input id="f-mail" name="email" type="email" placeholder="tu@empresa.com" required autocomplete="email">
           </div>
           <div class="field">
             <label class="label" for="f-tipo">Tipo de proyecto</label>
@@ -1234,11 +1322,11 @@ p{ margin: 0; }
             <label class="label" for="f-msg">Cuéntanos el proyecto</label>
             <textarea id="f-msg" name="mensaje" placeholder="Qué hace tu empresa, qué necesitas y para cuándo." required></textarea>
           </div>
-          <button class="btn" type="submit">
-            Enviar consulta
+          <button class="btn" type="submit" id="formBtn">
+            <span id="formBtnText">Enviar consulta</span>
             <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10 L10 2 M4.2 2H10v5.8" stroke="currentColor" stroke-width="1.3"/></svg>
           </button>
-          <p class="note" id="formNote">Se abrirá tu cliente de correo con el mensaje ya escrito</p>
+          <p class="note" id="formNote" role="status" aria-live="polite">Respondemos en menos de 24 horas hábiles</p>
         </form>
       </div>
     </div>
@@ -1436,22 +1524,93 @@ p{ margin: 0; }
     statIo.observe(stats);
   }
 
-  /* ---- Formulario: arma el correo y abre el cliente de mail ---- */
+  /* ---- Formulario: envío real por fetch, con salidas de emergencia ----
+     Orden de intentos:
+       1. POST a FormSubmit por fetch — el visitante no sale de la página.
+       2. Si la red o el servicio fallan, se ofrece el correo ya redactado.
+     El <form> conserva action y method, así que sin JavaScript el navegador
+     hace el POST de siempre y vuelve con ?enviado=1.                        */
   var form = document.getElementById("form");
+  var note = document.getElementById("formNote");
+
+  function decir(txt, estado){
+    if (!note) return;
+    note.textContent = txt;
+    note.setAttribute("data-estado", estado || "");
+  }
+
+  /* Vuelta del envío sin JavaScript */
+  if (/[?&]enviado=1/.test(location.search)){
+    decir("Mensaje enviado. Te respondemos en menos de 24 horas hábiles.", "ok");
+    if (history.replaceState){
+      history.replaceState(null, "", location.pathname + location.hash);
+    }
+  }
+
   if (form){
+    var btn     = document.getElementById("formBtn");
+    var btnText = document.getElementById("formBtnText");
+    var enviando = false;
+
     form.addEventListener("submit", function(ev){
+      /* Sin fetch (navegador viejo) dejamos que el POST normal ocurra. */
+      if (typeof window.fetch !== "function") return;
+
       ev.preventDefault();
-      var d = new FormData(form);
-      var asunto = "Consulta de " + d.get("nombre") + " — " + d.get("tipo");
-      var cuerpo =
-        "Nombre: " + d.get("nombre") + "\n" +
-        "Correo: " + d.get("mail") + "\n" +
-        "Tipo de proyecto: " + d.get("tipo") + "\n\n" +
-        d.get("mensaje");
-      window.location.href = "mailto:kymesolutions@gmail.com"
-        + "?subject=" + encodeURIComponent(asunto)
-        + "&body=" + encodeURIComponent(cuerpo);
-      document.getElementById("formNote").textContent = "Listo — revisá tu cliente de correo";
+      if (enviando) return;
+
+      /* La trampa de bots viene llena: fingimos éxito y no mandamos nada. */
+      if ((form.elements["_honey"] || {}).value){
+        decir("Mensaje enviado.", "ok");
+        return;
+      }
+
+      enviando = true;
+      if (btn) btn.disabled = true;
+      if (btnText) btnText.textContent = "Enviando…";
+      decir("Enviando tu consulta…", "");
+
+      var datos = {};
+      new FormData(form).forEach(function(v, k){ datos[k] = v; });
+
+      fetch("https://formsubmit.co/ajax/kymesolutions@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(datos)
+      })
+      .then(function(r){
+        return r.json().catch(function(){ return {}; }).then(function(j){
+          if (!r.ok || j.success === "false" || j.success === false){
+            throw new Error(j.message || "Respuesta inesperada del servidor");
+          }
+          return j;
+        });
+      })
+      .then(function(){
+        form.reset();
+        decir("Listo. Recibimos tu consulta y te respondemos en menos de 24 horas hábiles.", "ok");
+        if (btnText) btnText.textContent = "Consulta enviada";
+      })
+      .catch(function(){
+        /* Plan B: el correo redactado, para que el mensaje no se pierda. */
+        var d = new FormData(form);
+        var asunto = "Consulta de " + (d.get("nombre") || "") + " — " + (d.get("tipo") || "");
+        var cuerpo =
+          "Nombre: "  + (d.get("nombre") || "") + "\n" +
+          "Correo: "  + (d.get("email")  || "") + "\n" +
+          "Tipo de proyecto: " + (d.get("tipo") || "") + "\n\n" +
+          (d.get("mensaje") || "");
+        var mailto = "mailto:kymesolutions@gmail.com"
+          + "?subject=" + encodeURIComponent(asunto)
+          + "&body="    + encodeURIComponent(cuerpo);
+        decir("No pudimos enviarlo desde aquí. Abrimos tu correo con el mensaje ya escrito — si no se abre, escríbenos a kymesolutions@gmail.com.", "error");
+        if (btnText) btnText.textContent = "Enviar consulta";
+        window.location.href = mailto;
+      })
+      .then(function(){
+        enviando = false;
+        if (btn) btn.disabled = false;
+      });
     });
   }
 })();

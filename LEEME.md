@@ -9,7 +9,8 @@ Cloudflare Pages, o un hosting común por FTP).
 ```
 index.html      El sitio completo. Fuentes y logo van incrustados dentro,
                 así que el archivo funciona solo, sin conexión.
-brand/          El logo extraído del original, con fondo transparente.
+brand/          El logo extraído del original con fondo transparente,
+                los favicons y la tarjeta para compartir (og-image.png).
 fonts/          Clarity City en woff2, por si prefieres enlazarlas en vez
                 de incrustarlas.
 ```
@@ -44,15 +45,51 @@ Está marcado con comentarios `PLACEHOLDER` dentro de `index.html`:
    cambia el bloque `.shot` por `<img src="..." alt="...">`.
 2. **Los números** (48 proyectos, 6 años, 96 Lighthouse, 24 h) son de relleno.
 3. **Contacto**: el único canal es el correo `kymesolutions@gmail.com`.
-   Aparece en dos lugares — la sección de contacto y el JavaScript del
-   formulario.
+   Aparece en cuatro lugares — la sección de contacto, el `action` del
+   formulario, el `fetch` del JavaScript y el JSON-LD del `<head>`.
 
 ## El formulario
 
-No tiene backend. Al enviar arma el correo y abre el cliente de mail del
-visitante con todo escrito. Si quieres que los mensajes lleguen a una bandeja
-o a un CRM, se conecta con Formspree, Basin o una función serverless cambiando
-el `addEventListener("submit", ...)` del final del archivo.
+Los mensajes llegan a `kymesolutions@gmail.com` a través de **FormSubmit**
+(gratis, sin cuenta ni backend propio).
+
+**Hay que activarlo una sola vez.** La primera vez que alguien envíe el
+formulario desde el dominio publicado, FormSubmit manda un correo de
+confirmación a esa casilla con un enlace. Hasta que no se haga clic en ese
+enlace, ningún mensaje se entrega. Se activa una vez y no se vuelve a tocar.
+
+Cómo se comporta:
+
+1. Con JavaScript, el envío va por `fetch` y el visitante no sale de la página.
+   La nota bajo el botón hace de acuse de recibo.
+2. Si la red o el servicio fallan, se abre el cliente de correo con el mensaje
+   ya redactado — el plan B de antes, ahora sólo como red de seguridad.
+3. Sin JavaScript, el `<form>` hace su POST normal y vuelve a `?enviado=1`,
+   que muestra el mismo mensaje de éxito.
+
+Hay un campo trampa (`_honey`) escondido fuera de pantalla: si un bot lo llena,
+el envío se descarta.
+
+Para mudarlo a otro servicio (Formspree, Basin, una función serverless) hay que
+cambiar dos cosas: el `action` del `<form>` y la URL del `fetch` en el bloque
+`Formulario` al final del archivo.
+
+## Cómo se ve al compartir el enlace
+
+`brand/og-image.png` (1200×630) es la tarjeta que muestran Facebook, WhatsApp,
+LinkedIn, Telegram y X. Es el lockup en blanco sobre el negro de la marca, con
+el lema debajo. Hay una variante clara lista en `brand/og-image-light.png`:
+para usarla, cambia el nombre en las tres etiquetas `og:image` /
+`twitter:image` del `<head>`.
+
+Si vuelves a generar la imagen, **sube el `?v=1`** de esas etiquetas a `?v=2`.
+Facebook y WhatsApp cachean la tarjeta por semanas y sin ese cambio siguen
+mostrando la vieja. Para forzar el refresco: pega la URL en el
+[depurador de Facebook](https://developers.facebook.com/tools/debug/) y pulsa
+*Scrape Again*.
+
+El `<head>` también lleva un bloque JSON-LD (`ProfessionalService`) con el
+logo, el correo y los servicios, para lo que Google muestra en resultados.
 
 ## Tipografía
 

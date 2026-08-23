@@ -1,0 +1,10 @@
+# El repo se publica tal cual en GitHub Pages: todo lo que se sube queda
+# accesible desde internet. Lo administrativo se queda en local.
+facturas/
+Factura*.jpeg
+Factura*.jpg
+Factura*.pdf
+
+# Basura del sistema
+.DS_Store
+Thumbs.db
