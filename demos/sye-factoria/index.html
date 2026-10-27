@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S&amp;E Factoría Automotriz · Planchado y pintura en Barranco</title>
+<meta name="description" content="Planchado, pintura en cabina, pulido y detallado en Barranco, Lima. Envía fotos de tu auto por WhatsApp y recibe tu cotización.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="S&amp;E Factoría Automotriz · Barranco">
+<meta property="og:description" content="Planchado, pintura, pulido y detallado. Cotiza por WhatsApp.">
+<meta property="og:image" content="img/hero.webp">
+<meta name="theme-color" content="#111214">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23111214%22/%3E%3Ctext x=%2232%22 y=%2243%22 font-family=%22Arial Black,Arial%22 font-weight=%22900%22 font-size=%2226%22 text-anchor=%22middle%22 fill=%22%23fff%22%3ES%3Ctspan fill=%22%23e3261c%22%3E%26amp;%3C/tspan%3EE%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.webp">
+<link rel="preload" as="image" href="img/hero-fg.webp">
+<style>
+:root{
+  --grafito:#111214; --carbon:#1a1c1f; --carbon-2:#24272b;
+  --papel:#f3f1ec; --papel-2:#e9e6df; --linea:#d9d5cc; --linea-osc:#2e3236;
+  --tinta:#141517; --tinta-2:#55595e; --tinta-3:#8b9096;
+  --rojo:#e3261c; --rojo-osc:#b71b13; --metal:#a9aeb4;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --f:'Archivo',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:var(--f);font-variation-settings:"wdth" 100;background:var(--papel);color:var(--tinta);line-height:1.55;font-size:17px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--rojo);color:#fff}
+.wrap{width:min(1240px,100% - 32px);margin-inline:auto}
+@media(min-width:720px){.wrap{width:min(1240px,100% - 80px)}}
+
+/* ---------- type ---------- */
+.ancha{font-variation-settings:"wdth" 125;font-weight:800;letter-spacing:-.02em;text-transform:uppercase}
+.eyebrow{display:flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--tinta-3)}
+.eyebrow::before{content:"";width:34px;height:1px;background:currentColor;opacity:.7}
+.h2{font-size:clamp(34px,5.4vw,76px);line-height:.98}
+.lead{font-size:clamp(17px,1.5vw,20px);color:var(--tinta-2);max-width:56ch}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:999px;font-weight:600;font-size:15px;letter-spacing:.01em;transition:transform .5s var(--ease),background .3s,color .3s,box-shadow .3s;will-change:transform}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-rojo{background:var(--rojo);color:#fff;box-shadow:0 10px 30px -10px rgba(227,38,28,.7)}
+.btn-rojo:hover{background:var(--rojo-osc)}
+.btn-linea{border:1px solid currentColor}
+.btn-linea:hover{background:#fff;color:var(--tinta);border-color:#fff}
+.btn .flecha{transition:transform .5s var(--ease)}
+.btn:hover .flecha{transform:translateX(4px)}
+
+/* ---------- ribbon ---------- */
+.cinta-demo{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--papel);color:var(--tinta);font-size:12.5px;display:flex;justify-content:center;gap:10px;align-items:center;padding:9px 16px;border-top:1px solid var(--linea);text-align:center}
+.cinta-demo b{font-weight:700}
+.cinta-demo span{color:var(--tinta-3)}
+@media(max-width:600px){.cinta-demo span{display:none}}
+
+/* ---------- curtain ---------- */
+.telon{position:fixed;inset:0;z-index:100;background:var(--grafito);display:grid;place-items:center;transition:clip-path 1.1s var(--ease)}
+.telon.fuera{clip-path:inset(0 0 100% 0)}
+.telon-centro{display:grid;justify-items:center;gap:22px}
+.telon-logo{font-size:56px;color:#fff;line-height:1}
+.telon-logo i{color:var(--rojo);font-style:normal}
+.telon-pasada{width:220px;height:6px;background:var(--carbon-2);border-radius:6px;overflow:hidden;position:relative}
+.telon-pasada span{position:absolute;inset:0;background:linear-gradient(90deg,var(--rojo),#ff6a4d);transform-origin:left;animation:pasada 1.2s var(--ease) forwards}
+.telon-txt{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--tinta-3)}
+@keyframes pasada{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,backdrop-filter .4s,transform .5s var(--ease),border-color .4s;border-bottom:1px solid transparent}
+.nav.solida{background:rgba(17,18,20,.78);backdrop-filter:blur(14px);border-color:rgba(255,255,255,.06)}
+.nav.oculta{transform:translateY(-100%)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:78px;color:#fff}
+.logo{display:flex;align-items:baseline;gap:10px;line-height:1}
+.logo b{font-size:24px}
+.logo b i{color:var(--rojo);font-style:normal}
+.logo small{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--metal);font-weight:500}
+.nav-links{display:none;gap:34px;font-size:14px;color:rgba(255,255,255,.82)}
+.nav-links a{position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--rojo);transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav .btn{padding:11px 18px;font-size:14px}
+@media(min-width:960px){.nav-links{display:flex}}
+@media(max-width:520px){.logo small{display:none}.nav .btn span{display:none}.nav .btn{padding:12px}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--grafito);color:#fff;isolation:isolate}
+.hp{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hp-bg{filter:brightness(.38) saturate(.6) contrast(1.05);transform:scale(1.04)}
+.hp-palabra{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);white-space:nowrap;line-height:.8;color:#fff;z-index:1;pointer-events:none}
+.hp-palabra span{display:inline-block}
+.hp-fg{z-index:2}
+.hero::after{content:"";position:absolute;inset:0;z-index:3;background:linear-gradient(180deg,rgba(17,18,20,.55) 0%,transparent 22%,transparent 52%,rgba(17,18,20,.92) 100%);pointer-events:none}
+.hero-copia{position:absolute;left:0;right:0;bottom:0;z-index:4;padding-bottom:clamp(64px,9vh,104px)}
+.hero-fila{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px}
+.hero h1{font-size:clamp(32px,4.4vw,62px);line-height:1.02;max-width:15ch;margin-top:18px;font-weight:700;letter-spacing:-.025em}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--metal)}
+.hero .eyebrow{color:rgba(255,255,255,.7)}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.22);font-size:13px;background:rgba(255,255,255,.06);backdrop-filter:blur(6px)}
+.chip .estrella{color:#ffc93c}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:18px}
+.scroll-ind{position:absolute;right:clamp(16px,4vw,40px);top:50%;z-index:4;writing-mode:vertical-rl;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:14px}
+.scroll-ind::after{content:"";width:1px;height:60px;background:linear-gradient(var(--rojo),transparent);animation:goteo 2s ease-in-out infinite}
+@keyframes goteo{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media(max-width:720px){
+  .scroll-ind{display:none}
+  .hp{top:9%;height:50%;object-position:50% 30%;-webkit-mask-image:linear-gradient(#000 62%,transparent 98%);mask-image:linear-gradient(#000 62%,transparent 98%)}
+  .hp-palabra{top:33%}
+  .hero h1{font-size:36px;margin-top:14px}
+  .hero .eyebrow{font-size:10.5px;letter-spacing:.18em}
+  .hero .eyebrow::before{width:22px}
+  .hero-meta .chip:last-child,.hero-cta .btn-linea{display:none}
+  .hero-cta{width:100%}.hero-cta .btn{width:100%;justify-content:center}
+  .hero-copia{padding-bottom:128px}
+}
+
+/* ---------- marquee ---------- */
+.marquesina{background:var(--rojo);color:#fff;overflow:hidden;padding:20px 0;position:relative;z-index:5}
+.marquesina-pista{display:flex;width:max-content;animation:correr 32s linear infinite}
+.marquesina-pista span{font-size:clamp(20px,2.4vw,30px);padding:0 28px;white-space:nowrap;display:flex;align-items:center;gap:56px}
+.marquesina-pista span::after{content:"";width:10px;height:10px;border:2px solid #fff;border-radius:50%}
+@keyframes correr{to{transform:translateX(-50%)}}
+
+/* ---------- manifesto ---------- */
+.manifiesto{padding:clamp(110px,16vw,200px) 0 clamp(90px,12vw,150px)}
+.manifiesto p{font-size:clamp(28px,4vw,56px);line-height:1.12;font-weight:600;letter-spacing:-.025em;max-width:22ch}
+.manifiesto p .w{opacity:.14;transition:none}
+.manifiesto p em{font-style:italic;font-weight:300}
+.datos{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--linea);border:1px solid var(--linea);margin-top:clamp(64px,8vw,100px)}
+.dato{background:var(--papel);padding:28px 26px}
+.dato b{display:block;font-size:clamp(40px,4.4vw,60px);line-height:1}
+.dato b small{font-size:.45em;font-weight:600;margin-left:4px;color:var(--rojo)}
+.dato > span{display:block;margin-top:10px;font-size:14px;color:var(--tinta-2)}
+
+/* ---------- services ---------- */
+.servicios{padding:0 0 clamp(100px,12vw,160px)}
+.serv-cab{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:48px}
+.serv-lista{border-top:1px solid var(--linea)}
+.serv{display:grid;grid-template-columns:60px 1fr;gap:10px 24px;padding:28px 0;border-bottom:1px solid var(--linea);position:relative;align-items:center}
+.serv-num{font-size:13px;color:var(--tinta-3);font-weight:600;letter-spacing:.1em}
+.serv h3{font-size:clamp(26px,3.6vw,48px);line-height:1;transition:color .4s,transform .6s var(--ease)}
+.serv p{grid-column:2;color:var(--tinta-2);max-width:52ch;font-size:16px}
+.serv-img{display:none}
+@media(min-width:900px){
+  .serv{grid-template-columns:80px 1fr 1fr;padding:34px 0}
+  .serv p{grid-column:3}
+  .serv:hover h3{color:var(--rojo);transform:translateX(12px)}
+  .serv-img{display:block;position:fixed;left:0;top:0;width:340px;aspect-ratio:4/3;border-radius:14px;overflow:hidden;pointer-events:none;z-index:40;opacity:0;transform:scale(.6) rotate(-4deg);transition:opacity .35s,transform .6s var(--ease)}
+  .serv-img img{width:100%;height:100%;object-fit:cover}
+  .serv-img.ver{opacity:1;transform:scale(1) rotate(0)}
+}
+@media(max-width:899px){.serv-movil{grid-column:1/-1;margin-top:14px;border-radius:12px;overflow:hidden;aspect-ratio:16/9}.serv-movil img{width:100%;height:100%;object-fit:cover}}
+@media(min-width:900px){.serv-movil{display:none}}
+
+/* ---------- process (pinned horizontal) ---------- */
+.proceso{background:var(--grafito);color:#fff;position:relative;overflow:hidden}
+.proc-cab{padding:clamp(90px,10vw,130px) 0 40px}
+.proc-cab .eyebrow{color:var(--metal)}
+.proc-cab .lead{color:rgba(255,255,255,.62)}
+.proc-pista{display:flex;gap:28px;padding:0 max(16px,(100vw - 1240px)/2) clamp(90px,10vw,130px);width:max-content}
+.paso{width:min(78vw,460px);flex:none}
+.paso-img{aspect-ratio:4/5;border-radius:16px;overflow:hidden;position:relative;background:var(--carbon)}
+.paso-img img{width:100%;height:118%;object-fit:cover;filter:grayscale(.25) brightness(.85)}
+.paso-n{position:absolute;top:18px;left:18px;font-size:13px;letter-spacing:.14em;padding:6px 12px;border-radius:999px;background:rgba(17,18,20,.6);backdrop-filter:blur(8px)}
+.paso h3{font-size:28px;margin:22px 0 8px;line-height:1.05}
+.paso p{color:rgba(255,255,255,.62);font-size:16px;max-width:38ch}
+.paso-final{display:flex;flex-direction:column;justify-content:center;gap:24px;width:min(78vw,420px);flex:none}
+.paso-final b{font-size:clamp(36px,4vw,56px);line-height:1}
+.barra-prog{position:absolute;left:0;bottom:0;height:3px;background:var(--rojo);width:100%;transform-origin:left;transform:scaleX(0)}
+@media(max-width:899px){.proc-pista{width:auto;flex-direction:column;padding-inline:16px}.paso,.paso-final{width:100%}.paso-img{aspect-ratio:4/3}}
+
+/* ---------- quote builder ---------- */
+.cotiza{padding:clamp(100px,12vw,160px) 0}
+.cotiza-grid{display:grid;gap:56px}
+@media(min-width:960px){.cotiza-grid{grid-template-columns:1fr 1.1fr;align-items:start}}
+.cotiza-izq{position:relative}
+@media(min-width:960px){.cotiza-izq{position:sticky;top:120px}}
+.cotiza-foto{margin-top:36px;border-radius:16px;overflow:hidden;aspect-ratio:16/11}
+.cotiza-foto img{width:100%;height:100%;object-fit:cover}
+.form{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:clamp(24px,3.4vw,40px);box-shadow:0 30px 60px -40px rgba(0,0,0,.25)}
+.paso-form{padding:22px 0;border-bottom:1px solid var(--papel-2)}
+.paso-form:first-child{padding-top:0}
+.paso-form label,.paso-form legend{display:flex;gap:10px;align-items:baseline;font-weight:600;font-size:15px;margin-bottom:14px}
+.paso-form label i,.paso-form legend i{font-style:normal;color:var(--rojo);font-size:12px;letter-spacing:.1em}
+fieldset{border:0}
+.opciones{display:flex;flex-wrap:wrap;gap:10px}
+.op input{position:absolute;opacity:0;pointer-events:none}
+.op span{display:inline-block;padding:11px 16px;border-radius:999px;border:1px solid var(--linea);font-size:14.5px;transition:all .3s var(--ease);cursor:pointer;user-select:none}
+.op span:hover{border-color:var(--tinta)}
+.op input:checked+span{background:var(--tinta);border-color:var(--tinta);color:#fff}
+.op input:focus-visible+span{outline:2px solid var(--rojo);outline-offset:2px}
+.campos{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+.campos input,textarea{width:100%;font:inherit;font-size:16px;padding:14px 16px;border-radius:12px;border:1px solid var(--linea);background:var(--papel);color:var(--tinta);transition:border-color .3s,background .3s}
+.campos input:focus,textarea:focus{outline:none;border-color:var(--tinta);background:#fff}
+textarea{resize:vertical;min-height:96px}
+.form-pie{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:24px}
+.form-pie small{color:var(--tinta-3);font-size:13px;max-width:30ch}
+.vista{margin-top:18px;padding:16px 18px;border-radius:14px;background:#e7f7dd;font-size:14px;color:#1f3a14;white-space:pre-line;display:none}
+.vista.on{display:block}
+
+/* ---------- reviews ---------- */
+.resenas{background:var(--papel-2);padding:clamp(90px,10vw,130px) 0}
+.res-grid{display:grid;gap:48px;align-items:center}
+@media(min-width:900px){.res-grid{grid-template-columns:auto 1fr}}
+.nota{display:flex;align-items:flex-end;gap:18px}
+.nota b{font-size:clamp(110px,15vw,200px);line-height:.8}
+.nota-lado{padding-bottom:10px}
+.estrellas{display:flex;gap:4px;color:var(--rojo);font-size:22px;letter-spacing:2px}
+.nota-lado span{display:block;font-size:14px;color:var(--tinta-2);margin-top:6px}
+.res-txt .h2{font-size:clamp(30px,4vw,54px)}
+.res-txt .lead{margin:18px 0 28px}
+.res-txt .btn-linea{color:var(--tinta)}
+.res-txt .btn-linea:hover{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+
+/* ---------- location ---------- */
+.ubica{padding:clamp(100px,12vw,160px) 0}
+.ubi-grid{display:grid;gap:40px}
+@media(min-width:900px){.ubi-grid{grid-template-columns:1fr 1.3fr;align-items:stretch}}
+.ubi-info{display:flex;flex-direction:column;gap:28px}
+.ubi-item{border-top:1px solid var(--linea);padding-top:18px}
+.ubi-item small{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-3);font-weight:600}
+.ubi-item p{font-size:20px;font-weight:600;margin-top:6px}
+.ubi-item a{border-bottom:1px solid var(--rojo)}
+.mapa{border-radius:20px;overflow:hidden;min-height:380px;background:var(--papel-2);position:relative}
+.mapa iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.05)}
+
+/* ---------- final CTA ---------- */
+.cierre{background:var(--grafito);color:#fff;position:relative;overflow:hidden;padding:clamp(120px,15vw,200px) 0 clamp(90px,10vw,120px)}
+.cierre-foto{position:absolute;inset:0}
+.cierre-foto img{width:100%;height:120%;object-fit:cover;filter:brightness(.3) saturate(.7)}
+.cierre .wrap{position:relative}
+.cierre h2{font-size:clamp(44px,8vw,128px);line-height:.92;max-width:12ch}
+.cierre h2 em{font-style:italic;font-weight:300;color:var(--rojo);text-transform:none}
+.cierre .lead{color:rgba(255,255,255,.7);margin:28px 0 36px}
+.pie{border-top:1px solid var(--linea-osc);margin-top:clamp(90px,10vw,130px);padding-top:28px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:13px;color:var(--tinta-3)}
+.pie a{color:#fff}
+
+/* ---------- floating whatsapp ---------- */
+.wa-flot{position:fixed;right:18px;bottom:58px;z-index:55;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 14px 30px -8px rgba(0,0,0,.45);transition:transform .5s var(--ease)}
+.wa-flot:hover{transform:scale(1.08) rotate(-6deg)}
+.wa-flot svg{width:30px;height:30px;fill:#fff}
+.wa-flot::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:pulso 2.4s ease-out infinite}
+@keyframes pulso{to{transform:scale(1.6);opacity:0}}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(40px)}
+.no-js .rv,.reduce .rv{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.marquesina-pista{animation:none}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="telon" id="telon" aria-hidden="true">
+  <div class="telon-centro">
+    <div class="telon-logo ancha">S<i>&amp;</i>E</div>
+    <div class="telon-pasada"><span></span></div>
+    <div class="telon-txt">Factoría automotriz</div>
+  </div>
+</div>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#inicio" class="logo"><b class="ancha">S<i>&amp;</i>E</b><small>Factoría automotriz</small></a>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#cotiza">Cotiza</a>
+      <a href="#ubicacion">Ubicación</a>
+    </div>
+    <a class="btn btn-rojo" data-wa href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.5-.3Z"/></svg><span>Cotiza por WhatsApp</span></a>
+  </div>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <img class="hp hp-bg" src="img/hero.webp" alt="" width="2400" height="1602">
+    <div class="hp-palabra ancha" aria-hidden="true"><span id="palabra">Pintura</span></div>
+    <img class="hp hp-fg" src="img/hero-fg.webp" alt="Pintor de S&amp;E con equipo de protección y pistola de pintura" width="2400" height="1602">
+    <div class="scroll-ind">Desliza</div>
+    <div class="hero-copia">
+      <div class="wrap hero-fila">
+        <div>
+          <div class="eyebrow hero-in">Planchado y pintura · Barranco, Lima</div>
+          <h1 class="hero-in">Tu auto, como <em>recién salido</em> de fábrica.</h1>
+          <div class="hero-meta hero-in">
+            <span class="chip"><span class="estrella">★</span> 4,6 en Google · 115 reseñas</span>
+            <span class="chip">Av. El Sol 800, Barranco</span>
+          </div>
+        </div>
+        <div class="hero-cta hero-in">
+          <a class="btn btn-rojo" data-wa href="#">Envía fotos y cotiza <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-linea" href="#servicios">Ver servicios</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquesina" aria-hidden="true">
+    <div class="marquesina-pista">
+      <span class="ancha">Planchado</span><span class="ancha">Pintura en cabina</span><span class="ancha">Pulido</span><span class="ancha">Enderezado</span><span class="ancha">Detallado</span><span class="ancha">Restauración de faros</span>
+      <span class="ancha">Planchado</span><span class="ancha">Pintura en cabina</span><span class="ancha">Pulido</span><span class="ancha">Enderezado</span><span class="ancha">Detallado</span><span class="ancha">Restauración de faros</span>
+    </div>
+  </div>
+
+  <!-- MANIFESTO -->
+  <section class="manifiesto">
+    <div class="wrap">
+      <div class="eyebrow rv" style="margin-bottom:36px">La factoría</div>
+      <p id="manifiesto">Un golpe se arregla en minutos. Que <em>no se note</em> es otra cosa: preparación, color exacto y un acabado que resiste el sol de Lima.</p>
+      <div class="datos">
+        <div class="dato rv"><b><span data-cuenta="4.6" data-dec="1">0</span><small>★</small></b><span>Calificación en Google Maps</span></div>
+        <div class="dato rv"><b><span data-cuenta="115">0</span></b><span>Clientes que dejaron su reseña</span></div>
+        <div class="dato rv"><b>1<small>WhatsApp</small></b><span>Envías fotos y recibes tu cotización</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="servicios" id="servicios">
+    <div class="wrap">
+      <div class="serv-cab">
+        <div>
+          <div class="eyebrow rv">Servicios</div>
+          <h2 class="h2 ancha rv" style="margin-top:18px">Lo que hacemos<br>con tu auto</h2>
+        </div>
+        <p class="lead rv">Desde un rayón hasta una pintura completa. Cada trabajo empieza con un diagnóstico honesto de lo que tu auto necesita.</p>
+      </div>
+      <div class="serv-lista">
+        <article class="serv rv" data-img="img/preparacion.webp">
+          <span class="serv-num">01</span><h3 class="ancha">Planchado</h3>
+          <p>Recuperamos la forma original de puertas, guardafangos y capots, sin masilla de más.</p>
+          <div class="serv-movil"><img src="img/preparacion.webp" alt="Preparación de carrocería" loading="lazy"></div>
+        </article>
+        <article class="serv rv" data-img="img/pintura.webp">
+          <span class="serv-num">02</span><h3 class="ancha">Pintura en cabina</h3>
+          <p>Igualamos el color de fábrica y pintamos en ambiente controlado para un acabado parejo y sin polvo.</p>
+          <div class="serv-movil"><img src="img/pintura.webp" alt="Pintura en cabina" loading="lazy"></div>
+        </article>
+        <article class="serv rv" data-img="img/pulido.webp">
+          <span class="serv-num">03</span><h3 class="ancha">Pulido y abrillantado</h3>
+          <p>Eliminamos rayones finos y opacidad para devolverle el brillo a toda la carrocería.</p>
+          <div class="serv-movil"><img src="img/pulido.webp" alt="Pulido de auto" loading="lazy"></div>
+        </article>
+        <article class="serv rv" data-img="img/detallado.webp">
+          <span class="serv-num">04</span><h3 class="ancha">Detallado</h3>
+          <p>Limpieza profunda, descontaminado y protección para que tu auto luzca como nuevo por más tiempo.</p>
+          <div class="serv-movil"><img src="img/detallado.webp" alt="Detallado automotriz" loading="lazy"></div>
+        </article>
+        <article class="serv rv" data-img="img/faros.webp">
+          <span class="serv-num">05</span><h3 class="ancha">Faros y piezas</h3>
+          <p>Restauración de faros opacos y montaje de piezas para que todo quede alineado y en su sitio.</p>
+          <div class="serv-movil"><img src="img/faros.webp" alt="Trabajo en faros" loading="lazy"></div>
+        </article>
+      </div>
+    </div>
+    <div class="serv-img" id="servImg"><img src="img/preparacion.webp" alt=""></div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="proceso" id="proceso">
+    <div class="wrap proc-cab">
+      <div class="eyebrow rv">El proceso</div>
+      <h2 class="h2 ancha rv" style="margin:18px 0 20px">De la foto<br>a la entrega</h2>
+      <p class="lead rv">Sabes en qué paso va tu auto en todo momento. Sin sorpresas en el precio.</p>
+    </div>
+    <div class="proc-pista" id="pista">
+      <div class="paso"><div class="paso-img"><img src="img/detallado.webp" alt="" loading="lazy"><span class="paso-n">01</span></div><h3 class="ancha">Fotos por WhatsApp</h3><p>Nos envías fotos del daño y te damos un presupuesto referencial el mismo día.</p></div>
+      <div class="paso"><div class="paso-img"><img src="img/preparacion.webp" alt="" loading="lazy"><span class="paso-n">02</span></div><h3 class="ancha">Diagnóstico</h3><p>Revisamos el auto en el taller y confirmamos el precio y el plazo antes de empezar.</p></div>
+      <div class="paso"><div class="paso-img"><img src="img/cabina.webp" alt="" loading="lazy"><span class="paso-n">03</span></div><h3 class="ancha">Preparación</h3><p>Planchado, lijado y fondo. Es la parte que no se ve y la que hace que el acabado dure.</p></div>
+      <div class="paso"><div class="paso-img"><img src="img/pintura.webp" alt="" loading="lazy"><span class="paso-n">04</span></div><h3 class="ancha">Pintura y pulido</h3><p>Color igualado, pintura en cabina y pulido final con control de calidad.</p></div>
+      <div class="paso-final"><span class="paso-n" style="position:static;align-self:flex-start">05</span><b class="ancha">Entrega</b><p style="color:rgba(255,255,255,.62)">Revisas el resultado con nosotros, bajo buena luz, antes de llevarte el auto.</p><a class="btn btn-rojo" data-wa href="#" style="align-self:flex-start">Empezar con fotos <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+    <div class="barra-prog" id="barra"></div>
+  </section>
+
+  <!-- QUOTE BUILDER -->
+  <section class="cotiza" id="cotiza">
+    <div class="wrap cotiza-grid">
+      <div class="cotiza-izq">
+        <div class="eyebrow rv">Cotiza en 1 minuto</div>
+        <h2 class="h2 ancha rv" style="margin:18px 0 20px">Cuéntanos<br>qué le pasó</h2>
+        <p class="lead rv">Marca lo que necesitas y te armamos el mensaje para WhatsApp. Solo adjunta las fotos y listo.</p>
+        <div class="cotiza-foto rv"><img src="img/cabina.webp" alt="Cabina de pintura" loading="lazy"></div>
+      </div>
+      <form class="form rv" id="form" novalidate>
+        <fieldset class="paso-form">
+          <legend><i>01</i> ¿Qué necesitas?</legend>
+          <div class="opciones">
+            <label class="op"><input type="checkbox" name="s" value="Planchado"><span>Planchado</span></label>
+            <label class="op"><input type="checkbox" name="s" value="Pintura de una pieza"><span>Pintura de una pieza</span></label>
+            <label class="op"><input type="checkbox" name="s" value="Pintura completa"><span>Pintura completa</span></label>
+            <label class="op"><input type="checkbox" name="s" value="Pulido"><span>Pulido</span></label>
+            <label class="op"><input type="checkbox" name="s" value="Detallado"><span>Detallado</span></label>
+            <label class="op"><input type="checkbox" name="s" value="Faros"><span>Faros</span></label>
+            <label class="op"><input type="checkbox" name="s" value="No estoy seguro"><span>No estoy seguro</span></label>
+          </div>
+        </fieldset>
+        <div class="paso-form">
+          <label><i>02</i> Tu auto</label>
+          <div class="campos">
+            <input name="marca" placeholder="Marca y modelo" autocomplete="off">
+            <input name="anio" placeholder="Año" inputmode="numeric" maxlength="4" autocomplete="off">
+          </div>
+        </div>
+        <div class="paso-form">
+          <label for="detalle"><i>03</i> ¿Qué le pasó?</label>
+          <textarea id="detalle" name="detalle" placeholder="Ej.: golpe en la puerta trasera derecha y rayón en el parachoques"></textarea>
+        </div>
+        <div class="form-pie">
+          <small>Se abre WhatsApp con tu mensaje listo. Adjunta 2 o 3 fotos del daño.</small>
+          <button class="btn btn-rojo" type="submit">Enviar por WhatsApp <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+        <div class="vista" id="vista"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="resenas">
+    <div class="wrap res-grid">
+      <div class="nota rv">
+        <b class="ancha">4,6</b>
+        <div class="nota-lado"><div class="estrellas">★★★★★</div><span>115 reseñas en Google</span></div>
+      </div>
+      <div class="res-txt">
+        <h2 class="h2 ancha rv">La mejor publicidad es un auto bien entregado</h2>
+        <p class="lead rv">Más de cien clientes ya nos calificaron en Google Maps. Lee lo que dicen antes de traernos el tuyo.</p>
+        <a class="btn btn-linea rv" href="https://www.google.com/maps?cid=12098672385087010137" target="_blank" rel="noopener">Leer reseñas en Google <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="ubica" id="ubicacion">
+    <div class="wrap">
+      <div class="eyebrow rv">Ubicación</div>
+      <h2 class="h2 ancha rv" style="margin:18px 0 48px">En el corazón<br>de Barranco</h2>
+      <div class="ubi-grid">
+        <div class="ubi-info">
+          <div class="ubi-item rv"><small>Dirección</small><p>Av. El Sol 800, Barranco</p></div>
+          <div class="ubi-item rv"><small>WhatsApp</small><p><a data-wa href="#">943 507 686</a></p></div>
+          <div class="ubi-item rv"><small>Cómo llegar</small><p><a href="https://www.google.com/maps?cid=12098672385087010137" target="_blank" rel="noopener">Abrir en Google Maps</a></p></div>
+        </div>
+        <div class="mapa rv">
+          <iframe title="Mapa de S&amp;E Factoría Automotriz" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=S%26E%20Factor%C3%ADa%20Automotriz%2C%20Av.%20el%20Sol%20800%2C%20Barranco&z=16&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="cierre">
+    <div class="cierre-foto"><img src="img/detallado.webp" alt="" loading="lazy"></div>
+    <div class="wrap">
+      <div class="eyebrow rv" style="color:var(--metal)">¿Listo?</div>
+      <h2 class="ancha rv" style="margin-top:22px">Un golpe, un rayón o <em>pintura completa</em></h2>
+      <p class="lead rv">Mándanos una foto. Te respondemos con el precio y el plazo.</p>
+      <a class="btn btn-rojo rv" data-wa href="#">Cotizar por WhatsApp <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <footer class="pie">
+        <span>© 2026 S&amp;E Factoría Automotriz · Av. El Sol 800, Barranco, Lima</span>
+        <span>Diseño y desarrollo: <a href="https://kymesolutions.dpdns.org/" target="_blank" rel="noopener">Kyme Software</a> · Fotos: Freepik</span>
+      </footer>
+    </div>
+  </section>
+</main>
+
+<a class="wa-flot" data-wa href="#" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.5-.3Z"/></svg></a>
+
+<div class="cinta-demo"><b>Propuesta de diseño</b> para S&amp;E Factoría Automotriz <span>· creada por Kyme Software</span></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+  const WA = '51943507686';
+  const waLink = (t) => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+  const saludo = 'Hola S&E, quisiera cotizar un trabajo para mi auto. Les envío fotos.';
+  document.querySelectorAll('[data-wa]').forEach(a => { a.href = waLink(saludo); a.target = '_blank'; a.rel = 'noopener'; });
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasGsap = !!window.gsap;
+  if (reduce || !hasGsap) document.documentElement.classList.add('reduce');
+
+  /* ---- giant hero word fitted to the viewport ---- */
+  const palabra = document.getElementById('palabra');
+  const ajustar = () => {
+    palabra.style.fontSize = '100px';
+    const w = palabra.getBoundingClientRect().width;
+    const vw = innerWidth;
+    const objetivo = vw < 640 ? vw * 0.94 : Math.min(vw * 0.9, 1700);
+    palabra.style.fontSize = Math.min(objetivo / w * 100, innerHeight * 0.34) + 'px';
+  };
+  ajustar(); document.fonts && document.fonts.ready.then(ajustar); addEventListener('resize', ajustar);
+
+  /* ---- curtain ---- */
+  const telon = document.getElementById('telon');
+  let arranco = false;
+  const salir = () => {
+    if (arranco) return; arranco = true;
+    telon.classList.add('fuera');
+    setTimeout(() => telon.remove(), 1200);
+    intro();
+  };
+  const t0 = performance.now();
+  const listo = () => setTimeout(salir, Math.max(0, 1300 - (performance.now() - t0)));
+  document.readyState === 'complete' ? listo() : addEventListener('load', listo, { once: true });
+  setTimeout(salir, 4500);
+
+  /* ---- quote builder ---- */
+  const form = document.getElementById('form');
+  const vista = document.getElementById('vista');
+  const armar = () => {
+    const f = new FormData(form);
+    const s = f.getAll('s');
+    const lineas = ['Hola S&E, quiero cotizar:'];
+    lineas.push('• Servicio: ' + (s.length ? s.join(', ') : 'por definir'));
+    const auto = [f.get('marca'), f.get('anio')].filter(Boolean).join(' ');
+    if (auto) lineas.push('• Auto: ' + auto);
+    if (f.get('detalle')) lineas.push('• Detalle: ' + f.get('detalle'));
+    lineas.push('Les envío fotos del daño.');
+    return lineas.join('\n');
+  };
+  form.addEventListener('input', () => { vista.textContent = armar(); vista.classList.add('on'); });
+  form.addEventListener('submit', e => { e.preventDefault(); open(waLink(armar()), '_blank', 'noopener'); });
+
+  /* ---- service image follows the cursor ---- */
+  const servImg = document.getElementById('servImg');
+  const servImgEl = servImg.querySelector('img');
+  if (matchMedia('(hover: hover) and (min-width: 900px)').matches) {
+    let x = 0, y = 0, cx = 0, cy = 0;
+    addEventListener('mousemove', e => { x = e.clientX; y = e.clientY; });
+    const loop = () => { cx += (x - cx) * .14; cy += (y - cy) * .14; servImg.style.left = (cx + 28) + 'px'; servImg.style.top = (cy - 130) + 'px'; requestAnimationFrame(loop); };
+    loop();
+    document.querySelectorAll('.serv').forEach(s => {
+      s.addEventListener('mouseenter', () => { servImgEl.src = s.dataset.img; servImg.classList.add('ver'); });
+      s.addEventListener('mouseleave', () => servImg.classList.remove('ver'));
+    });
+  }
+
+  /* ---- nav: solid after hero, hides on scroll down ---- */
+  const nav = document.getElementById('nav');
+  let ultimo = 0;
+  const onScroll = (y) => {
+    nav.classList.toggle('solida', y > innerHeight * .6);
+    nav.classList.toggle('oculta', y > ultimo && y > innerHeight);
+    ultimo = y;
+  };
+
+  if (reduce || !hasGsap) { addEventListener('scroll', () => onScroll(scrollY)); return; }
+
+  gsap.registerPlugin(ScrollTrigger);
+  const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+  lenis.on('scroll', ({ scroll }) => { ScrollTrigger.update(); onScroll(scroll); });
+  gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const id = a.getAttribute('href'); if (id.length < 2) return;
+    e.preventDefault(); lenis.scrollTo(id, { offset: id === '#inicio' ? 0 : -20 });
+  }));
+
+  function intro() {
+    if (reduce || !hasGsap) return;
+    const tl = gsap.timeline({ delay: .35 });
+    tl.from('.hp-bg', { scale: 1.18, duration: 2.2, ease: 'expo.out' }, 0)
+      .from('#palabra', { yPercent: 70, autoAlpha: 0, duration: 1.6, ease: 'expo.out' }, .1)
+      .from('.hp-fg', { scale: 1.12, yPercent: 4, duration: 2, ease: 'expo.out' }, 0)
+      .from('.hero-in', { y: 34, autoAlpha: 0, duration: 1.1, ease: 'power3.out', stagger: .09 }, .6)
+      .from('.nav-in > *', { y: -20, autoAlpha: 0, duration: .9, ease: 'power3.out', stagger: .08 }, .7);
+  }
+
+  // hero scroll: the word sinks behind the painter
+  const st = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
+  gsap.to('#palabra', { yPercent: 55, ease: 'none', scrollTrigger: st });
+  gsap.to('.hp-bg', { yPercent: 12, ease: 'none', scrollTrigger: st });
+  gsap.to('.hp-fg', { yPercent: -4, scale: 1.06, ease: 'none', scrollTrigger: st });
+  gsap.to('.hero-copia', { y: -90, autoAlpha: 0, ease: 'none', scrollTrigger: { ...st, end: '55% top' } });
+
+  // generic reveals
+  gsap.utils.toArray('.rv').forEach(el => {
+    gsap.to(el, { y: 0, autoAlpha: 1, duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } });
+  });
+
+  // manifesto: words light up with scroll
+  const man = document.getElementById('manifiesto');
+  man.innerHTML = man.innerHTML.replace(/(<em>.*?<\/em>|[^\s<]+)/g, m => `<span class="w">${m}</span>`);
+  gsap.to('#manifiesto .w', { opacity: 1, stagger: .08, ease: 'none',
+    scrollTrigger: { trigger: man, start: 'top 80%', end: 'bottom 45%', scrub: true } });
+
+  // counters
+  document.querySelectorAll('[data-cuenta]').forEach(el => {
+    const fin = parseFloat(el.dataset.cuenta), dec = +(el.dataset.dec || 0), o = { v: 0 };
+    gsap.to(o, { v: fin, duration: 1.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' },
+      onUpdate: () => el.textContent = o.v.toFixed(dec).replace('.', ',') });
+  });
+
+  // process: horizontal pinned scroll on desktop
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 900px)', () => {
+    const pista = document.getElementById('pista');
+    const distancia = () => pista.scrollWidth - innerWidth;
+    const tw = gsap.to(pista, { x: () => -distancia(), ease: 'none',
+      scrollTrigger: { trigger: '#proceso', start: 'top top', end: () => '+=' + distancia(), pin: true, scrub: 1, invalidateOnRefresh: true } });
+    gsap.to('#barra', { scaleX: 1, ease: 'none', scrollTrigger: { trigger: '#proceso', start: 'top top', end: () => '+=' + distancia(), scrub: true } });
+    gsap.utils.toArray('.paso-img img').forEach(img => gsap.fromTo(img, { yPercent: -8 }, { yPercent: 0, ease: 'none',
+      scrollTrigger: { trigger: img.parentElement, containerAnimation: tw, start: 'left right', end: 'right left', scrub: true } }));
+  });
+
+  // parallax on large photos
+  gsap.utils.toArray('.cotiza-foto img, .cierre-foto img').forEach(img => gsap.fromTo(img, { yPercent: -8 }, { yPercent: 8, ease: 'none',
+    scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
+
+  // magnetic buttons
+  if (matchMedia('(hover: hover)').matches) document.querySelectorAll('.btn').forEach(b => {
+    b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect();
+      gsap.to(b, { x: (e.clientX - r.left - r.width / 2) * .18, y: (e.clientY - r.top - r.height / 2) * .25, duration: .5, ease: 'power3.out' }); });
+    b.addEventListener('mouseleave', () => gsap.to(b, { x: 0, y: 0, duration: .7, ease: 'elastic.out(1,.4)' }));
+  });
+
+  addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
