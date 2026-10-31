@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f766e">
+<title>Cuentas Inquilinos</title>
+<style>
+  :root {
+    --bg: #f3f5f4;
+    --card: #ffffff;
+    --text: #1c2321;
+    --muted: #66706c;
+    --line: #e2e6e4;
+    --accent: #0f766e;
+    --accent-soft: #e0f2ef;
+    --wa: #1fa855;
+    --danger: #c0392b;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121615;
+      --card: #1c2220;
+      --text: #e9eeec;
+      --muted: #9aa5a1;
+      --line: #2c3431;
+      --accent: #2bb3a3;
+      --accent-soft: #1d3330;
+      --wa: #25c060;
+      --danger: #ef6b5e;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding-bottom: 120px;
+  }
+  header {
+    background: var(--accent);
+    color: #fff;
+    padding: 18px 16px 14px;
+  }
+  header h1 { margin: 0 0 10px; font-size: 20px; }
+  .top-row { display: flex; gap: 8px; }
+  .top-row label { flex: 1; font-size: 12px; opacity: .9; }
+  .top-row input {
+    width: 100%;
+    margin-top: 4px;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 16px;
+    background: rgba(255,255,255,.18);
+    color: #fff;
+  }
+  .top-row input::placeholder { color: rgba(255,255,255,.7); }
+  .top-row .cur { flex: 0 0 70px; }
+
+  main { padding: 12px 16px; display: grid; gap: 12px; }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 14px;
+    border: 1px solid var(--line);
+  }
+  .card-head { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
+  .card-head input.name {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 600;
+    border: 0;
+    border-bottom: 1px dashed var(--line);
+    background: transparent;
+    color: var(--text);
+    padding: 4px 0;
+    min-width: 0;
+  }
+  .icon-btn {
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .icon-btn:active { background: var(--line); }
+
+  .phone {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+  }
+  .row .lbl { flex: 1; font-size: 15px; }
+  .row input[type=number] {
+    width: 130px;
+    padding: 10px;
+    text-align: right;
+    font-size: 17px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text);
+  }
+  .row.off .lbl { color: var(--muted); text-decoration: line-through; }
+  .row.off input[type=number] { opacity: .35; }
+
+  .toggle { position: relative; width: 44px; height: 26px; flex: 0 0 auto; }
+  .toggle input { opacity: 0; width: 0; height: 0; }
+  .toggle span {
+    position: absolute; inset: 0;
+    background: var(--line);
+    border-radius: 26px;
+    transition: .2s;
+  }
+  .toggle span::after {
+    content: "";
+    position: absolute;
+    width: 20px; height: 20px;
+    left: 3px; top: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: .2s;
+  }
+  .toggle input:checked + span { background: var(--accent); }
+  .toggle input:checked + span::after { transform: translateX(18px); }
+
+  .subtotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 12px;
+    background: var(--accent-soft);
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .wa-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 13px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--wa);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .add-btn {
+    width: 100%;
+    padding: 14px;
+    border: 2px dashed var(--accent);
+    background: transparent;
+    color: var(--accent);
+    border-radius: var(--radius);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    background: var(--card);
+    border-top: 1px solid var(--line);
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .footer .tot { flex: 1; }
+  .footer .tot small { display: block; color: var(--muted); font-size: 12px; }
+  .footer .tot b { font-size: 22px; }
+  .footer .wa-btn { width: auto; margin: 0; padding: 12px 16px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Cuentas de inquilinos</h1>
+  <div class="top-row">
+    <label>Mes
+      <input id="mes" type="text" placeholder="Ej: Noviembre 2026">
+    </label>
+    <label class="cur">Moneda
+      <input id="moneda" type="text" maxlength="4">
+    </label>
+  </div>
+</header>
+
+<main id="lista"></main>
+
+<main>
+  <button class="add-btn" id="agregar">+ Agregar inquilino</button>
+</main>
+
+<div class="footer">
+  <div class="tot">
+    <small>Total general</small>
+    <b id="total">0.00</b>
+  </div>
+  <a class="wa-btn" id="waTodos" target="_blank" rel="noopener">Enviar resumen</a>
+</div>
+
+<script>
+const CONCEPTOS = [
+  { key: "alquiler", label: "🏠 Alquiler" },
+  { key: "luz",      label: "💡 Luz" },
+  { key: "agua",     label: "💧 Agua" },
+  { key: "internet", label: "📶 Internet" },
+  { key: "gas",      label: "🔥 Gas natural" },
+];
+const STORE_KEY = "cuentas-inquilinos-v1";
+
+function nuevoInquilino(n) {
+  const activos = {};
+  const montos = {};
+  CONCEPTOS.forEach(c => { activos[c.key] = c.key !== "gas"; montos[c.key] = ""; });
+  return { id: Date.now() + Math.random(), nombre: "Inquilino " + n, telefono: "", activos, montos };
+}
+
+function mesActual() {
+  const s = new Date().toLocaleDateString("es", { month: "long", year: "numeric" });
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+let estado = cargar() || { mes: mesActual(), moneda: "S/", inquilinos: [nuevoInquilino(1)] };
+
+function cargar() {
+  try { return JSON.parse(localStorage.getItem(STORE_KEY)); } catch (e) { return null; }
+}
+function guardar() {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(estado)); } catch (e) {}
+}
+
+function num(v) { const n = parseFloat(v); return isNaN(n) ? 0 : n; }
+function fmt(n) { return estado.moneda + " " + n.toFixed(2); }
+
+function subtotal(inq) {
+  return CONCEPTOS.reduce((s, c) => s + (inq.activos[c.key] ? num(inq.montos[c.key]) : 0), 0);
+}
+function totalGeneral() {
+  return estado.inquilinos.reduce((s, i) => s + subtotal(i), 0);
+}
+
+function textoInquilino(inq) {
+  let t = `*${inq.nombre}* — ${estado.mes}\n`;
+  CONCEPTOS.forEach(c => {
+    if (inq.activos[c.key] && num(inq.montos[c.key]) > 0) {
+      t += `${c.label}: ${fmt(num(inq.montos[c.key]))}\n`;
+    }
+  });
+  t += `*Total: ${fmt(subtotal(inq))}*`;
+  return t;
+}
+
+function textoGeneral() {
+  let t = `*Resumen ${estado.mes}*\n\n`;
+  estado.inquilinos.forEach(i => { t += textoInquilino(i) + "\n\n"; });
+  t += `*TOTAL GENERAL: ${fmt(totalGeneral())}*`;
+  return t;
+}
+
+function linkWa(texto, telefono) {
+  const tel = (telefono || "").replace(/\D/g, "");
+  return `https://wa.me/${tel}?text=${encodeURIComponent(texto)}`;
+}
+
+function actualizarTotales() {
+  estado.inquilinos.forEach(inq => {
+    const card = document.querySelector(`[data-id="${inq.id}"]`);
+    if (!card) return;
+    card.querySelector(".sub-val").textContent = fmt(subtotal(inq));
+    card.querySelector(".wa-btn").href = linkWa(textoInquilino(inq), inq.telefono);
+  });
+  document.getElementById("total").textContent = fmt(totalGeneral());
+  document.getElementById("waTodos").href = linkWa(textoGeneral());
+  guardar();
+}
+
+function render() {
+  const lista = document.getElementById("lista");
+  lista.innerHTML = "";
+  estado.inquilinos.forEach(inq => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.dataset.id = inq.id;
+
+    const filas = CONCEPTOS.map(c => `
+      <div class="row ${inq.activos[c.key] ? "" : "off"}" data-key="${c.key}">
+        <label class="toggle"><input type="checkbox" ${inq.activos[c.key] ? "checked" : ""}><span></span></label>
+        <span class="lbl">${c.label}</span>
+        <input type="number" inputmode="decimal" step="0.01" min="0" placeholder="0.00"
+               value="${inq.montos[c.key]}" ${inq.activos[c.key] ? "" : "disabled"}>
+      </div>`).join("");
+
+    card.innerHTML = `
+      <div class="card-head">
+        <input class="name" type="text">
+        <button class="icon-btn borrar" title="Eliminar">🗑</button>
+      </div>
+      <input class="phone" type="tel" inputmode="tel" placeholder="WhatsApp (con código de país, ej: 51987654321)">
+      ${filas}
+      <div class="subtotal"><span>Total</span><span class="sub-val"></span></div>
+      <a class="wa-btn" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+    `;
+    card.querySelector(".name").value = inq.nombre;
+    card.querySelector(".phone").value = inq.telefono;
+
+    card.querySelector(".name").addEventListener("input", e => { inq.nombre = e.target.value; actualizarTotales(); });
+    card.querySelector(".phone").addEventListener("input", e => { inq.telefono = e.target.value; actualizarTotales(); });
+    card.querySelector(".borrar").addEventListener("click", () => {
+      if (confirm(`¿Eliminar a ${inq.nombre}?`)) {
+        estado.inquilinos = estado.inquilinos.filter(i => i !== inq);
+        render();
+      }
+    });
+
+    card.querySelectorAll(".row").forEach(row => {
+      const key = row.dataset.key;
+      const chk = row.querySelector("input[type=checkbox]");
+      const monto = row.querySelector("input[type=number]");
+      chk.addEventListener("change", () => {
+        inq.activos[key] = chk.checked;
+        row.classList.toggle("off", !chk.checked);
+        monto.disabled = !chk.checked;
+        actualizarTotales();
+      });
+      monto.addEventListener("input", () => { inq.montos[key] = monto.value; actualizarTotales(); });
+    });
+
+    lista.appendChild(card);
+  });
+  actualizarTotales();
+}
+
+document.getElementById("mes").value = estado.mes;
+document.getElementById("moneda").value = estado.moneda;
+document.getElementById("mes").addEventListener("input", e => { estado.mes = e.target.value; actualizarTotales(); });
+document.getElementById("moneda").addEventListener("input", e => { estado.moneda = e.target.value; actualizarTotales(); });
+document.getElementById("agregar").addEventListener("click", () => {
+  estado.inquilinos.push(nuevoInquilino(estado.inquilinos.length + 1));
+  render();
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+});
+
+render();
+</script>
+</body>
+</html>
