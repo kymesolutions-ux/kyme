@@ -3,372 +3,502 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0f766e">
-<title>Cuentas Inquilinos</title>
+<meta name="theme-color" content="#f4f4f4">
+<title>Cuentas del mes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f3f5f4;
-    --card: #ffffff;
-    --text: #1c2321;
-    --muted: #66706c;
-    --line: #e2e6e4;
-    --accent: #0f766e;
-    --accent-soft: #e0f2ef;
-    --wa: #1fa855;
-    --danger: #c0392b;
-    --radius: 14px;
+    --brand: #074540;
+    --brand-dark: #053330;
+    --brand-tint: #e8f0ef;
+    --ink-950: #171717;
+    --ink-900: #222530;
+    --ink-700: #2b303b;
+    --ink-600: #525866;
+    --ink-500: #717784;
+    --ink-400: #99a0ae;
+    --ink-300: #cacfd8;
+    --ink-200: #eaecf0;
+    --ink-100: #f2f5f8;
+    --ink-50: #f5f7fa;
+    --ok: #1fc16b;
+    --ok-soft: #e3f7ec;
+    --ok-dark: #178c4e;
+    --err: #e93544;
+    --err-soft: #ffebec;
+    --wa: #1daf61;
+    --bg: #f4f4f4;
+    --display: "Inter Tight", "Inter", system-ui, sans-serif;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #121615;
-      --card: #1c2220;
-      --text: #e9eeec;
-      --muted: #9aa5a1;
-      --line: #2c3431;
-      --accent: #2bb3a3;
-      --accent-soft: #1d3330;
-      --wa: #25c060;
-      --danger: #ef6b5e;
-    }
-  }
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { color-scheme: light; }
   body {
     margin: 0;
     background: var(--bg);
-    color: var(--text);
-    font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    padding-bottom: 120px;
+    color: var(--ink-900);
+    font: 14px/1.45 "Inter", system-ui, -apple-system, sans-serif;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
   }
-  header {
-    background: var(--accent);
-    color: #fff;
-    padding: 18px 16px 14px;
-  }
-  header h1 { margin: 0 0 10px; font-size: 20px; }
-  .top-row { display: flex; gap: 8px; }
-  .top-row label { flex: 1; font-size: 12px; opacity: .9; }
-  .top-row input {
-    width: 100%;
-    margin-top: 4px;
-    padding: 10px;
-    border: 0;
-    border-radius: 10px;
-    font-size: 16px;
-    background: rgba(255,255,255,.18);
-    color: #fff;
-  }
-  .top-row input::placeholder { color: rgba(255,255,255,.7); }
-  .top-row .cur { flex: 0 0 70px; }
+  button, input { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  svg { display: block; }
+  .wrap { max-width: 520px; margin: 0 auto; padding: 0 16px; }
 
-  main { padding: 12px 16px; display: grid; gap: 12px; }
+  /* Encabezado */
+  .top { padding: 22px 0 14px; display: flex; align-items: center; gap: 12px; }
+  .top .eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-400); }
+  .top h1 { margin: 2px 0 0; font: 700 22px/1.15 var(--display); letter-spacing: -.01em; color: var(--ink-950); }
+  .month {
+    margin-left: auto;
+    display: flex; align-items: center;
+    background: #fff; border: 1px solid var(--ink-200); border-radius: 10px;
+    height: 38px;
+  }
+  .month button { width: 34px; height: 100%; border: 0; background: none; color: var(--ink-500); display: grid; place-items: center; }
+  .month span { font-size: 13px; font-weight: 600; min-width: 74px; text-align: center; color: var(--ink-900); text-transform: capitalize; }
 
-  .card {
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 14px;
-    border: 1px solid var(--line);
-  }
-  .card-head { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
-  .card-head input.name {
-    flex: 1;
-    font-size: 18px;
-    font-weight: 600;
-    border: 0;
-    border-bottom: 1px dashed var(--line);
-    background: transparent;
-    color: var(--text);
-    padding: 4px 0;
-    min-width: 0;
-  }
-  .icon-btn {
-    border: 0;
-    background: transparent;
-    color: var(--muted);
-    font-size: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  .icon-btn:active { background: var(--line); }
+  /* Resumen */
+  .card { background: #fff; border: 1px solid var(--ink-200); border-radius: 12px; }
+  .summary { padding: 18px; }
+  .label { font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-400); }
+  .big { font: 700 34px/1.1 var(--display); letter-spacing: -.02em; color: var(--ink-950); margin-top: 6px; }
+  .meta { color: var(--ink-500); font-size: 13px; margin-top: 4px; }
+  .progress { height: 6px; border-radius: 999px; background: var(--ink-100); overflow: hidden; margin-top: 14px; }
+  .progress i { display: block; height: 100%; background: var(--ok); border-radius: 999px; transition: width .3s; }
+  .split { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-500); margin-top: 8px; }
+  .split b { color: var(--ink-900); font-weight: 600; }
+  [hidden] { display: none !important; }
+  .breakdown { display: flex; flex-wrap: wrap; gap: 1px; background: var(--ink-200); border-top: 1px solid var(--ink-200); border-radius: 0 0 12px 12px; overflow: hidden; }
+  .breakdown div { flex: 1 1 30%; background: #fff; padding: 10px 12px; }
+  .breakdown span { display: block; font-size: 11px; color: var(--ink-500); }
+  .breakdown b { font-size: 13px; font-weight: 600; color: var(--ink-900); }
 
-  .phone {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 15px;
-    margin-bottom: 10px;
-  }
+  /* Lista */
+  .section { display: flex; align-items: center; justify-content: space-between; margin: 22px 2px 8px; }
+  .link-btn { border: 0; background: none; color: var(--brand); font-size: 13px; font-weight: 600; padding: 6px 0; }
+  .list { overflow: hidden; }
+  .item { display: flex; align-items: center; gap: 12px; padding: 14px; border: 0; background: none; width: 100%; text-align: left; }
+  .item + .item { border-top: 1px solid var(--ink-100); }
+  .item:active { background: var(--ink-50); }
+  .avatar { width: 38px; height: 38px; border-radius: 999px; background: var(--brand-tint); color: var(--brand); display: grid; place-items: center; font-weight: 600; font-size: 13px; flex-shrink: 0; }
+  .item .info { flex: 1; min-width: 0; }
+  .item .name { font-weight: 600; color: var(--ink-950); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .item .sub { font-size: 12px; color: var(--ink-500); margin-top: 1px; }
+  .item .amt { text-align: right; }
+  .item .amt b { display: block; font-weight: 600; color: var(--ink-950); }
+  .pill { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: .04em; padding: 3px 7px; border-radius: 999px; margin-top: 3px; }
+  .pill.ok { background: var(--ok-soft); color: var(--ok-dark); }
+  .pill.wait { background: var(--ink-100); color: var(--ink-500); }
+  .empty { padding: 28px 16px; text-align: center; color: var(--ink-500); }
 
-  .row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px 0;
-  }
-  .row .lbl { flex: 1; font-size: 15px; }
-  .row input[type=number] {
-    width: 130px;
-    padding: 10px;
-    text-align: right;
-    font-size: 17px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    background: var(--bg);
-    color: var(--text);
-  }
-  .row.off .lbl { color: var(--muted); text-decoration: line-through; }
-  .row.off input[type=number] { opacity: .35; }
+  .ghost { width: 100%; margin-top: 10px; height: 46px; border: 1px dashed var(--ink-300); border-radius: 12px; background: transparent; color: var(--ink-600); font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; }
 
-  .toggle { position: relative; width: 44px; height: 26px; flex: 0 0 auto; }
-  .toggle input { opacity: 0; width: 0; height: 0; }
-  .toggle span {
-    position: absolute; inset: 0;
-    background: var(--line);
-    border-radius: 26px;
-    transition: .2s;
-  }
-  .toggle span::after {
-    content: "";
-    position: absolute;
-    width: 20px; height: 20px;
-    left: 3px; top: 3px;
-    background: #fff;
-    border-radius: 50%;
-    transition: .2s;
-  }
-  .toggle input:checked + span { background: var(--accent); }
-  .toggle input:checked + span::after { transform: translateX(18px); }
+  /* Barra inferior */
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,.94); backdrop-filter: blur(10px); border-top: 1px solid var(--ink-200); padding: 12px 0 calc(12px + env(safe-area-inset-bottom)); }
+  .bar .wrap { display: flex; gap: 10px; }
+  .btn { height: 48px; border-radius: 10px; border: 1px solid transparent; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 0 16px; }
+  .btn-primary { background: var(--brand); color: #fff; flex: 1; }
+  .btn-primary:active { background: var(--brand-dark); }
+  .btn-wa { background: var(--wa); color: #fff; width: 100%; }
+  .btn-light { background: #fff; color: var(--ink-700); border-color: var(--ink-200); }
+  .btn-danger { background: none; color: var(--err); border-color: transparent; width: 100%; }
+  .btn-danger.confirm { background: var(--err-soft); }
 
-  .subtotal {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    padding: 12px;
-    background: var(--accent-soft);
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 18px;
-  }
+  /* Hoja de edición */
+  .scrim { position: fixed; inset: 0; background: rgba(23,23,23,.36); opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 10; }
+  .sheet { position: fixed; left: 0; right: 0; bottom: 0; max-height: 92vh; overflow-y: auto; background: #fff; border-radius: 18px 18px 0 0; transform: translateY(100%); transition: transform .25s cubic-bezier(.2,.8,.2,1); z-index: 11; padding-bottom: env(safe-area-inset-bottom); }
+  .open .scrim { opacity: 1; pointer-events: auto; }
+  .open .sheet { transform: none; }
+  .sheet .wrap { padding-top: 8px; padding-bottom: 18px; }
+  .grip { width: 36px; height: 4px; border-radius: 4px; background: var(--ink-200); margin: 0 auto 12px; }
+  .sheet-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .sheet-head h2 { margin: 0; font: 700 18px/1.2 var(--display); color: var(--ink-950); }
+  .close { width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--ink-200); background: #fff; color: var(--ink-500); display: grid; place-items: center; }
 
-  .wa-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    margin-top: 10px;
-    padding: 13px;
-    border: 0;
-    border-radius: 10px;
-    background: var(--wa);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-  }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 12px; font-weight: 500; color: var(--ink-600); margin-bottom: 6px; }
+  .input { width: 100%; height: 46px; padding: 0 12px; border: 1px solid var(--ink-200); border-radius: 10px; background: #fff; font-size: 16px; color: var(--ink-900); outline: none; transition: border-color .15s, box-shadow .15s; }
+  .input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(7,69,64,.15); }
 
-  .add-btn {
-    width: 100%;
-    padding: 14px;
-    border: 2px dashed var(--accent);
-    background: transparent;
-    color: var(--accent);
-    border-radius: var(--radius);
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-  }
+  .concepts { border: 1px solid var(--ink-200); border-radius: 12px; margin: 16px 0 12px; }
+  .concept { display: flex; align-items: center; gap: 10px; padding: 8px 10px 8px 12px; min-height: 58px; }
+  .concept + .concept { border-top: 1px solid var(--ink-100); }
+  .concept .ico { width: 32px; height: 32px; border-radius: 8px; background: var(--ink-100); color: var(--ink-600); display: grid; place-items: center; flex-shrink: 0; }
+  .concept .cname { flex: 1; font-weight: 500; color: var(--ink-900); }
+  .concept .money { position: relative; width: 120px; }
+  .concept .money span { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--ink-400); font-size: 14px; pointer-events: none; }
+  .concept .money input { width: 100%; height: 42px; padding: 0 10px 0 30px; text-align: right; border: 1px solid var(--ink-200); border-radius: 9px; font-size: 16px; font-variant-numeric: tabular-nums; outline: none; background: #fff; }
+  .concept .money input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(7,69,64,.15); }
+  .concept.off .cname { color: var(--ink-400); }
+  .concept.off .ico { opacity: .5; }
+  .concept.off .money { display: none; }
+  .concept .add { border: 1px solid var(--ink-200); background: #fff; border-radius: 8px; height: 34px; padding: 0 12px; font-size: 13px; font-weight: 600; color: var(--brand); }
+  .concept:not(.off) .add { display: none; }
+  .concept .rm { border: 0; background: none; color: var(--ink-400); width: 28px; height: 28px; display: grid; place-items: center; margin-left: -4px; }
+  .concept.off .rm { display: none; }
 
-  .footer {
-    position: fixed;
-    left: 0; right: 0; bottom: 0;
-    background: var(--card);
-    border-top: 1px solid var(--line);
-    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .footer .tot { flex: 1; }
-  .footer .tot small { display: block; color: var(--muted); font-size: 12px; }
-  .footer .tot b { font-size: 22px; }
-  .footer .wa-btn { width: auto; margin: 0; padding: 12px 16px; }
+  .total-row { display: flex; align-items: baseline; justify-content: space-between; padding: 4px 2px 14px; }
+  .total-row b { font: 700 24px var(--display); color: var(--ink-950); letter-spacing: -.01em; }
+
+  .check { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--ink-200); border-radius: 12px; margin-bottom: 10px; }
+  .check .t { flex: 1; }
+  .check .t b { display: block; font-weight: 600; color: var(--ink-900); }
+  .check .t span { font-size: 12px; color: var(--ink-500); }
+  .switch { position: relative; width: 44px; height: 26px; flex-shrink: 0; }
+  .switch input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; z-index: 1; }
+  .switch i { position: absolute; inset: 0; background: var(--ink-300); border-radius: 26px; transition: background .2s; }
+  .switch i::after { content: ""; position: absolute; width: 20px; height: 20px; left: 3px; top: 3px; background: #fff; border-radius: 50%; box-shadow: 0 1px 2px rgba(0,0,0,.2); transition: transform .2s; }
+  .switch input:checked + i { background: var(--ok); }
+  .switch input:checked + i::after { transform: translateX(18px); }
+  .stack { display: grid; gap: 8px; }
+
+  .toast { position: fixed; left: 50%; bottom: calc(84px + env(safe-area-inset-bottom)); transform: translate(-50%, 20px); background: var(--ink-950); color: #fff; padding: 10px 14px; border-radius: 10px; font-size: 13px; opacity: 0; transition: .2s; pointer-events: none; z-index: 20; white-space: nowrap; }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>Cuentas de inquilinos</h1>
-  <div class="top-row">
-    <label>Mes
-      <input id="mes" type="text" placeholder="Ej: Noviembre 2026">
-    </label>
-    <label class="cur">Moneda
-      <input id="moneda" type="text" maxlength="4">
-    </label>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Alquileres</div>
+      <h1>Cuentas del mes</h1>
+    </div>
+    <div class="month">
+      <button id="prev" aria-label="Mes anterior"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+      <span id="mes"></span>
+      <button id="next" aria-label="Mes siguiente"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+    </div>
+  </header>
+
+  <section class="card">
+    <div class="summary">
+      <div class="label">Total a cobrar</div>
+      <div class="big" id="total">S/ 0.00</div>
+      <div class="meta" id="meta"></div>
+      <div class="progress"><i id="bar" style="width:0"></i></div>
+      <div class="split"><span>Cobrado <b id="cobrado">S/ 0.00</b></span><span>Pendiente <b id="pendiente">S/ 0.00</b></span></div>
+    </div>
+    <div class="breakdown" id="breakdown"></div>
+  </section>
+
+  <div class="section">
+    <div class="label">Inquilinos</div>
+    <button class="link-btn" id="copiarMes" hidden>Copiar del mes anterior</button>
   </div>
-</header>
-
-<main id="lista"></main>
-
-<main>
-  <button class="add-btn" id="agregar">+ Agregar inquilino</button>
-</main>
-
-<div class="footer">
-  <div class="tot">
-    <small>Total general</small>
-    <b id="total">0.00</b>
-  </div>
-  <a class="wa-btn" id="waTodos" target="_blank" rel="noopener">Enviar resumen</a>
+  <section class="card list" id="lista"></section>
+  <button class="ghost" id="agregar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+    Agregar inquilino
+  </button>
 </div>
 
+<div class="bar">
+  <div class="wrap">
+    <a class="btn btn-primary" id="enviarResumen" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+      Enviar resumen
+    </a>
+  </div>
+</div>
+
+<div id="hoja">
+  <div class="scrim" id="scrim"></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="hojaTitulo">
+    <div class="wrap">
+      <div class="grip"></div>
+      <div class="sheet-head">
+        <h2 id="hojaTitulo">Inquilino</h2>
+        <button class="close" id="cerrar" aria-label="Cerrar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </div>
+
+      <div class="field">
+        <label for="fNombre">Nombre o habitación</label>
+        <input class="input" id="fNombre" type="text" placeholder="Ej: Juan · Cuarto 2" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="fTel">WhatsApp</label>
+        <input class="input" id="fTel" type="tel" inputmode="tel" placeholder="987 654 321" autocomplete="off">
+      </div>
+
+      <div class="concepts" id="conceptos"></div>
+
+      <div class="total-row"><span class="label">Total del inquilino</span><b id="fTotal">S/ 0.00</b></div>
+
+      <div class="check">
+        <div class="t"><b>Ya pagó este mes</b><span>Márcalo cuando te transfiera</span></div>
+        <label class="switch"><input type="checkbox" id="fPagado"><i></i></label>
+      </div>
+
+      <div class="stack">
+        <a class="btn btn-wa" id="fWa" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2C18.1 1.3 15.2.2 12 .2 5.5.2.2 5.5.2 12c0 2.1.5 4.1 1.6 5.9L.1 24l6.3-1.6c1.7.9 3.7 1.4 5.6 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.4z"/></svg>
+          Enviarle su cuenta
+        </a>
+        <button class="btn btn-danger" id="fBorrar">Eliminar inquilino</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
+const ICONOS = {
+  home: '<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
+  bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+  drop: '<path d="M12 2.7c3.5 4 6 7.3 6 10.3a6 6 0 0 1-12 0c0-3 2.5-6.3 6-10.3z"/>',
+  wifi: '<path d="M5 12.6a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19.5" r=".8" fill="currentColor"/>',
+  flame: '<path d="M12 22c4 0 7-2.7 7-6.5 0-3.8-3-6.2-4-9.5-1.3 1.5-2 3-2 4.5C11 9 9.5 7 9.5 4.5 6.5 7 5 10.5 5 15.5 5 19.3 8 22 12 22z"/>',
+};
 const CONCEPTOS = [
-  { key: "alquiler", label: "🏠 Alquiler" },
-  { key: "luz",      label: "💡 Luz" },
-  { key: "agua",     label: "💧 Agua" },
-  { key: "internet", label: "📶 Internet" },
-  { key: "gas",      label: "🔥 Gas natural" },
+  { key: "alquiler", nombre: "Alquiler",     icono: "home",  fijo: true },
+  { key: "luz",      nombre: "Luz",          icono: "bolt" },
+  { key: "agua",     nombre: "Agua",         icono: "drop" },
+  { key: "internet", nombre: "Internet",     icono: "wifi" },
+  { key: "gas",      nombre: "Gas natural",  icono: "flame" },
 ];
-const STORE_KEY = "cuentas-inquilinos-v1";
+const STORE_KEY = "cuentas-alquiler-v2";
+const MONEDA = "S/";
 
-function nuevoInquilino(n) {
-  const activos = {};
-  const montos = {};
-  CONCEPTOS.forEach(c => { activos[c.key] = c.key !== "gas"; montos[c.key] = ""; });
-  return { id: Date.now() + Math.random(), nombre: "Inquilino " + n, telefono: "", activos, montos };
-}
+const $ = id => document.getElementById(id);
+const svg = (k, s = 16) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONOS[k]}</svg>`;
 
-function mesActual() {
-  const s = new Date().toLocaleDateString("es", { month: "long", year: "numeric" });
-  return s.charAt(0).toUpperCase() + s.slice(1);
-}
-
-let estado = cargar() || { mes: mesActual(), moneda: "S/", inquilinos: [nuevoInquilino(1)] };
+// Estado: inquilinos (datos fijos) + meses ("2026-11" -> { id: { montos, pagado } })
+let db = cargar() || { inquilinos: [], meses: {} };
+let mesKey = claveMes(new Date());
+let editando = null;
 
 function cargar() {
   try { return JSON.parse(localStorage.getItem(STORE_KEY)); } catch (e) { return null; }
 }
 function guardar() {
-  try { localStorage.setItem(STORE_KEY, JSON.stringify(estado)); } catch (e) {}
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(db)); } catch (e) {}
 }
 
-function num(v) { const n = parseFloat(v); return isNaN(n) ? 0 : n; }
-function fmt(n) { return estado.moneda + " " + n.toFixed(2); }
+function claveMes(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0"); }
+function mover(key, delta) {
+  const [y, m] = key.split("-").map(Number);
+  return claveMes(new Date(y, m - 1 + delta, 1));
+}
+function nombreMes(key, largo) {
+  const [y, m] = key.split("-").map(Number);
+  return new Date(y, m - 1, 1).toLocaleDateString("es-PE", { month: largo ? "long" : "short", year: "numeric" }).replace(".", "").replace(" de ", " ");
+}
 
-function subtotal(inq) {
-  return CONCEPTOS.reduce((s, c) => s + (inq.activos[c.key] ? num(inq.montos[c.key]) : 0), 0);
+function num(v) { const n = parseFloat(String(v).replace(",", ".")); return isNaN(n) ? 0 : n; }
+function fmt(n) { return MONEDA + " " + n.toLocaleString("es-PE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+function iniciales(s) { return (s || "?").trim().replace(/[^\p{L}\s]/gu, " ").split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join("").toUpperCase() || "?"; }
+
+function registro(inq, key = mesKey) {
+  const mes = db.meses[key] || (db.meses[key] = {});
+  if (!mes[inq.id]) {
+    // Nuevo mes: el alquiler se repite, el resto queda en blanco
+    const anterior = db.meses[mover(key, -1)]?.[inq.id];
+    const montos = {};
+    inq.conceptos.forEach(k => { montos[k] = k === "alquiler" && anterior ? anterior.montos.alquiler : ""; });
+    mes[inq.id] = { montos, pagado: false };
+  }
+  return mes[inq.id];
 }
-function totalGeneral() {
-  return estado.inquilinos.reduce((s, i) => s + subtotal(i), 0);
+function totalDe(inq, key = mesKey) {
+  const r = registro(inq, key);
+  return inq.conceptos.reduce((s, k) => s + num(r.montos[k]), 0);
 }
+
+function telefonoWa(t) {
+  let d = (t || "").replace(/\D/g, "");
+  if (d.length === 9 && d[0] === "9") d = "51" + d; // celular peruano sin código
+  return d;
+}
+function linkWa(texto, tel) { return `https://wa.me/${telefonoWa(tel)}?text=${encodeURIComponent(texto)}`; }
 
 function textoInquilino(inq) {
-  let t = `*${inq.nombre}* — ${estado.mes}\n`;
+  const r = registro(inq);
+  const lineas = [`Hola ${inq.nombre.split(/[\s·]/)[0]}, te paso la cuenta de ${nombreMes(mesKey, true)}:`, ""];
   CONCEPTOS.forEach(c => {
-    if (inq.activos[c.key] && num(inq.montos[c.key]) > 0) {
-      t += `${c.label}: ${fmt(num(inq.montos[c.key]))}\n`;
-    }
+    if (inq.conceptos.includes(c.key) && num(r.montos[c.key]) > 0) lineas.push(`• ${c.nombre}: ${fmt(num(r.montos[c.key]))}`);
   });
-  t += `*Total: ${fmt(subtotal(inq))}*`;
-  return t;
+  lineas.push("", `*Total: ${fmt(totalDe(inq))}*`, "", "Gracias.");
+  return lineas.join("\n");
 }
-
-function textoGeneral() {
-  let t = `*Resumen ${estado.mes}*\n\n`;
-  estado.inquilinos.forEach(i => { t += textoInquilino(i) + "\n\n"; });
-  t += `*TOTAL GENERAL: ${fmt(totalGeneral())}*`;
-  return t;
-}
-
-function linkWa(texto, telefono) {
-  const tel = (telefono || "").replace(/\D/g, "");
-  return `https://wa.me/${tel}?text=${encodeURIComponent(texto)}`;
-}
-
-function actualizarTotales() {
-  estado.inquilinos.forEach(inq => {
-    const card = document.querySelector(`[data-id="${inq.id}"]`);
-    if (!card) return;
-    card.querySelector(".sub-val").textContent = fmt(subtotal(inq));
-    card.querySelector(".wa-btn").href = linkWa(textoInquilino(inq), inq.telefono);
+function textoResumen() {
+  const lineas = [`*Resumen ${nombreMes(mesKey, true)}*`, ""];
+  db.inquilinos.forEach(inq => {
+    lineas.push(`${inq.nombre}: ${fmt(totalDe(inq))}${registro(inq).pagado ? " ✓" : ""}`);
   });
-  document.getElementById("total").textContent = fmt(totalGeneral());
-  document.getElementById("waTodos").href = linkWa(textoGeneral());
-  guardar();
+  const t = db.inquilinos.reduce((s, i) => s + totalDe(i), 0);
+  const c = db.inquilinos.filter(i => registro(i).pagado).reduce((s, i) => s + totalDe(i), 0);
+  lineas.push("", `*Total: ${fmt(t)}*`, `Cobrado: ${fmt(c)}`, `Pendiente: ${fmt(t - c)}`);
+  return lineas.join("\n");
 }
 
 function render() {
-  const lista = document.getElementById("lista");
-  lista.innerHTML = "";
-  estado.inquilinos.forEach(inq => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.dataset.id = inq.id;
+  $("mes").textContent = nombreMes(mesKey);
+  const inqs = db.inquilinos;
+  const total = inqs.reduce((s, i) => s + totalDe(i), 0);
+  const pagados = inqs.filter(i => registro(i).pagado);
+  const cobrado = pagados.reduce((s, i) => s + totalDe(i), 0);
 
-    const filas = CONCEPTOS.map(c => `
-      <div class="row ${inq.activos[c.key] ? "" : "off"}" data-key="${c.key}">
-        <label class="toggle"><input type="checkbox" ${inq.activos[c.key] ? "checked" : ""}><span></span></label>
-        <span class="lbl">${c.label}</span>
-        <input type="number" inputmode="decimal" step="0.01" min="0" placeholder="0.00"
-               value="${inq.montos[c.key]}" ${inq.activos[c.key] ? "" : "disabled"}>
-      </div>`).join("");
+  $("total").textContent = fmt(total);
+  $("meta").textContent = inqs.length
+    ? `${inqs.length} ${inqs.length === 1 ? "inquilino" : "inquilinos"} · ${pagados.length} ${pagados.length === 1 ? "pagó" : "pagaron"}`
+    : "Agrega tu primer inquilino para empezar";
+  $("cobrado").textContent = fmt(cobrado);
+  $("pendiente").textContent = fmt(total - cobrado);
+  $("bar").style.width = total ? (cobrado / total * 100) + "%" : "0";
 
-    card.innerHTML = `
-      <div class="card-head">
-        <input class="name" type="text">
-        <button class="icon-btn borrar" title="Eliminar">🗑</button>
-      </div>
-      <input class="phone" type="tel" inputmode="tel" placeholder="WhatsApp (con código de país, ej: 51987654321)">
-      ${filas}
-      <div class="subtotal"><span>Total</span><span class="sub-val"></span></div>
-      <a class="wa-btn" target="_blank" rel="noopener">Enviar por WhatsApp</a>
-    `;
-    card.querySelector(".name").value = inq.nombre;
-    card.querySelector(".phone").value = inq.telefono;
+  const porConcepto = CONCEPTOS.map(c => ({
+    c, v: inqs.reduce((s, i) => s + (i.conceptos.includes(c.key) ? num(registro(i).montos[c.key]) : 0), 0),
+  })).filter(x => x.v > 0);
+  $("breakdown").innerHTML = porConcepto.map(x => `<div><span>${x.c.nombre}</span><b>${fmt(x.v)}</b></div>`).join("");
+  $("breakdown").hidden = !porConcepto.length;
 
-    card.querySelector(".name").addEventListener("input", e => { inq.nombre = e.target.value; actualizarTotales(); });
-    card.querySelector(".phone").addEventListener("input", e => { inq.telefono = e.target.value; actualizarTotales(); });
-    card.querySelector(".borrar").addEventListener("click", () => {
-      if (confirm(`¿Eliminar a ${inq.nombre}?`)) {
-        estado.inquilinos = estado.inquilinos.filter(i => i !== inq);
-        render();
-      }
-    });
-
-    card.querySelectorAll(".row").forEach(row => {
-      const key = row.dataset.key;
-      const chk = row.querySelector("input[type=checkbox]");
-      const monto = row.querySelector("input[type=number]");
-      chk.addEventListener("change", () => {
-        inq.activos[key] = chk.checked;
-        row.classList.toggle("off", !chk.checked);
-        monto.disabled = !chk.checked;
-        actualizarTotales();
-      });
-      monto.addEventListener("input", () => { inq.montos[key] = monto.value; actualizarTotales(); });
-    });
-
-    lista.appendChild(card);
+  $("lista").innerHTML = inqs.length ? "" : `<div class="empty">Aún no hay inquilinos</div>`;
+  inqs.forEach(inq => {
+    const r = registro(inq);
+    const b = document.createElement("button");
+    b.className = "item";
+    const conceptos = CONCEPTOS.filter(c => inq.conceptos.includes(c.key)).map(c => c.nombre).join(", ");
+    b.innerHTML = `
+      <div class="avatar"></div>
+      <div class="info"><div class="name"></div><div class="sub"></div></div>
+      <div class="amt"><b>${fmt(totalDe(inq))}</b><span class="pill ${r.pagado ? "ok" : "wait"}">${r.pagado ? "PAGADO" : "PENDIENTE"}</span></div>`;
+    b.querySelector(".avatar").textContent = iniciales(inq.nombre);
+    b.querySelector(".name").textContent = inq.nombre;
+    b.querySelector(".sub").textContent = conceptos;
+    b.onclick = () => abrir(inq);
+    $("lista").appendChild(b);
   });
-  actualizarTotales();
+
+  const mesAnterior = db.meses[mover(mesKey, -1)];
+  const vacio = inqs.every(i => !totalDe(i));
+  $("copiarMes").hidden = !(inqs.length && vacio && mesAnterior && Object.keys(mesAnterior).length);
+
+  $("enviarResumen").href = linkWa(textoResumen(), "");
+  guardar();
 }
 
-document.getElementById("mes").value = estado.mes;
-document.getElementById("moneda").value = estado.moneda;
-document.getElementById("mes").addEventListener("input", e => { estado.mes = e.target.value; actualizarTotales(); });
-document.getElementById("moneda").addEventListener("input", e => { estado.moneda = e.target.value; actualizarTotales(); });
-document.getElementById("agregar").addEventListener("click", () => {
-  estado.inquilinos.push(nuevoInquilino(estado.inquilinos.length + 1));
+function abrir(inq) {
+  editando = inq;
+  const r = registro(inq);
+  $("fNombre").value = inq.nombre;
+  $("fTel").value = inq.telefono;
+  $("fPagado").checked = r.pagado;
+  $("fBorrar").classList.remove("confirm");
+  $("fBorrar").textContent = "Eliminar inquilino";
+  pintarConceptos();
+  $("hoja").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function cerrar() {
+  // Un inquilino nuevo que se deja vacío se descarta
+  if (editando && !editando.nombre.trim()) {
+    if (!totalDe(editando)) {
+      const id = editando.id;
+      db.inquilinos = db.inquilinos.filter(i => i.id !== id);
+      Object.values(db.meses).forEach(m => delete m[id]);
+    } else {
+      editando.nombre = "Inquilino " + db.inquilinos.length;
+    }
+  }
+  $("hoja").classList.remove("open");
+  document.body.style.overflow = "";
+  editando = null;
   render();
-  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-});
+}
+
+function pintarConceptos() {
+  const inq = editando, r = registro(inq);
+  $("conceptos").innerHTML = CONCEPTOS.map(c => {
+    const on = inq.conceptos.includes(c.key);
+    return `
+      <div class="concept ${on ? "" : "off"}" data-key="${c.key}">
+        <div class="ico">${svg(c.icono)}</div>
+        <div class="cname">${c.nombre}</div>
+        ${c.fijo ? "" : `<button class="rm" aria-label="Quitar ${c.nombre}">${'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>'}</button>`}
+        <div class="money"><span>${MONEDA}</span><input type="text" inputmode="decimal" placeholder="0.00" value="${r.montos[c.key] ?? ""}"></div>
+        <button class="add">Agregar</button>
+      </div>`;
+  }).join("");
+
+  $("conceptos").querySelectorAll(".concept").forEach(row => {
+    const key = row.dataset.key;
+    const input = row.querySelector("input");
+    input.oninput = () => { r.montos[key] = input.value; actualizarHoja(); };
+    row.querySelector(".add").onclick = () => {
+      inq.conceptos = CONCEPTOS.map(c => c.key).filter(k => k === key || inq.conceptos.includes(k));
+      if (!(key in r.montos)) r.montos[key] = "";
+      pintarConceptos();
+      $("conceptos").querySelector(`[data-key="${key}"] input`).focus();
+    };
+    const rm = row.querySelector(".rm");
+    if (rm) rm.onclick = () => {
+      inq.conceptos = inq.conceptos.filter(k => k !== key);
+      r.montos[key] = "";
+      pintarConceptos();
+    };
+  });
+  actualizarHoja();
+}
+
+function actualizarHoja() {
+  const inq = editando;
+  $("fTotal").textContent = fmt(totalDe(inq));
+  $("fWa").href = linkWa(textoInquilino(inq), inq.telefono);
+  $("hojaTitulo").textContent = inq.nombre || "Inquilino";
+  guardar();
+}
+
+function toast(msg) {
+  const t = $("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(t._h);
+  t._h = setTimeout(() => t.classList.remove("show"), 1800);
+}
+
+$("fNombre").oninput = e => { editando.nombre = e.target.value; actualizarHoja(); };
+$("fTel").oninput = e => { editando.telefono = e.target.value; actualizarHoja(); };
+$("fPagado").onchange = e => { registro(editando).pagado = e.target.checked; guardar(); };
+$("fWa").onclick = e => {
+  if (!telefonoWa(editando.telefono)) { e.preventDefault(); $("fTel").focus(); toast("Primero escribe su número de WhatsApp"); }
+};
+$("fBorrar").onclick = () => {
+  const b = $("fBorrar");
+  if (!b.classList.contains("confirm")) {
+    b.classList.add("confirm");
+    b.textContent = "Toca otra vez para eliminar";
+    return;
+  }
+  const id = editando.id;
+  db.inquilinos = db.inquilinos.filter(i => i.id !== id);
+  Object.values(db.meses).forEach(m => delete m[id]);
+  cerrar();
+  toast("Inquilino eliminado");
+};
+$("cerrar").onclick = cerrar;
+$("scrim").onclick = cerrar;
+document.addEventListener("keydown", e => { if (e.key === "Escape" && editando) cerrar(); });
+
+$("agregar").onclick = () => {
+  const inq = { id: String(Date.now()), nombre: "", telefono: "", conceptos: ["alquiler", "luz", "agua"] };
+  db.inquilinos.push(inq);
+  abrir(inq);
+  setTimeout(() => $("fNombre").focus(), 260);
+};
+$("prev").onclick = () => { mesKey = mover(mesKey, -1); render(); };
+$("next").onclick = () => { mesKey = mover(mesKey, 1); render(); };
+$("copiarMes").onclick = () => {
+  const ant = db.meses[mover(mesKey, -1)];
+  db.inquilinos.forEach(i => {
+    if (ant[i.id]) db.meses[mesKey][i.id] = { montos: { ...ant[i.id].montos }, pagado: false };
+  });
+  render();
+  toast("Montos copiados — ajusta luz y agua");
+};
 
 render();
 </script>
