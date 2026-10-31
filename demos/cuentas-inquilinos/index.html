@@ -93,6 +93,7 @@
   .pill.wait { background: var(--ink-100); color: var(--ink-500); }
   .empty { padding: 28px 16px; text-align: center; color: var(--ink-500); }
 
+  .nube { text-align: center; font-size: 11px; color: var(--ink-400); margin-top: 14px; }
   .ghost { width: 100%; margin-top: 10px; height: 46px; border: 1px dashed var(--ink-300); border-radius: 12px; background: transparent; color: var(--ink-600); font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; }
 
   /* Barra inferior */
@@ -193,6 +194,7 @@
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
     Agregar inquilino
   </button>
+  <div class="nube" id="nube">Conectando…</div>
 </div>
 
 <div class="bar">
@@ -276,7 +278,88 @@ function cargar() {
 }
 function guardar() {
   try { localStorage.setItem(STORE_KEY, JSON.stringify(db)); } catch (e) {}
+  if (!nubeLista) return;
+  clearTimeout(guardar._t);
+  pendiente = true;
+  estadoNube("Guardando…");
+  guardar._t = setTimeout(subir, 700);
 }
+
+// Nube (Supabase): una sola fila con todo el estado. El celular guarda una copia
+// local y la nube se sincroniza por detrás.
+const NUBE_URL = "https://htpxbdlpttqgwivzoocz.supabase.co/rest/v1/cuentas_alquiler";
+const NUBE_KEY = "sb_publishable_jQv9HPnFAzNPIAEQI15y3A_3TFlgmPi";
+const NUBE_ID = "principal";
+const NUBE_HEADERS = { apikey: NUBE_KEY, Authorization: "Bearer " + NUBE_KEY, "Content-Type": "application/json" };
+let nubeLista = false; // no subir nada hasta haber leído la nube
+let pendiente = false;
+
+const SYNC_KEY = STORE_KEY + "-sincronizado";
+
+function estadoNube(t) { $("nube").textContent = t; }
+
+// Une dos estados: agrega los inquilinos y meses que falten; si coinciden, gana la nube
+function combinar(nube, local) {
+  const out = { inquilinos: [...nube.inquilinos], meses: JSON.parse(JSON.stringify(nube.meses || {})) };
+  local.inquilinos.forEach(i => { if (!out.inquilinos.some(x => x.id === i.id)) out.inquilinos.push(i); });
+  Object.entries(local.meses || {}).forEach(([mes, regs]) => {
+    out.meses[mes] = { ...regs, ...(out.meses[mes] || {}) };
+  });
+  return out;
+}
+
+async function bajar() {
+  try {
+    const r = await fetch(`${NUBE_URL}?id=eq.${NUBE_ID}&select=data`, { headers: NUBE_HEADERS });
+    if (!r.ok) throw new Error(r.status);
+    const remoto = (await r.json())[0]?.data;
+    const tieneDatos = d => d && Array.isArray(d.inquilinos) && (d.inquilinos.length || Object.keys(d.meses || {}).length);
+    nubeLista = true;
+    // Primera vez en este celular: lo que ya había aquí se suma a la nube, no se pisa
+    let primeraVez = true;
+    try { primeraVez = !localStorage.getItem(SYNC_KEY); localStorage.setItem(SYNC_KEY, "1"); } catch (e) {}
+    if (primeraVez && tieneDatos(db)) {
+      try { localStorage.setItem(STORE_KEY + "-respaldo", JSON.stringify(db)); } catch (e) {}
+      db = tieneDatos(remoto) ? combinar(remoto, db) : db;
+      if (!editando) render();
+      guardar();
+    } else if (tieneDatos(remoto)) {
+      db = remoto;
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(db)); } catch (e) {}
+      if (!editando) render();
+      estadoNube("Guardado en la nube");
+    } else if (tieneDatos(db)) {
+      guardar();
+    } else {
+      estadoNube("Guardado en la nube");
+    }
+  } catch (e) {
+    estadoNube("Sin conexión · guardado en el celular");
+  }
+}
+
+async function subir(keepalive) {
+  pendiente = false;
+  try {
+    const r = await fetch(NUBE_URL, {
+      method: "POST",
+      keepalive: !!keepalive,
+      headers: { ...NUBE_HEADERS, Prefer: "resolution=merge-duplicates,return=minimal" },
+      body: JSON.stringify({ id: NUBE_ID, data: db, updated_at: new Date().toISOString() }),
+    });
+    if (!r.ok) throw new Error(r.status);
+    if (!pendiente) estadoNube("Guardado en la nube");
+  } catch (e) {
+    pendiente = true;
+    estadoNube("Sin conexión · guardado en el celular");
+  }
+}
+
+window.addEventListener("online", () => { nubeLista ? (pendiente && subir()) : bajar(); });
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden" && pendiente && nubeLista) { clearTimeout(guardar._t); subir(true); }
+  if (document.visibilityState === "visible" && !pendiente && !editando) bajar();
+});
 
 function claveMes(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0"); }
 function mover(key, delta) {
@@ -501,6 +584,7 @@ $("copiarMes").onclick = () => {
 };
 
 render();
+bajar();
 </script>
 </body>
 </html>
