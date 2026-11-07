@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f4f4f4">
 <title>Cuentas del mes</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Cuentas">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet">
@@ -94,6 +101,17 @@
   .empty { padding: 28px 16px; text-align: center; color: var(--ink-500); }
 
   .nube { text-align: center; font-size: 11px; color: var(--ink-400); margin-top: 14px; }
+  .instalar { display: flex; align-items: center; gap: 12px; padding: 12px; margin-top: 12px; }
+  .instalar img { width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0; }
+  .instalar .t { flex: 1; min-width: 0; }
+  .instalar .t b { display: block; font-weight: 600; color: var(--ink-950); font-size: 13px; }
+  .instalar .t span { font-size: 12px; color: var(--ink-500); }
+  .instalar .btn { height: 36px; padding: 0 14px; font-size: 13px; border-radius: 9px; flex: none; }
+  .instalar .x { border: 0; background: none; color: var(--ink-400); width: 28px; height: 28px; display: grid; place-items: center; margin: -4px -4px 0 -6px; align-self: flex-start; }
+  .pasos { padding: 12px 14px; margin-top: -4px; border-top: 1px solid var(--ink-100); font-size: 13px; color: var(--ink-700); }
+  .pasos ol { margin: 0; padding-left: 18px; }
+  .pasos li + li { margin-top: 4px; }
+  .pasos b { font-weight: 600; }
   .ghost { width: 100%; margin-top: 10px; height: 46px; border: 1px dashed var(--ink-300); border-radius: 12px; background: transparent; color: var(--ink-600); font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; }
 
   /* Barra inferior */
@@ -186,6 +204,16 @@
       <div class="split"><span>Cobrado <b id="cobrado">S/ 0.00</b></span><span>Pendiente <b id="pendiente">S/ 0.00</b></span></div>
     </div>
     <div class="breakdown" id="breakdown"></div>
+  </section>
+
+  <section class="card" id="instalar" hidden>
+    <div class="instalar">
+      <img src="icon-192.png" alt="">
+      <div class="t"><b>Tenlo como app</b><span>Un ícono en tu pantalla de inicio</span></div>
+      <button class="btn btn-primary" id="instalarBtn">Agregar</button>
+      <button class="x" id="instalarNo" aria-label="Ocultar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="pasos" id="pasos" hidden></div>
   </section>
 
   <div class="section">
@@ -611,6 +639,38 @@ $("copiarMes").onclick = () => {
 
 render();
 bajar();
+
+// Acceso directo: en Android sale el aviso del sistema; en iPhone se explican los pasos
+const INSTALAR_KEY = STORE_KEY + "-sin-aviso-app";
+let avisoInstalar = null;
+const yaEsApp = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+const esIphone = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+let ocultoInstalar = false;
+try { ocultoInstalar = !!localStorage.getItem(INSTALAR_KEY); } catch (e) {}
+if (!yaEsApp && !ocultoInstalar && matchMedia("(pointer: coarse)").matches) $("instalar").hidden = false;
+
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); avisoInstalar = e; });
+window.addEventListener("appinstalled", () => { $("instalar").hidden = true; toast("Listo, ya está en tu pantalla de inicio"); });
+
+$("instalarBtn").onclick = async () => {
+  if (avisoInstalar) {
+    avisoInstalar.prompt();
+    const { outcome } = await avisoInstalar.userChoice;
+    avisoInstalar = null;
+    if (outcome === "accepted") $("instalar").hidden = true;
+    return;
+  }
+  $("pasos").innerHTML = esIphone
+    ? `<ol><li>Abre esta página en <b>Safari</b>.</li><li>Toca el botón <b>Compartir</b> (el cuadrito con la flecha ↑) abajo.</li><li>Elige <b>Agregar a inicio</b> y luego <b>Agregar</b>.</li></ol>`
+    : `<ol><li>Toca los <b>tres puntitos ⋮</b> arriba a la derecha de Chrome.</li><li>Elige <b>Agregar a la pantalla principal</b> (o <b>Instalar app</b>).</li><li>Toca <b>Agregar</b>.</li></ol>`;
+  $("pasos").hidden = !$("pasos").hidden;
+};
+$("instalarNo").onclick = () => {
+  $("instalar").hidden = true;
+  try { localStorage.setItem(INSTALAR_KEY, "1"); } catch (e) {}
+};
+
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
 </script>
 </body>
 </html>
