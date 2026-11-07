@@ -132,13 +132,16 @@
   .concept .money span { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--ink-400); font-size: 14px; pointer-events: none; }
   .concept .money input { width: 100%; height: 42px; padding: 0 10px 0 30px; text-align: right; border: 1px solid var(--ink-200); border-radius: 9px; font-size: 16px; font-variant-numeric: tabular-nums; outline: none; background: #fff; }
   .concept .money input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(7,69,64,.15); }
-  .concept.off .cname { color: var(--ink-400); }
-  .concept.off .ico { opacity: .5; }
-  .concept.off .money { display: none; }
-  .concept .add { border: 1px solid var(--ink-200); background: #fff; border-radius: 8px; height: 34px; padding: 0 12px; font-size: 13px; font-weight: 600; color: var(--brand); }
-  .concept:not(.off) .add { display: none; }
-  .concept .rm { border: 0; background: none; color: var(--ink-400); width: 28px; height: 28px; display: grid; place-items: center; margin-left: -4px; }
-  .concept.off .rm { display: none; }
+  .concept .cname { min-width: 0; }
+  .concept .nota { display: block; width: 100%; margin-top: 2px; border: 0; border-bottom: 1px dashed var(--ink-300); padding: 2px 0; font-size: 13px; color: var(--ink-600); outline: none; background: none; }
+  .concept .nota:focus { border-bottom-color: var(--brand); }
+  .concept .rm { border: 0; background: none; color: var(--ink-400); width: 28px; height: 28px; display: grid; place-items: center; margin-left: -4px; flex-shrink: 0; }
+  .concepts-empty { padding: 16px; text-align: center; color: var(--ink-500); font-size: 13px; }
+  .chips-label { font-size: 12px; font-weight: 500; color: var(--ink-600); margin: 0 0 8px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px 0 10px; border: 1px solid var(--ink-200); border-radius: 999px; background: #fff; color: var(--ink-700); font-size: 13px; font-weight: 500; }
+  .chip:active { background: var(--brand-tint); border-color: var(--brand); }
+  .chip svg { color: var(--brand); }
 
   .total-row { display: flex; align-items: baseline; justify-content: space-between; padding: 4px 2px 14px; }
   .total-row b { font: 700 24px var(--display); color: var(--ink-950); letter-spacing: -.01em; }
@@ -226,6 +229,8 @@
       </div>
 
       <div class="concepts" id="conceptos"></div>
+      <div class="chips-label" id="chipsLabel">Agregar cobro</div>
+      <div class="chips" id="chips"></div>
 
       <div class="total-row"><span class="label">Total del inquilino</span><b id="fTotal">S/ 0.00</b></div>
 
@@ -253,15 +258,25 @@ const ICONOS = {
   bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
   drop: '<path d="M12 2.7c3.5 4 6 7.3 6 10.3a6 6 0 0 1-12 0c0-3 2.5-6.3 6-10.3z"/>',
   wifi: '<path d="M5 12.6a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19.5" r=".8" fill="currentColor"/>',
+  tv: '<rect x="3" y="6" width="18" height="12" rx="2"/><path d="m8 2 4 4 4-4M7 21h10"/>',
+  car: '<path d="M5 17h14M5 17v2M19 17v2M3 13l2-6h14l2 6v4H3z"/><circle cx="7.5" cy="14" r=".8" fill="currentColor"/><circle cx="16.5" cy="14" r=".8" fill="currentColor"/>',
+  spark: '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>',
+  tag: '<path d="M20 12 12 20l-9-9V4h7z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor"/>',
   flame: '<path d="M12 22c4 0 7-2.7 7-6.5 0-3.8-3-6.2-4-9.5-1.3 1.5-2 3-2 4.5C11 9 9.5 7 9.5 4.5 6.5 7 5 10.5 5 15.5 5 19.3 8 22 12 22z"/>',
 };
+// "repite": el monto pasa solo al mes siguiente (cobros fijos)
 const CONCEPTOS = [
-  { key: "alquiler", nombre: "Alquiler",     icono: "home",  fijo: true },
-  { key: "luz",      nombre: "Luz",          icono: "bolt" },
-  { key: "agua",     nombre: "Agua",         icono: "drop" },
-  { key: "internet", nombre: "Internet",     icono: "wifi" },
-  { key: "gas",      nombre: "Gas natural",  icono: "flame" },
+  { key: "alquiler", nombre: "Cuarto",    icono: "home",  repite: true },
+  { key: "luz",      nombre: "Luz",       icono: "bolt" },
+  { key: "agua",     nombre: "Agua",      icono: "drop" },
+  { key: "cable",    nombre: "Cable",     icono: "tv",    repite: true },
+  { key: "internet", nombre: "Wifi",      icono: "wifi",  repite: true },
+  { key: "gas",      nombre: "Gas",       icono: "flame" },
+  { key: "cochera",  nombre: "Cochera",   icono: "car",   repite: true },
+  { key: "limpieza", nombre: "Limpieza",  icono: "spark", repite: true },
+  { key: "otro",     nombre: "Otro",      icono: "tag" },
 ];
+const nombreCobro = (c, r) => c.key === "otro" && r.nota?.trim() ? r.nota.trim() : c.nombre;
 const STORE_KEY = "cuentas-alquiler-v2";
 const MONEDA = "S/";
 
@@ -378,10 +393,13 @@ function iniciales(s) { return (s || "?").trim().replace(/[^\p{L}\s]/gu, " ").sp
 function registro(inq, key = mesKey) {
   const mes = db.meses[key] || (db.meses[key] = {});
   if (!mes[inq.id]) {
-    // Nuevo mes: el alquiler se repite, el resto queda en blanco
+    // Nuevo mes: los cobros fijos se repiten, el resto queda en blanco
     const anterior = db.meses[mover(key, -1)]?.[inq.id];
     const montos = {};
-    inq.conceptos.forEach(k => { montos[k] = k === "alquiler" && anterior ? anterior.montos.alquiler : ""; });
+    inq.conceptos.forEach(k => {
+      const fijo = CONCEPTOS.find(c => c.key === k)?.repite;
+      montos[k] = fijo && anterior ? (anterior.montos[k] ?? "") : "";
+    });
     mes[inq.id] = { montos, pagado: false };
   }
   return mes[inq.id];
@@ -400,9 +418,9 @@ function linkWa(texto, tel) { return `https://wa.me/${telefonoWa(tel)}?text=${en
 
 function textoInquilino(inq) {
   const r = registro(inq);
-  const lineas = [`Hola ${inq.nombre.split(/[\s·]/)[0]}, te paso la cuenta de ${nombreMes(mesKey, true)}:`, ""];
+  const lineas = [`Hola ${inq.nombre.trim().split(/[\s·]/)[0]}, te paso la cuenta de ${nombreMes(mesKey, true)}:`, ""];
   CONCEPTOS.forEach(c => {
-    if (inq.conceptos.includes(c.key) && num(r.montos[c.key]) > 0) lineas.push(`• ${c.nombre}: ${fmt(num(r.montos[c.key]))}`);
+    if (inq.conceptos.includes(c.key) && num(r.montos[c.key]) > 0) lineas.push(`• ${nombreCobro(c, r)}: ${fmt(num(r.montos[c.key]))}`);
   });
   lineas.push("", `*Total: ${fmt(totalDe(inq))}*`, "", "Gracias.");
   return lineas.join("\n");
@@ -410,7 +428,7 @@ function textoInquilino(inq) {
 function textoResumen() {
   const lineas = [`*Resumen ${nombreMes(mesKey, true)}*`, ""];
   db.inquilinos.forEach(inq => {
-    lineas.push(`${inq.nombre}: ${fmt(totalDe(inq))}${registro(inq).pagado ? " ✓" : ""}`);
+    lineas.push(`${inq.nombre || "Sin nombre"}: ${fmt(totalDe(inq))}${registro(inq).pagado ? " ✓" : ""}`);
   });
   const t = db.inquilinos.reduce((s, i) => s + totalDe(i), 0);
   const c = db.inquilinos.filter(i => registro(i).pagado).reduce((s, i) => s + totalDe(i), 0);
@@ -450,7 +468,7 @@ function render() {
       <div class="info"><div class="name"></div><div class="sub"></div></div>
       <div class="amt"><b>${fmt(totalDe(inq))}</b><span class="pill ${r.pagado ? "ok" : "wait"}">${r.pagado ? "PAGADO" : "PENDIENTE"}</span></div>`;
     b.querySelector(".avatar").textContent = iniciales(inq.nombre);
-    b.querySelector(".name").textContent = inq.nombre;
+    b.querySelector(".name").textContent = inq.nombre || "Sin nombre";
     b.querySelector(".sub").textContent = conceptos;
     b.onclick = () => abrir(inq);
     $("lista").appendChild(b);
@@ -495,33 +513,41 @@ function cerrar() {
 
 function pintarConceptos() {
   const inq = editando, r = registro(inq);
-  $("conceptos").innerHTML = CONCEPTOS.map(c => {
-    const on = inq.conceptos.includes(c.key);
-    return `
-      <div class="concept ${on ? "" : "off"}" data-key="${c.key}">
+  const activos = CONCEPTOS.filter(c => inq.conceptos.includes(c.key));
+  const libres = CONCEPTOS.filter(c => !inq.conceptos.includes(c.key));
+  const x = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+
+  $("conceptos").innerHTML = activos.length ? activos.map(c => `
+      <div class="concept" data-key="${c.key}">
         <div class="ico">${svg(c.icono)}</div>
-        <div class="cname">${c.nombre}</div>
-        ${c.fijo ? "" : `<button class="rm" aria-label="Quitar ${c.nombre}">${'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>'}</button>`}
-        <div class="money"><span>${MONEDA}</span><input type="text" inputmode="decimal" placeholder="0.00" value="${r.montos[c.key] ?? ""}"></div>
-        <button class="add">Agregar</button>
-      </div>`;
-  }).join("");
+        <div class="cname">${c.nombre}${c.key === "otro" ? `<input class="nota" type="text" placeholder="¿Qué es? Ej: reparación" autocomplete="off">` : ""}</div>
+        <button class="rm" aria-label="Quitar ${c.nombre}">${x}</button>
+        <div class="money"><span>${MONEDA}</span><input class="monto" type="text" inputmode="decimal" placeholder="0.00"></div>
+      </div>`).join("") : `<div class="concepts-empty">Elige abajo qué se le cobra</div>`;
+
+  $("chips").innerHTML = libres.map(c => `<button class="chip" data-key="${c.key}">${svg(c.icono, 14)}${c.nombre}</button>`).join("");
+  $("chips").hidden = $("chipsLabel").hidden = !libres.length;
 
   $("conceptos").querySelectorAll(".concept").forEach(row => {
     const key = row.dataset.key;
-    const input = row.querySelector("input");
-    input.oninput = () => { r.montos[key] = input.value; actualizarHoja(); };
-    row.querySelector(".add").onclick = () => {
-      inq.conceptos = CONCEPTOS.map(c => c.key).filter(k => k === key || inq.conceptos.includes(k));
-      if (!(key in r.montos)) r.montos[key] = "";
-      pintarConceptos();
-      $("conceptos").querySelector(`[data-key="${key}"] input`).focus();
-    };
-    const rm = row.querySelector(".rm");
-    if (rm) rm.onclick = () => {
+    const monto = row.querySelector(".monto");
+    monto.value = r.montos[key] ?? "";
+    monto.oninput = () => { r.montos[key] = monto.value; actualizarHoja(); };
+    const nota = row.querySelector(".nota");
+    if (nota) { nota.value = r.nota || ""; nota.oninput = () => { r.nota = nota.value; actualizarHoja(); }; }
+    row.querySelector(".rm").onclick = () => {
       inq.conceptos = inq.conceptos.filter(k => k !== key);
       r.montos[key] = "";
       pintarConceptos();
+    };
+  });
+  $("chips").querySelectorAll(".chip").forEach(chip => {
+    const key = chip.dataset.key;
+    chip.onclick = () => {
+      inq.conceptos = CONCEPTOS.map(c => c.key).filter(k => k === key || inq.conceptos.includes(k));
+      if (!(key in r.montos)) r.montos[key] = "";
+      pintarConceptos();
+      $("conceptos").querySelector(`[data-key="${key}"] ${key === "otro" ? ".nota" : ".monto"}`).focus();
     };
   });
   actualizarHoja();
