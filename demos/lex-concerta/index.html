@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lex Concerta · Centro de Conciliación Extrajudicial en Comas</title>
+<meta name="description" content="Centro de Conciliación Extrajudicial Lex Concerta en Comas, Lima. Resuelve tu conflicto de familia, civil o de contrataciones con el Estado sin llegar a juicio. WhatsApp 967 228 977.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#313e56">
+<link rel="icon" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lex Concerta · Centro de Conciliación Extrajudicial">
+<meta property="og:description" content="Resuelve tu conflicto sin llegar a juicio. Av. Túpac Amaru 5379, Comas. WhatsApp 967 228 977.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,400..700&display=swap">
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"LegalService",
+ "name":"Centro de Conciliación Extrajudicial Lex Concerta",
+ "image":"img/fachada.webp",
+ "telephone":["+51967228977","+5117482706"],
+ "email":"lexconcerta@gmail.com",
+ "address":{"@type":"PostalAddress","streetAddress":"Av. Túpac Amaru 5379, Urb. Huaquillay II Etapa","addressLocality":"Comas","addressRegion":"Lima","addressCountry":"PE"},
+ "areaServed":"Lima Norte",
+ "knowsAbout":["Conciliación extrajudicial","Pensión de alimentos","Tenencia","Régimen de visitas","Desalojo","Obligación de dar suma de dinero","Contrataciones con el Estado"]
+}
+</script>
+<style>
+:root{
+  --navy:#313e56;      /* color secundario de la marca */
+  --navy-2:#27324a;
+  --navy-3:#1d2638;
+  --paper:#f4f5f5;     /* color terciario de la marca */
+  --paper-2:#e9ebee;
+  --ink:#1b2333;
+  --ink-2:#4a5468;
+  --line:rgba(49,62,86,.16);
+  --line-2:rgba(49,62,86,.28);
+  --gold:#c6a052;
+  --gold-2:#a8843a;
+  --gold-3:#e3c983;
+  --on-navy:#eef0f4;
+  --on-navy-2:#b8c0cf;
+  --ok:#2f7a55;
+  --wa:#1f9d55;
+  --f:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --gut:max(20px,env(safe-area-inset-left,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.6;font-stretch:100%;overflow-x:clip;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--gold-3);color:var(--navy-3)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+::-webkit-scrollbar{width:11px}::-webkit-scrollbar-track{background:var(--paper-2)}::-webkit-scrollbar-thumb{background:var(--navy);border:3px solid var(--paper-2);border-radius:99px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--gut);padding-right:max(20px,env(safe-area-inset-right,0px))}
+.ancho{font-stretch:125%;text-transform:uppercase;letter-spacing:.01em}
+h1,h2,h3{margin:0;line-height:1.02;text-wrap:balance}
+p{margin:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- botones ---------- */
+.btn{display:inline-flex;align-items:center;gap:.65em;min-height:52px;padding:0 26px;border-radius:999px;border:0;font:inherit;font-weight:650;font-size:16px;text-decoration:none;cursor:pointer;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .25s,color .25s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-wa{background:var(--gold);color:var(--navy-3);box-shadow:0 14px 30px -14px rgba(198,160,82,.9)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 20px 36px -16px rgba(198,160,82,1);background:var(--gold-3)}
+.btn-linea{color:var(--on-navy);box-shadow:inset 0 0 0 1.5px rgba(238,240,244,.35)}
+.btn-linea:hover{box-shadow:inset 0 0 0 1.5px var(--on-navy)}
+.btn-navy{background:var(--navy);color:var(--paper)}
+.btn-navy:hover{background:var(--navy-3);transform:translateY(-2px)}
+
+/* ---------- navegación ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(29,38,56,.97);border-bottom:1px solid rgba(198,160,82,.28);transition:background .4s,box-shadow .4s}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:76px}
+.nav.solida{background:rgba(29,38,56,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 10px 30px -20px #000}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--on-navy)}
+.marca img{height:38px;width:auto}
+.marca b{display:block;font-stretch:125%;font-weight:700;font-size:15px;letter-spacing:.06em;line-height:1}
+.marca small{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy-2);margin-top:4px}
+.menu{display:flex;gap:6px;align-items:center;list-style:none;margin:0;padding:0}
+.menu a{display:block;padding:10px 12px;color:var(--on-navy);text-decoration:none;font-size:14.5px;font-weight:500;border-radius:8px;transition:background .2s}
+.menu a:hover{background:rgba(255,255,255,.08)}
+.nav .btn{min-height:44px;padding:0 18px;font-size:14.5px}
+.burger{display:none;width:46px;height:46px;border-radius:12px;border:1.5px solid rgba(238,240,244,.3);background:transparent;color:var(--on-navy);cursor:pointer}
+.burger svg{width:22px;height:22px;margin:auto}
+@media (max-width:1020px){.menu{display:none}.burger{display:grid}
+  .menu.abierto{display:flex;flex-direction:column;align-items:stretch;position:fixed;inset:76px 0 auto;background:var(--navy-3);padding:12px var(--gut) 22px;box-shadow:0 30px 40px -20px #000}
+  .menu.abierto a{font-size:18px;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)}}
+@media (max-width:560px){.nav .btn span{display:none}.nav .btn{padding:0 14px}.marca small{display:none}.marca b{font-size:13px}}
+
+/* ---------- hero: dos partes, un acta ---------- */
+.hero{position:relative;min-height:max(720px,100svh);display:grid;grid-template-columns:1fr 1fr;isolation:isolate;overflow:clip}
+.lado{position:relative;z-index:0}
+.lado-a{background:var(--navy);grid-column:1}
+.lado-b{background:var(--paper);grid-column:2;background-image:radial-gradient(circle at 1px 1px,rgba(49,62,86,.13) 1px,transparent 0);background-size:22px 22px}
+.lado-a::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 30% 40%,rgba(255,255,255,.06),transparent 70%)}
+.costura{position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;z-index:2;background:linear-gradient(var(--gold) 0 0) center/2px 100% no-repeat;transform-origin:50% 0}
+.costura::before{content:"";position:absolute;left:-5px;top:0;bottom:0;width:12px;background:repeating-linear-gradient(180deg,transparent 0 14px,rgba(198,160,82,.55) 14px 16px)}
+.hero-in{position:absolute;inset:0;z-index:3;display:grid;grid-template-columns:40.5% 59.5%;align-items:center;padding-top:76px}
+.hero-txt{padding:40px 36px 60px max(var(--gut),calc((100vw - 1240px)/2 + 20px));width:100%;color:var(--on-navy)}
+.hero h1{font-size:clamp(30px,2.65vw,46px);font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:-.01em;line-height:.98}
+.hero h1 .l{display:block;overflow:hidden;padding-bottom:.04em}
+@media (min-width:981px){.hero h1 .l{white-space:nowrap}}
+.hero h1 .l>span{display:block}
+.hero h1 em{font-style:normal;color:var(--gold-3)}
+.hero .lead{font-size:clamp(17px,1.35vw,19.5px);color:var(--on-navy-2);max-width:46ch;margin:26px 0 34px}
+.hero .lead b{color:var(--on-navy);font-weight:600}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero-datos{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:38px;font-size:14px;color:var(--on-navy-2)}
+.hero-datos span{display:flex;align-items:center;gap:8px}
+.hero-datos svg{width:17px;height:17px;stroke:var(--gold);fill:none;stroke-width:1.7}
+
+/* el acta */
+.mesa{padding:110px var(--gut) 60px 0;display:grid;justify-items:start;align-content:center}
+.selector{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px 168px;max-width:420px}
+.selector button{font:inherit;font-size:13.5px;font-weight:600;border:1.5px solid var(--line-2);background:rgba(255,255,255,.7);color:var(--navy);padding:8px 14px;border-radius:999px;cursor:pointer;transition:all .25s var(--ease);min-height:38px}
+.selector button:hover{border-color:var(--navy)}
+.selector button[aria-pressed="true"]{background:var(--navy);color:var(--paper);border-color:var(--navy)}
+.acta{position:relative;width:min(560px,100%);background:#fff;color:var(--ink);border-radius:6px;padding:30px 32px 26px;
+  box-shadow:0 1px 0 var(--line),0 40px 70px -30px rgba(17,24,39,.45),0 12px 24px -14px rgba(17,24,39,.25)}
+.acta::before{content:"";position:absolute;inset:8px;border:1px solid var(--line);border-radius:3px;pointer-events:none}
+.acta-cab{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;border-bottom:1.5px solid var(--navy);padding-bottom:14px}
+.acta-cab b{font-stretch:125%;font-weight:800;font-size:17px;letter-spacing:.04em;color:var(--navy);display:block}
+.acta-cab small{display:block;font-size:12px;color:var(--ink-2);margin-top:4px;letter-spacing:.04em}
+.acta-cab img{width:58px;height:auto;flex:none}
+.ejemplo{position:absolute;top:-12px;right:22px;background:var(--gold);color:var(--navy-3);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:99px}
+.acta dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:16px 0 14px;font-size:14px}
+.acta dt{color:var(--ink-2)}
+.acta dd{margin:0;font-weight:600;color:var(--ink)}
+.clausula{font-size:14.5px;line-height:1.6;min-height:7.2em;border-top:1px dashed var(--line-2);padding-top:12px}
+.clausula b{font-stretch:125%;letter-spacing:.04em;color:var(--navy)}
+.clausula .cursor{display:inline-block;width:2px;height:1.05em;background:var(--navy);vertical-align:-2px;margin-left:2px;animation:parp 1s steps(1) infinite}
+@keyframes parp{50%{opacity:0}}
+.firmas{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end;margin-top:18px}
+.firma{display:grid;justify-items:center;gap:6px}
+.firma .huella{width:38px;height:46px;opacity:0;transform:scale(1.25);transition:opacity .4s,transform .5s var(--ease)}
+.firma .huella path{fill:none;stroke:var(--navy);stroke-width:1.1;opacity:.75}
+.firma span{width:100%;border-top:1px solid var(--ink-2);padding-top:5px;font-size:11.5px;color:var(--ink-2);text-align:center}
+.sello{width:84px;height:84px;position:relative;opacity:0;transform:scale(1.6) rotate(-18deg)}
+.sello svg{width:100%;height:100%}
+.sello text{font-size:9.6px;letter-spacing:2.1px;fill:var(--gold-2);font-weight:700;font-stretch:125%}
+.acta.firmada .huella{opacity:1;transform:none}
+.acta.firmada .sello{animation:estampa .55s var(--ease) .35s forwards}
+@keyframes estampa{0%{opacity:0;transform:scale(1.6) rotate(-18deg)}60%{opacity:1;transform:scale(.94) rotate(-8deg)}100%{opacity:1;transform:scale(1) rotate(-10deg)}}
+.efecto{margin-top:14px;font-size:13px;color:var(--ok);font-weight:600;display:flex;gap:8px;align-items:center;opacity:0;transition:opacity .4s .9s}
+.efecto svg{width:16px;height:16px;flex:none}
+.acta.firmada .efecto{opacity:1}
+
+/* entrada del hero */
+.js .lado-a{animation:entraA 1.1s var(--ease) both}
+.js .lado-b{animation:entraB 1.1s var(--ease) both}
+.js .costura{animation:cose 1.2s var(--ease) .5s both}
+.js .hero h1 .l>span{animation:sube 1s var(--ease) both}
+.js .hero h1 .l:nth-child(2)>span{animation-delay:.1s}.js .hero h1 .l:nth-child(3)>span{animation-delay:.2s}.js .hero h1 .l:nth-child(4)>span{animation-delay:.3s}
+.js .hero .lead,.js .hero .ctas,.js .hero-datos{animation:aparece .9s var(--ease) .45s both}
+.js .mesa{animation:aparece 1s var(--ease) .75s both}
+@keyframes entraA{from{transform:translateX(-9%)}to{transform:none}}
+@keyframes entraB{from{transform:translateX(9%)}to{transform:none}}
+@keyframes cose{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes sube{from{transform:translateY(105%)}to{transform:none}}
+@keyframes aparece{from{opacity:.001;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;grid-template-rows:auto auto;min-height:0}
+  .lado-a{grid-column:1;grid-row:1}.lado-b{grid-column:1;grid-row:2}
+  .hero-in{position:relative;grid-column:1;grid-row:1/3;grid-template-columns:1fr;padding-top:96px}
+  .hero-txt{justify-self:stretch;max-width:none;padding:24px var(--gut) 56px}
+  .costura{left:0;right:0;width:auto;height:2px;top:auto;bottom:auto;margin:0}
+  .mesa{padding:0 var(--gut) 56px;justify-items:center}
+  .selector,.acta{transform:none}
+  .selector{justify-content:center;margin-top:-22px;position:relative;z-index:2}
+  .js .lado-a,.js .lado-b{animation:none}
+}
+@media (max-width:980px){.costura{display:none}.lado{display:none}
+  .hero-txt{background:var(--navy)}
+  .mesa{background:var(--paper);background-image:radial-gradient(circle at 1px 1px,rgba(49,62,86,.13) 1px,transparent 0);background-size:22px 22px;border-top:2px solid var(--gold);padding-top:26px}
+  .selector{margin:0 0 14px;justify-content:center}
+  .hero h1{font-size:clamp(32px,8.6vw,46px)}
+  .hero-datos{display:none}
+  .hero .lead{margin:20px 0 26px}}
+@media (max-width:480px){.acta{padding:24px 20px 20px}.acta dl{grid-template-columns:1fr;gap:0 0}.acta dd{margin-bottom:6px}.sello{width:66px;height:66px}}
+
+/* ---------- secciones ---------- */
+section{position:relative}
+.sec{padding:clamp(80px,10vw,140px) 0}
+.h2{font-size:clamp(32px,4.2vw,58px);font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:-.005em;line-height:1}
+.h2 em{font-style:normal;color:var(--gold-2)}
+.intro{font-size:clamp(17px,1.3vw,19px);color:var(--ink-2);max-width:56ch}
+.cab{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px 60px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+@media (max-width:860px){.cab{grid-template-columns:1fr}}
+.rv{transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js .rv:not(.in){opacity:.001;transform:translateY(26px)}
+@media (prefers-reduced-motion:reduce){.js .rv:not(.in){opacity:1;transform:none}*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}}
+
+/* por qué conciliar: escrito como cláusulas */
+.porque{background:var(--paper)}
+.clausulas{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--navy)}
+.clausulas li{display:grid;grid-template-columns:180px minmax(0,1fr) minmax(0,1.1fr);gap:20px 40px;padding:30px 0;border-bottom:1px solid var(--line-2);align-items:baseline}
+.clausulas .num{font-stretch:125%;font-weight:800;font-size:14px;letter-spacing:.14em;color:var(--gold-2)}
+.clausulas h3{font-size:clamp(21px,2vw,27px);font-weight:700;font-stretch:112%;color:var(--navy);line-height:1.15}
+.clausulas p{color:var(--ink-2)}
+.clausulas li:hover h3{color:var(--navy-3)}
+@media (max-width:860px){.clausulas li{grid-template-columns:1fr;gap:8px}}
+
+/* materias */
+.materias{background:var(--navy);color:var(--on-navy)}
+.materias .h2 em{color:var(--gold-3)}
+.materias .intro{color:var(--on-navy-2)}
+.pestanas{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid rgba(238,240,244,.18);margin-bottom:34px;overflow-x:auto;scrollbar-width:none}
+.pestanas button{font:inherit;font-size:15px;font-weight:650;letter-spacing:.02em;background:none;border:0;color:var(--on-navy-2);padding:16px 20px 18px;cursor:pointer;position:relative;white-space:nowrap;min-height:48px}
+.pestanas button::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:3px;background:var(--gold);border-radius:3px 3px 0 0;transform:scaleX(0);transition:transform .45s var(--ease)}
+.pestanas button[aria-selected="true"]{color:var(--on-navy)}
+.pestanas button[aria-selected="true"]::after{transform:scaleX(1)}
+.pestanas small{display:inline-block;margin-left:8px;font-size:12px;color:var(--gold-3);font-variant-numeric:tabular-nums}
+.panel{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);gap:40px 70px}
+.panel[hidden]{display:none}
+.panel-txt h3{font-size:clamp(24px,2.4vw,32px);font-stretch:125%;text-transform:uppercase;font-weight:800;margin-bottom:14px}
+.panel-txt p{color:var(--on-navy-2)}
+.panel-txt .btn{margin-top:26px}
+.lista{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 34px;counter-reset:m}
+.lista li{border-bottom:1px solid rgba(238,240,244,.13)}
+.lista a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 4px;text-decoration:none;color:var(--on-navy);font-size:16px;transition:color .2s,padding .35s var(--ease)}
+.lista a svg{width:16px;height:16px;flex:none;stroke:var(--gold-3);fill:none;stroke-width:2;opacity:0;transform:translateX(-6px);transition:all .35s var(--ease)}
+.lista a:hover{color:var(--gold-3);padding-left:10px}
+.lista a:hover svg{opacity:1;transform:none}
+.lista small{display:block;font-size:12.5px;color:var(--on-navy-2);margin-top:2px}
+@media (max-width:860px){.panel{grid-template-columns:1fr}.lista{grid-template-columns:1fr}}
+
+/* proceso */
+.proceso{background:var(--paper)}
+.pasos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.pasos::before{content:"";position:absolute;left:0;right:0;top:27px;height:2px;background:var(--line-2)}
+.pasos-w{position:relative}.pasos-w .hilo{position:absolute;z-index:0;left:0;top:27px;height:2px;width:100%;background:var(--gold);transform-origin:0 50%;transform:scaleX(var(--p,0));transition:transform .2s linear}
+.pasos li{position:relative;padding:0 26px 0 0}
+.pasos .n{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--paper);border:2px solid var(--navy);color:var(--navy);font-stretch:125%;font-weight:800;font-size:17px;position:relative;z-index:1;transition:background .4s,color .4s}
+.pasos li.hecho .n{background:var(--navy);color:var(--gold-3)}
+.pasos h3{font-size:21px;font-stretch:112%;font-weight:750;color:var(--navy);margin:24px 0 10px}
+.pasos p{color:var(--ink-2);font-size:15.5px}
+.resultados{margin-top:clamp(48px,6vw,72px);display:grid;grid-template-columns:repeat(3,1fr);border:1.5px solid var(--navy);border-radius:4px;background:#fff}
+.resultados div{padding:24px 26px}
+.resultados div+div{border-left:1px solid var(--line-2)}
+.resultados b{display:block;font-stretch:125%;text-transform:uppercase;font-size:14px;letter-spacing:.08em;color:var(--navy);margin-bottom:8px}
+.resultados p{font-size:15px;color:var(--ink-2)}
+@media (max-width:900px){.pasos{grid-template-columns:1fr 1fr;gap:40px 0}.pasos::before,.pasos-w .hilo{display:none}.resultados{grid-template-columns:1fr}.resultados div+div{border-left:0;border-top:1px solid var(--line-2)}}
+@media (max-width:520px){.pasos{grid-template-columns:1fr}}
+
+/* el centro */
+.centro{background:var(--paper-2)}
+.galeria{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(150px,15vw,210px);gap:14px}
+.foto{position:relative;margin:0;overflow:hidden;border-radius:4px;background:var(--navy)}
+.foto img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.foto:hover img{transform:scale(1.045)}
+@media (max-width:520px){.foto .mas{display:none}.foto figcaption{font-size:12px;padding:6px 10px;left:8px;bottom:8px}}
+.foto figcaption{position:absolute;left:12px;bottom:12px;background:rgba(29,38,56,.86);color:var(--on-navy);font-size:13px;font-weight:600;padding:7px 12px;border-radius:99px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.js .foto.rv:not(.in){opacity:1;transform:none;clip-path:inset(0 0 100% 0)}
+.foto.rv{transition:clip-path 1.2s var(--ease)}
+.foto.rv.in{clip-path:inset(0 0 0 0)}
+.f1{grid-column:1/8;grid-row:span 3}
+.f2{grid-column:8/13;grid-row:span 3}
+.f3{grid-column:1/6;grid-row:span 2}
+.f4{grid-column:6/8;grid-row:span 2}
+.f5{grid-column:8/10;grid-row:span 2}
+.f6{grid-column:10/13;grid-row:span 2}
+@media (max-width:860px){.galeria{grid-template-columns:1fr 1fr;grid-auto-rows:170px}.f1{grid-column:1/3;grid-row:span 2}.f2,.f3,.f4,.f5{grid-column:span 1;grid-row:span 2}.f6{grid-column:1/3;grid-row:span 1}}
+.direccion{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;justify-content:space-between;margin-top:34px;padding-top:28px;border-top:1px solid var(--line-2)}
+.direccion p{font-size:17px;color:var(--ink)}
+.direccion p small{display:block;color:var(--ink-2);font-size:14.5px;margin-top:2px}
+
+/* preguntas */
+.faq-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:40px 80px}
+@media (max-width:860px){.faq-grid{grid-template-columns:1fr}}
+details{border-bottom:1px solid var(--line-2)}
+details:first-of-type{border-top:1.5px solid var(--navy)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 2px;font-size:18.5px;font-weight:650;color:var(--navy);min-height:48px}
+summary::-webkit-details-marker{display:none}
+summary i{width:30px;height:30px;flex:none;border-radius:50%;border:1.5px solid var(--line-2);position:relative;transition:transform .4s var(--ease),background .3s}
+summary i::before,summary i::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1.6px;background:var(--navy);transform:translate(-50%,-50%)}
+summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .4s var(--ease)}
+details[open] summary i{background:var(--navy)}
+details[open] summary i::before{background:var(--gold-3)}
+details[open] summary i::after{transform:translate(-50%,-50%) rotate(0);background:var(--gold-3)}
+details p{padding:0 50px 24px 2px;color:var(--ink-2);max-width:66ch}
+
+/* contacto */
+.contacto{background:var(--navy-3);color:var(--on-navy);overflow:hidden}
+.contacto .h2 em{color:var(--gold-3)}
+.con-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px 80px;align-items:start}
+@media (max-width:900px){.con-grid{grid-template-columns:1fr}}
+.datos{margin:34px 0 0;display:grid;gap:0}
+.dato{display:grid;grid-template-columns:150px 1fr;gap:6px 20px;padding:18px 0;border-bottom:1px solid rgba(238,240,244,.12)}
+.dato dt{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-3);padding-top:3px}
+.dato dd{margin:0;font-size:17px}
+.dato dd small{display:block;color:var(--on-navy-2);font-size:14.5px}
+.dato a{text-decoration-color:rgba(227,201,131,.5);text-underline-offset:4px}
+.dato a:hover{color:var(--gold-3)}
+@media (max-width:520px){.dato{grid-template-columns:1fr}}
+.form{background:var(--paper);color:var(--ink);border-radius:6px;padding:clamp(24px,3vw,38px);position:relative}
+.form::before{content:"";position:absolute;inset:8px;border:1px solid var(--line);border-radius:3px;pointer-events:none}
+.form h3{font-size:24px;font-stretch:125%;text-transform:uppercase;font-weight:800;color:var(--navy)}
+.form>p{color:var(--ink-2);font-size:15px;margin:8px 0 22px}
+.campo{display:grid;gap:7px;margin-bottom:16px;position:relative}
+.campo label{font-size:14px;font-weight:600;color:var(--navy)}
+.campo input,.campo select,.campo textarea{font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid var(--line-2);border-radius:6px;padding:13px 14px;min-height:50px;transition:border-color .2s,box-shadow .2s;width:100%}
+.campo textarea{min-height:104px;resize:vertical}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 4px rgba(49,62,86,.12)}
+.campo .error{font-size:13.5px;color:#b3261e;display:none}
+.campo.mal input{border-color:#b3261e}
+.campo.mal .error{display:block}
+.form .btn{width:100%;justify-content:center;margin-top:6px}
+.form small{display:block;text-align:center;font-size:13px;color:var(--ink-2);margin-top:12px}
+.pie{background:var(--navy-3);color:var(--on-navy-2);border-top:1px solid rgba(238,240,244,.1);padding:46px 0 calc(40px + env(safe-area-inset-bottom,0px))}
+.pie .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center}
+.pie img{height:64px;width:auto}
+.pie p{font-size:14px}
+.pie a{color:var(--on-navy)}
+.lema-pie{font-stretch:125%;text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:var(--gold-3)}
+
+.wa-flot{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:max(18px,env(safe-area-inset-bottom,0px));z-index:40;width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.45);transition:transform .35s var(--ease)}
+.wa-flot:hover{transform:scale(1.07)}
+.wa-flot{transition:transform .35s var(--ease),opacity .3s}
+.wa-flot.oculto{opacity:0;pointer-events:none;transform:scale(.6)}
+.wa-flot svg{width:30px;height:30px}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+<a class="sr" href="#contenido">Saltar al contenido</a>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Lex Concerta, inicio">
+      <img src="img/iso-blanco.png" alt="" width="400" height="287">
+      <span><b>LEX CONCERTA</b><small>Centro de conciliación</small></span>
+    </a>
+    <nav aria-label="Principal">
+      <ul class="menu" id="menu">
+        <li><a href="#por-que">Por qué conciliar</a></li>
+        <li><a href="#materias">Materias</a></li>
+        <li><a href="#proceso">Cómo funciona</a></li>
+        <li><a href="#centro">El centro</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+      </ul>
+    </nav>
+    <div style="display:flex;gap:10px;align-items:center">
+      <a class="btn btn-wa" href="https://wa.me/51967228977?text=Hola%2C%20quisiera%20solicitar%20una%20conciliaci%C3%B3n." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3a2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+        <span>Solicitar conciliación</span>
+      </a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+<!-- ============ HERO: dos partes, un acta ============ -->
+<section class="hero" id="inicio" aria-labelledby="hT">
+  <div class="lado lado-a" aria-hidden="true"></div>
+  <div class="lado lado-b" aria-hidden="true"></div>
+  <span class="costura" aria-hidden="true"></span>
+  <div class="hero-in">
+    <div class="hero-txt">
+      <h1 id="hT"><span class="l"><span>Resuelve tu</span></span><span class="l"><span>conflicto sin</span></span><span class="l"><span><em>llegar</em></span></span><span class="l"><span><em>a juicio.</em></span></span></h1>
+      <p class="lead">Somos un <b>Centro de Conciliación Extrajudicial en Comas</b>. Sentamos a las dos partes en una misma mesa, con un conciliador neutral, para que lleguen a un acuerdo que queda escrito en un <b>acta con valor legal</b>.</p>
+      <div class="ctas">
+        <a class="btn btn-wa" href="https://wa.me/51967228977?text=Hola%2C%20quisiera%20solicitar%20una%20conciliaci%C3%B3n." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3a2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+          Escríbenos: 967 228 977
+        </a>
+        <a class="btn btn-linea" href="#materias">Ver qué podemos conciliar</a>
+      </div>
+      <div class="hero-datos">
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6 7-11.5a7 7 0 0 0-14 0C5 15 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Av. Túpac Amaru 5379, Comas</span>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>Acta con mérito de título de ejecución</span>
+      </div>
+    </div>
+
+    <div class="mesa">
+      <div class="selector" role="group" aria-label="Elige tu caso para ver un acta de ejemplo" id="selector"></div>
+      <article class="acta" id="acta" aria-live="polite">
+        <span class="ejemplo">Ejemplo</span>
+        <header class="acta-cab">
+          <div><b>ACTA DE CONCILIACIÓN</b><small id="actaNum">N.° 000-2026 · Comas, Lima</small></div>
+          <img src="img/iso-color.png" alt="" width="400" height="287">
+        </header>
+        <dl>
+          <dt>Materia</dt><dd id="actaMat">Pensión de alimentos</dd>
+          <dt>Solicitante</dt><dd>Parte A</dd>
+          <dt>Invitado</dt><dd>Parte B</dd>
+        </dl>
+        <p class="clausula"><b>ACUERDO.— </b><span id="actaTxt"></span><span class="cursor" aria-hidden="true"></span></p>
+        <div class="firmas">
+          <div class="firma"><svg class="huella" viewBox="0 0 40 48" aria-hidden="true"><path d="M20 4c-9 0-15 7-15 16v8M20 9c-6 0-10 5-10 11v10c0 5 2 9 5 12M20 14c-3 0-5 3-5 6v12c0 4 1 7 3 10M20 19v14c0 4 1 7 3 10M25 20c0-3-2-6-5-6M30 22c0-7-4-13-10-13M35 26c0-12-7-22-15-22M25 24v10c0 3 1 6 2 8M30 27v7c0 3 1 6 2 8"/></svg><span>Parte A</span></div>
+          <div class="sello" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+              <circle cx="50" cy="50" r="47" fill="none" stroke="#a8843a" stroke-width="2"/><circle cx="50" cy="50" r="30" fill="none" stroke="#a8843a" stroke-width="1"/>
+              <text><textPath href="#circ">LEX CONCERTA · CONCILIACIÓN ·</textPath></text>
+              <path d="M40 38v24h20M46 38v18" fill="none" stroke="#a8843a" stroke-width="3" stroke-linecap="round"/></svg>
+          </div>
+          <div class="firma"><svg class="huella" viewBox="0 0 40 48" aria-hidden="true"><path d="M20 4c-9 0-15 7-15 16v8M20 9c-6 0-10 5-10 11v10c0 5 2 9 5 12M20 14c-3 0-5 3-5 6v12c0 4 1 7 3 10M20 19v14c0 4 1 7 3 10M25 20c0-3-2-6-5-6M30 22c0-7-4-13-10-13M35 26c0-12-7-22-15-22M25 24v10c0 3 1 6 2 8M30 27v7c0 3 1 6 2 8"/></svg><span>Parte B</span></div>
+        </div>
+        <p class="efecto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span id="actaEf">Si no se cumple, se exige ante el juez sin empezar un juicio desde cero.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUÉ CONCILIAR ============ -->
+<section class="sec porque" id="por-que" aria-labelledby="pT">
+  <div class="wrap">
+    <div class="cab">
+      <h2 class="h2 rv" id="pT">Conciliar es <em>decidir</em> en lugar de esperar una sentencia.</h2>
+      <p class="intro">En una conciliación nadie te impone una decisión: las partes conversan con un conciliador neutral y acuerdan una solución. Lo que firman tiene fuerza legal.</p>
+    </div>
+    <ol class="clausulas">
+      <li><span class="num">PRIMERO.—</span><h3>Ustedes deciden el acuerdo</h3><p>El conciliador ordena la conversación y propone salidas, pero la solución la eligen las partes. Nadie pierde un juicio porque no hay juicio.</p></li>
+      <li><span class="num">SEGUNDO.—</span><h3>El acta tiene valor legal</h3><p>El acta con acuerdo tiene mérito de título de ejecución (Ley N.° 26872). Si la otra parte no cumple, se exige su cumplimiento ante el juez.</p></li>
+      <li><span class="num">TERCERO.—</span><h3>Es más rápido y económico</h3><p>Se resuelve en días, en una audiencia, no en años de proceso. Te ahorras el desgaste, los costos y la incertidumbre de un juicio.</p></li>
+      <li><span class="num">CUARTO.—</span><h3>Es confidencial</h3><p>Lo que se conversa en la audiencia queda entre las partes y el conciliador. Tu caso se trata con reserva.</p></li>
+      <li><span class="num">QUINTO.—</span><h3>Te deja listo para demandar</h3><p>En muchas materias, intentar conciliar es un requisito antes de presentar una demanda. Si no hay acuerdo o la otra parte no asiste, te entregamos el acta para que puedas acudir al juez.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ MATERIAS ============ -->
+<section class="sec materias" id="materias" aria-labelledby="mT">
+  <div class="wrap">
+    <div class="cab">
+      <h2 class="h2 rv" id="mT">Materias que <em>conciliamos</em></h2>
+      <p class="intro">Elige tu caso y escríbenos directamente sobre ese tema. Si no ves el tuyo, consúltanos igual: te decimos si se puede conciliar.</p>
+    </div>
+    <div class="pestanas" role="tablist" aria-label="Tipos de materia" id="pestanas"></div>
+    <div id="paneles"></div>
+  </div>
+</section>
+
+<!-- ============ PROCESO ============ -->
+<section class="sec proceso" id="proceso" aria-labelledby="prT">
+  <div class="wrap">
+    <div class="cab">
+      <h2 class="h2 rv" id="prT">De la solicitud <em>al acta</em>, en cuatro pasos</h2>
+      <p class="intro">Te acompañamos en todo el procedimiento. Solo necesitas tu DNI, los documentos de tu caso y la dirección de la otra parte.</p>
+    </div>
+    <div class="pasos-w"><span class="hilo" id="hilo" aria-hidden="true"></span>
+    <ol class="pasos" id="pasos">
+      <li><span class="n">1</span><h3>Solicitud</h3><p>Nos cuentas tu caso y presentas la solicitud de conciliación con tus documentos.</p></li>
+      <li><span class="n">2</span><h3>Invitación</h3><p>Invitamos formalmente a la otra parte, indicando el día y la hora de la audiencia.</p></li>
+      <li><span class="n">3</span><h3>Audiencia</h3><p>Ambas partes se sientan con el conciliador en nuestra sala de audiencias para buscar un acuerdo.</p></li>
+      <li><span class="n">4</span><h3>Acta</h3><p>Se redacta y firma el acta de conciliación, que te entregamos al terminar.</p></li>
+    </ol></div>
+    <div class="resultados rv">
+      <div><b>Acuerdo total</b><p>Se resuelve todo el conflicto y el acta recoge cada compromiso.</p></div>
+      <div><b>Acuerdo parcial</b><p>Se resuelve una parte; lo pendiente puedes llevarlo al juez.</p></div>
+      <div><b>Sin acuerdo o inasistencia</b><p>Se deja constancia en el acta y quedas habilitado para demandar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EL CENTRO ============ -->
+<section class="sec centro" id="centro" aria-labelledby="cenT">
+  <div class="wrap">
+    <div class="cab">
+      <h2 class="h2 rv" id="cenT">Un espacio <em>neutral</em> para conversar</h2>
+      <p class="intro">Nuestro local en Comas cuenta con sala de audiencias, despachos de conciliadores, área de abogados y sala de espera. Así se ve por dentro.</p>
+    </div>
+    <div class="galeria">
+      <figure class="foto f1"><img src="img/sala.webp" alt="Sala de audiencias con mesa de reuniones y sillas" width="1600" height="1200" loading="lazy"><figcaption>Sala de audiencias</figcaption></figure>
+      <figure class="foto f2"><img src="img/fachada.webp" alt="Fachada del Centro de Conciliación Lex Concerta en Av. Túpac Amaru, Comas" width="1600" height="1200" loading="lazy" style="object-position:50% 40%"><figcaption>Fachada<span class="mas"> · Av. Túpac Amaru 5379</span></figcaption></figure>
+      <figure class="foto f3"><img src="img/despacho.webp" alt="Despacho de conciliadores con escritorio y biblioteca" width="1600" height="1200" loading="lazy"><figcaption>Despacho<span class="mas"> de conciliadores</span></figcaption></figure>
+      <figure class="foto f4"><img src="img/abogados.webp" alt="Área de abogados con escritorio y sillas" width="1200" height="1600" loading="lazy" style="object-position:50% 60%"><figcaption>Abogados</figcaption></figure>
+      <figure class="foto f5"><img src="img/espera.webp" alt="Sala de espera con sillas, plantas y certificados en la pared" width="860" height="1200" loading="lazy"><figcaption>Sala de espera</figcaption></figure>
+      <figure class="foto f6"><img src="img/oficina.webp" alt="Área administrativa del centro" width="1200" height="1600" loading="lazy" style="object-position:50% 55%"><figcaption>Administración</figcaption></figure>
+    </div>
+    <div class="direccion">
+      <p>Av. Túpac Amaru 5379, Urb. Huaquillay II Etapa, Comas, Lima<small>Referencia: entre la financiera Pro Empresa y la tienda Toyota</small></p>
+      <a class="btn btn-navy" href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20T%C3%BApac%20Amaru%205379%2C%20Comas%2C%20Lima" target="_blank" rel="noopener">Cómo llegar ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREGUNTAS ============ -->
+<section class="sec" id="preguntas" aria-labelledby="fT">
+  <div class="wrap faq-grid">
+    <div><h2 class="h2 rv" id="fT">Antes de <em>venir</em></h2><p class="intro" style="margin-top:20px">Las dudas que más nos hacen. Si tienes otra, escríbenos.</p></div>
+    <div class="rv">
+      <details><summary>¿Qué es la conciliación extrajudicial?<i aria-hidden="true"></i></summary><p>Es una forma de resolver conflictos fuera del Poder Judicial. Un conciliador acreditado ayuda a las partes a conversar y a llegar a un acuerdo, que queda escrito en un acta.</p></details>
+      <details><summary>¿Es obligatorio conciliar antes de demandar?<i aria-hidden="true"></i></summary><p>En muchas materias civiles y de familia, sí: la ley pide intentar conciliar antes de presentar la demanda. Consúltanos tu caso y te confirmamos si aplica.</p></details>
+      <details><summary>¿Qué valor tiene el acta?<i aria-hidden="true"></i></summary><p>El acta con acuerdo tiene mérito de título de ejecución. Si la otra parte no cumple lo que firmó, puedes pedir al juez que lo haga cumplir.</p></details>
+      <details><summary>¿Qué pasa si la otra parte no asiste?<i aria-hidden="true"></i></summary><p>Se deja constancia de la inasistencia en el acta. Con ella quedas habilitado para iniciar el proceso judicial si lo necesitas.</p></details>
+      <details><summary>¿Qué debo traer?<i aria-hidden="true"></i></summary><p>Tu DNI, los documentos que sustentan tu pedido (por ejemplo, partidas de nacimiento, contratos o recibos) y la dirección de la otra parte para enviarle la invitación.</p></details>
+      <details><summary>¿Lo que digo en la audiencia es confidencial?<i aria-hidden="true"></i></summary><p>Sí. Lo conversado en la conciliación es reservado entre las partes y el conciliador.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="sec contacto" id="contacto" aria-labelledby="coT">
+  <div class="wrap con-grid">
+    <div>
+      <h2 class="h2 rv" id="coT">Da el primer paso <em>hoy</em></h2>
+      <dl class="datos">
+        <div class="dato"><dt>WhatsApp</dt><dd><a href="https://wa.me/51967228977" target="_blank" rel="noopener">967 228 977</a></dd></div>
+        <div class="dato"><dt>Teléfono</dt><dd>01 748 2706</dd></div>
+        <div class="dato"><dt>Correo</dt><dd><a href="mailto:lexconcerta@gmail.com">lexconcerta@gmail.com</a></dd></div>
+        <div class="dato"><dt>Dirección</dt><dd>Av. Túpac Amaru 5379, Urb. Huaquillay II Etapa, Comas, Lima<small>Entre la financiera Pro Empresa y la tienda Toyota</small></dd></div>
+      </dl>
+    </div>
+    <form class="form rv" id="form" novalidate>
+      <h3>Cuéntanos tu caso</h3>
+      <p>Completa los datos y se abrirá WhatsApp con tu mensaje listo para enviar.</p>
+      <div class="campo" id="cNom"><label for="fNom">Tu nombre</label><input id="fNom" name="nombre" autocomplete="name" required><span class="error" id="eNom">Escribe tu nombre para saber cómo dirigirnos a ti.</span></div>
+      <div class="campo"><label for="fMat">Materia</label><select id="fMat" name="materia"></select></div>
+      <div class="campo"><label for="fMsg">¿Qué pasó? <span style="font-weight:400;color:var(--ink-2)">(opcional)</span></label><textarea id="fMsg" name="mensaje"></textarea></div>
+      <button class="btn btn-navy" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3a2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Enviar por WhatsApp</button>
+      <small>Tu información es confidencial.</small>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="pie">
+  <div class="wrap">
+    <img src="img/logo-blanco.webp" alt="Centro de Conciliación Extrajudicial Lex Concerta" width="900" height="605" loading="lazy">
+    <p class="lema-pie">Conciliar es la mejor forma de resolver conflictos sin llegar a juicio</p>
+    <p>© <span id="anio">2026</span> Lex Concerta · Comas, Lima · <a href="mailto:lexconcerta@gmail.com">lexconcerta@gmail.com</a></p>
+  </div>
+</footer>
+
+<a class="wa-flot oculto" id="waFlot" href="https://wa.me/51967228977?text=Hola%2C%20quisiera%20solicitar%20una%20conciliaci%C3%B3n." target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3a2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></a>
+
+<script>
+(function(){
+  var WA='51967228977', RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function $(id){return document.getElementById(id)}
+  function wa(t){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(t)}
+  function esc(t){return t.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+  /* ---------- materias (fuente: letrero «Materias conciliables» del centro) ---------- */
+  var MAT=[
+    {id:'familia',nombre:'Familia',titulo:'Familia',txt:'Acuerdos sobre los hijos, los alimentos y los bienes de la pareja, pensando primero en la familia.',items:[
+      'Pensión de alimentos','Pensión de alimentos a favor del cónyuge',['Aumento o reducción de alimentos','Cuando fue fijada en un acta de conciliación'],'Exoneración de alimentos','Régimen de visitas',['Variación del régimen de visitas','Cuando fue fijado en un acta de conciliación'],'Tenencia','Gastos de embarazo, tenencia y alimentos','Liquidación de sociedad de gananciales','Liquidación de bienes de la unión de hecho']},
+    {id:'civil',nombre:'Civil',titulo:'Civil y patrimonial',txt:'Deudas, contratos, propiedades y alquileres: se resuelven conversando y quedan por escrito.',items:[
+      'Obligación de dar suma de dinero','Obligación de dar, hacer y no hacer','Desalojo','Resolución de contrato','Incumplimiento de contrato','Otorgamiento de escritura','Rectificación de áreas y linderos','Ofrecimiento de pago','División y partición','Indemnización','Retracto','Petición de herencia','Interdicto de retener o recobrar','Reivindicación','Pago de mejoras']},
+    {id:'estado',nombre:'Estado',titulo:'Contrataciones con el Estado',txt:'Controversias entre contratistas y entidades públicas en la ejecución de contratos.',items:[
+      'Resolución de contrato','Ampliación del plazo contractual','Recepción y conformidad','Valorizaciones o metrados','Liquidación de contrato','Obligaciones posteriores al pago','Pagos','Resarcimiento de daños y perjuicios']}
+  ];
+  var FLECHA='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  $('pestanas').innerHTML=MAT.map(function(m,i){return '<button role="tab" id="tab-'+m.id+'" aria-controls="pan-'+m.id+'" aria-selected="'+(i===0)+'" tabindex="'+(i===0?0:-1)+'">'+m.nombre+'<small>'+m.items.length+'</small></button>'}).join('');
+  $('paneles').innerHTML=MAT.map(function(m,i){
+    return '<div class="panel" role="tabpanel" id="pan-'+m.id+'" aria-labelledby="tab-'+m.id+'"'+(i?' hidden':'')+'>'+
+      '<div class="panel-txt"><h3>'+m.titulo+'</h3><p>'+m.txt+'</p><a class="btn btn-wa" href="'+wa('Hola, quisiera conciliar un tema de '+m.titulo.toLowerCase()+'.')+'" target="_blank" rel="noopener">Consultar '+m.nombre.toLowerCase()+'</a></div>'+
+      '<ul class="lista">'+m.items.map(function(it){var t=typeof it==='string'?it:it[0],s=typeof it==='string'?'':it[1];
+        return '<li><a href="'+wa('Hola, quisiera conciliar: '+t+'.')+'" target="_blank" rel="noopener"><span>'+esc(t)+(s?'<small>'+esc(s)+'</small>':'')+'</span>'+FLECHA+'</a></li>'}).join('')+'</ul></div>';
+  }).join('');
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function activa(t){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;$(x.getAttribute('aria-controls')).hidden=!on})}
+  tabs.forEach(function(t,i){t.addEventListener('click',function(){activa(t)});t.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(k){var n=tabs[(i+k+tabs.length)%tabs.length];n.focus();activa(n)}})});
+
+  /* formulario */
+  var sel=$('fMat'); sel.innerHTML=MAT.map(function(m){return '<optgroup label="'+m.titulo+'">'+m.items.map(function(it){var t=typeof it==='string'?it:it[0];return '<option>'+esc(t)+'</option>'}).join('')+'</optgroup>'}).join('')+'<option>Otro tema</option>';
+  $('form').addEventListener('submit',function(e){e.preventDefault();var n=$('fNom').value.trim();
+    if(!n){$('cNom').classList.add('mal');$('fNom').setAttribute('aria-invalid','true');$('fNom').setAttribute('aria-describedby','eNom');$('fNom').focus();return}
+    $('cNom').classList.remove('mal');$('fNom').removeAttribute('aria-invalid');
+    var m=$('fMsg').value.trim();
+    window.open(wa('Hola, soy '+n+'. Quisiera conciliar: '+sel.value+'.'+(m?' '+m:'')),'_blank','noopener');});
+  $('fNom').addEventListener('input',function(){if(this.value.trim())$('cNom').classList.remove('mal')});
+
+  /* ---------- acta de ejemplo ---------- */
+  var CASOS=[
+    {b:'Alimentos',mat:'Pensión de alimentos',txt:'La Parte B se compromete a depositar una pensión mensual para su menor hijo, los primeros cinco días de cada mes, en la cuenta que indique la Parte A.',ef:'Si no se cumple, se exige ante el juez sin empezar un juicio desde cero.'},
+    {b:'Desalojo',mat:'Desalojo',txt:'La Parte B se compromete a desocupar y entregar el inmueble a la Parte A en la fecha acordada, en el estado en que lo recibió.',ef:'Si no entrega el inmueble, el acta se ejecuta ante el juez.'},
+    {b:'Deuda',mat:'Obligación de dar suma de dinero',txt:'La Parte B reconoce la deuda y se compromete a pagarla a la Parte A en cuotas mensuales, según el cronograma que forma parte de esta acta.',ef:'Si deja de pagar, se cobra con el acta como título de ejecución.'},
+    {b:'Visitas',mat:'Régimen de visitas',txt:'Las partes acuerdan un régimen de visitas para el menor, con días y horarios fijos, priorizando siempre su bienestar.',ef:'El régimen acordado puede exigirse si no se respeta.'},
+    {b:'Contrato',mat:'Resolución de contrato',txt:'Las partes acuerdan dar por resuelto el contrato y la Parte B devolverá a la Parte A el adelanto recibido en un plazo determinado.',ef:'Lo acordado tiene la misma fuerza para exigirse ante el juez.'}
+  ];
+  var acta=$('acta'), txt=$('actaTxt'), timer=null, n=0;
+  $('selector').innerHTML=CASOS.map(function(c,i){return '<button type="button" aria-pressed="'+(i===0)+'" data-i="'+i+'">'+c.b+'</button>'}).join('');
+  function escribe(i){
+    var c=CASOS[i]; clearInterval(timer); acta.classList.remove('firmada'); void acta.offsetWidth;
+    $('actaMat').textContent=c.mat; $('actaEf').textContent=c.ef;
+    $('actaNum').textContent='N.° '+String(120+i*37).padStart(3,'0')+'-2026 · Comas, Lima';
+    if(RM){txt.textContent=c.txt;acta.classList.add('firmada');return}
+    var k=0; txt.textContent='';
+    timer=setInterval(function(){k+=2;txt.textContent=c.txt.slice(0,k);if(k>=c.txt.length){clearInterval(timer);acta.classList.add('firmada')}},18);
+  }
+  [].forEach.call(document.querySelectorAll('#selector button'),function(b){b.addEventListener('click',function(){
+    [].forEach.call(document.querySelectorAll('#selector button'),function(x){x.setAttribute('aria-pressed',x===b)}); escribe(+b.dataset.i)})});
+  setTimeout(function(){escribe(0)}, RM?0:1400);
+
+  /* ---------- nav, menú y revelados ---------- */
+  var nav=$('nav'); function onS(){nav.classList.toggle('solida',scrollY>40)} onS(); addEventListener('scroll',onS,{passive:true});
+  var bur=$('burger'),menu=$('menu');
+  bur.addEventListener('click',function(){var o=menu.classList.toggle('abierto');bur.setAttribute('aria-expanded',o);nav.classList.add('solida')});
+  menu.addEventListener('click',function(e){if(e.target.tagName==='A'){menu.classList.remove('abierto');bur.setAttribute('aria-expanded','false')}});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+  [].forEach.call(document.querySelectorAll('.rv'),function(el,i){el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+
+  /* hilo del proceso: avanza con el scroll */
+  var pasos=$('pasos'),hilo=$('hilo'),lis=[].slice.call(pasos.querySelectorAll('li'));
+  function hiloS(){var r=pasos.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*.75-r.top)/(r.height+innerHeight*.25)));
+    hilo.style.setProperty('--p',p.toFixed(3));lis.forEach(function(li,i){li.classList.toggle('hecho',p>=i/(lis.length-1)-.02)})}
+  addEventListener('scroll',hiloS,{passive:true}); hiloS();
+  var wf=$('waFlot');new IntersectionObserver(function(es){wf.classList.toggle('oculto',es[0].isIntersecting)},{threshold:.15}).observe($('inicio'));
+  $('anio').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
