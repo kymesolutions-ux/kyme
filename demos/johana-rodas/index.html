@@ -490,6 +490,11 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .eq-dir-txt h3 em{color:var(--gold-hi)}
 .eq-lead{font-family:var(--serif);font-size:clamp(21px,2vw,26px);line-height:1.35;color:#e9e1d2;margin-bottom:16px}
 .eq-dir-txt>p:not(.eq-lead){color:#bdb3a2;font-size:17.8px;max-width:58ch}
+.eq-form{list-style:none;padding:0;margin:22px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.eq-form li{display:grid;gap:4px;padding:14px 16px 14px 18px;border-left:2px solid var(--gold);background:rgba(196,154,85,.06);border-radius:0 12px 12px 0}
+.eq-form b{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.15;color:var(--ivory)}
+.eq-form span{font-size:14px;color:#bdb3a2}
+@media (max-width:560px){.eq-form{grid-template-columns:1fr}}
 .eq-tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:22px 0 0}
 .eq-tags li{font-size:14.4px;letter-spacing:.04em;color:var(--gold-hi);border:1px solid rgba(196,154,85,.38);border-radius:999px;padding:6px 13px;background:rgba(196,154,85,.06)}
 .eq-tags.sm li{font-size:13.2px;padding:5px 11px}
@@ -639,6 +644,10 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
         <h3>Dra. Johana <em>Rodas</em></h3>
         <p class="eq-lead">Fundó el estudio con una convicción: quien llega con un problema legal necesita entender su caso y saber siempre cuál es el siguiente paso.</p>
         <p>Dirige personalmente la estrategia de cada expediente, revisa cada escrito antes de presentarlo y está presente en las decisiones importantes. Atiende asuntos de familia, civiles y patrimoniales, penales, notariales y registrales, y sucesiones.</p>
+        <ul class="eq-form" aria-label="Formación académica">
+          <li><b>Maestría en Derecho Procesal</b><span>Concluida · Universidad de San Martín de Porres</span></li>
+          <li><b>Maestría en Violencia de Género</b><span>Maestranda · Universidad de Salamanca</span></li>
+        </ul>
         <ul class="eq-tags" aria-label="Áreas que dirige"><li>Familia</li><li>Civil y patrimonial</li><li>Penal</li><li>Notarial y registral</li><li>Sucesiones</li></ul>
         <div class="eq-pie">
           <a class="btn btn-oro mag" href="https://wa.me/51934064138?text=Hola%2C%20quisiera%20agendar%20una%20consulta%20con%20la%20Dra.%20Johana%20Rodas." target="_blank" rel="noopener">Agenda con la Dra. Rodas</a>
@@ -649,19 +658,19 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 
     <div class="eq-duo">
       <article class="eq-card rv d1">
-        <div class="eq-card-foto"><img src="img/eq-angie.webp" alt="Kerly Adama Machaca, abogada" width="488" height="820" loading="lazy"></div>
+        <div class="eq-card-foto"><img src="img/eq-angie.webp" alt="Angie Brisseth Yachas Arrieta, abogada especialista en derecho de familia" width="356" height="820" loading="lazy"></div>
         <div class="eq-card-txt">
-          <span class="folio">ABOGADA · DERECHO DE FAMILIA</span>
-          <h3>Kerly Adama Machaca</h3>
+          <span class="folio">ABOGADA · ESPECIALISTA EN FAMILIA</span>
+          <h3>Angie Brisseth Yachas Arrieta</h3>
           <p>Acompaña los procesos de familia junto a la Dra. Rodas: pensión de alimentos, tenencia, régimen de visitas y divorcio. Prepara los escritos y te mantiene al tanto de cada avance.</p>
           <ul class="eq-tags sm"><li>Alimentos</li><li>Tenencia</li><li>Divorcio</li></ul>
         </div>
       </article>
       <article class="eq-card rv d2">
-        <div class="eq-card-foto"><img src="img/eq-kerly.webp" alt="Angie Yachas Arrieta, bachiller en Derecho" width="356" height="820" loading="lazy"></div>
+        <div class="eq-card-foto"><img src="img/eq-kerly.webp" alt="Kerly Araceli Adama Machaca, apoyo legal del estudio" width="488" height="820" loading="lazy"></div>
         <div class="eq-card-txt">
-          <span class="folio">BACHILLER EN DERECHO · APOYO LEGAL</span>
-          <h3>Angie Yachas Arrieta</h3>
+          <span class="folio">APOYO LEGAL · TODAS LAS ÁREAS</span>
+          <h3>Kerly Araceli Adama Machaca</h3>
           <p>Da soporte en todas las áreas del estudio: revisa documentos, organiza los expedientes y hace seguimiento a los trámites para que ningún plazo se quede en espera.</p>
           <ul class="eq-tags sm"><li>Todas las áreas</li><li>Seguimiento</li><li>Documentos</li></ul>
         </div>
@@ -678,7 +687,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
           <li><b>Seguimiento en cada etapa</b><span>Sabes qué se presentó, qué falta y qué esperar.</span></li>
         </ul>
       </div>
-      <img src="img/equipo.webp" alt="Equipo del Estudio Legal Johana Rodas: Kerly Adama, Johana Rodas y Angie Yachas" width="881" height="1100" loading="lazy">
+      <img src="img/equipo.webp" alt="Equipo del Estudio Legal Johana Rodas: Kerly Araceli Adama, Johana Rodas y Angie Yachas" width="881" height="1100" loading="lazy">
     </figure>
   </div>
 </section>
