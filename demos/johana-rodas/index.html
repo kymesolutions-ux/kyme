@@ -475,6 +475,45 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 @media (max-width:900px){.team.team-3{grid-template-columns:1fr 1fr}.team.team-3 .lider{grid-column:1/-1;max-width:420px;justify-self:center;width:100%}
   .grupo{grid-template-columns:1fr}.grupo img{height:auto;max-width:300px}}
 @media (max-width:520px){.team.team-3{grid-template-columns:1fr}}
+
+/* ---- equipo v2 ---- */
+.eq-dir{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(28px,5vw,72px);align-items:center;margin-top:clamp(28px,4vw,48px)}
+.eq-dir-foto{position:relative;aspect-ratio:4/5;border-radius:260px 260px 22px 22px;overflow:hidden;background:var(--gold-grad);box-shadow:0 50px 90px -40px #000}
+.eq-dir-foto::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 26px,rgba(26,20,8,.07) 26px 27px)}
+.eq-dir-foto::after{content:"";position:absolute;inset:12px;border-radius:250px 250px 14px 14px;border:1px solid rgba(26,20,8,.28);pointer-events:none}
+.eq-halo{position:absolute;inset:8% 10% auto;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,246,225,.55),transparent 65%)}
+.eq-dir-foto img{position:absolute;left:50%;bottom:0;height:94%;width:auto;max-width:none;transform:translateX(-50%) scale(1.04);transform-origin:50% 100%;transition:transform 1.2s var(--ease)}
+.eq-dir:hover .eq-dir-foto img{transform:translateX(-50%) scale(1.08)}
+.eq-sello{position:absolute;right:18px;top:18px;width:64px;aspect-ratio:1;border-radius:50%;background:#171310;display:grid;place-items:center;box-shadow:0 10px 24px -10px #000;z-index:2}
+.eq-sello .mono{width:58%}
+.eq-dir-txt h3{font-family:var(--serif);font-weight:600;font-size:clamp(40px,4.6vw,64px);line-height:1;letter-spacing:-.015em;color:var(--ivory);margin:14px 0 22px}
+.eq-dir-txt h3 em{color:var(--gold-hi)}
+.eq-lead{font-family:var(--serif);font-size:clamp(21px,2vw,26px);line-height:1.35;color:#e9e1d2;margin-bottom:16px}
+.eq-dir-txt>p:not(.eq-lead){color:#bdb3a2;font-size:15.5px;max-width:58ch}
+.eq-tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:22px 0 0}
+.eq-tags li{font-size:12.5px;letter-spacing:.04em;color:var(--gold-hi);border:1px solid rgba(196,154,85,.38);border-radius:999px;padding:6px 13px;background:rgba(196,154,85,.06)}
+.eq-tags.sm li{font-size:11.5px;padding:5px 11px}
+.eq-pie{display:flex;flex-wrap:wrap;align-items:center;gap:18px 26px;margin-top:30px;padding-top:26px;border-top:1px solid rgba(196,154,85,.22)}
+.eq-lema{font-family:var(--serif);font-style:italic;font-size:20px;color:#e9e1d2}
+.eq-lema em{color:var(--gold-hi)}
+.eq-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.6vw,30px);margin-top:clamp(40px,6vw,72px)}
+.eq-card{display:grid;grid-template-columns:minmax(150px,.8fr) 1.2fr;gap:24px;align-items:stretch;border:1px solid rgba(196,154,85,.24);border-radius:24px;padding:14px;background:linear-gradient(160deg,rgba(196,154,85,.07),rgba(196,154,85,0) 55%);transition:border-color .5s var(--ease),transform .6s var(--ease)}
+.eq-card:hover{border-color:rgba(196,154,85,.55);transform:translateY(-4px)}
+.eq-card-foto{position:relative;border-radius:160px 160px 14px 14px;overflow:hidden;min-height:300px;background:radial-gradient(110% 80% at 50% 10%,#6a5130,#2a2117 60%,#151210)}
+.eq-card-foto::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 22px,rgba(232,200,140,.05) 22px 23px)}
+.eq-card-foto img{position:absolute;left:50%;top:7%;height:165%;width:auto;max-width:none;transform:translateX(-50%);transform-origin:50% 15%;transition:transform 1s var(--ease)}
+.eq-card:hover .eq-card-foto img{transform:translateX(-50%) scale(1.05)}
+.eq-card-txt{padding:14px 10px 12px 0;display:flex;flex-direction:column;justify-content:center}
+.eq-card-txt h3{font-family:var(--serif);font-weight:600;font-size:clamp(26px,2.4vw,32px);line-height:1.05;color:var(--ivory);margin:10px 0 12px}
+.eq-card-txt p{color:#bdb3a2;font-size:14.5px}
+.eq-card .folio{color:var(--gold)}
+.grupo-lista{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:14px;max-width:44ch}
+.grupo-lista li{display:grid;gap:2px;padding-left:22px;position:relative}
+.grupo-lista li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;transform:rotate(45deg);background:var(--gold-grad)}
+.grupo-lista b{color:var(--ivory);font-weight:600;font-size:15px}
+.grupo-lista span{color:#bdb3a2;font-size:14px}
+@media (max-width:980px){.eq-dir{grid-template-columns:1fr}.eq-dir-foto{max-width:440px;width:100%;justify-self:center}.eq-duo{grid-template-columns:1fr}}
+@media (max-width:560px){.eq-card{grid-template-columns:1fr}.eq-card-foto{min-height:340px}.eq-card-txt{padding:4px 6px 8px}.eq-pie{flex-direction:column;align-items:flex-start}}
 </style>
 <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('jr-pre'))document.documentElement.classList.add('sin-pre')}catch(e){}</script>
 </head>
@@ -585,28 +624,59 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 <section class="sec equipo osc" id="equipo" aria-labelledby="eqT">
   <div class="wrap">
     <div class="cab">
-      <div><span class="folio">FOLIO 04 — NUESTRO EQUIPO</span><h2 class="h2 split" id="eqT"><span class="ln"><span>Rodas <em>&amp;</em> Abogadas:</span></span><span class="ln"><span><em>un equipo para cada caso.</em></span></span></h2></div>
-      <p class="rv">Un equipo que trabaja de forma coordinada: cada caso tiene una sola línea de estrategia y alguien que te responde.</p>
+      <div><span class="folio">FOLIO 04 — NUESTRO EQUIPO</span><h2 class="h2 split" id="eqT"><span class="ln"><span>Detrás de cada caso,</span></span><span class="ln"><span><em>un equipo que te conoce.</em></span></span></h2></div>
+      <p class="rv">En Rodas &amp; Abogadas no eres un número de expediente. La Dra. Johana Rodas dirige tu caso y todo el equipo lo acompaña, desde la primera consulta hasta el resultado.</p>
     </div>
-    <div class="team team-3">
-      <article class="miembro lider rv">
-        <div class="m-arco"><span class="ring"></span><img src="img/eq-johana.webp" alt="Dra. Johana Rodas" width="651" height="820" loading="lazy"></div>
-        <div class="m-txt"><span class="folio">ABOGADA FUNDADORA</span><h3>Johana Rodas</h3><p>Dirige la estrategia de cada caso de familia, civil, penal, notarial y registral.</p></div>
+
+    <article class="eq-dir rv">
+      <div class="eq-dir-foto">
+        <span class="eq-halo" aria-hidden="true"></span>
+        <img src="img/eq-johana-dir.webp" alt="Dra. Johana Rodas, abogada fundadora" width="819" height="1000" loading="lazy">
+        <span class="eq-sello" aria-hidden="true"><i class="mono"></i></span>
+      </div>
+      <div class="eq-dir-txt">
+        <span class="folio">ABOGADA FUNDADORA · DIRECCIÓN DEL ESTUDIO</span>
+        <h3>Dra. Johana <em>Rodas</em></h3>
+        <p class="eq-lead">Fundó el estudio con una convicción: quien llega con un problema legal necesita entender su caso y saber siempre cuál es el siguiente paso.</p>
+        <p>Dirige personalmente la estrategia de cada expediente, revisa cada escrito antes de presentarlo y está presente en las decisiones importantes. Atiende asuntos de familia, civiles y patrimoniales, penales, notariales y registrales, y sucesiones.</p>
+        <ul class="eq-tags" aria-label="Áreas que dirige"><li>Familia</li><li>Civil y patrimonial</li><li>Penal</li><li>Notarial y registral</li><li>Sucesiones</li></ul>
+        <div class="eq-pie">
+          <a class="btn btn-oro mag" href="https://wa.me/51934064138?text=Hola%2C%20quisiera%20agendar%20una%20consulta%20con%20la%20Dra.%20Johana%20Rodas." target="_blank" rel="noopener">Agenda con la Dra. Rodas</a>
+          <span class="eq-lema">«Tu confianza, <em>nuestro mayor compromiso.</em>»</span>
+        </div>
+      </div>
+    </article>
+
+    <div class="eq-duo">
+      <article class="eq-card rv d1">
+        <div class="eq-card-foto"><img src="img/eq-kerly.webp" alt="Kerly Adama Machaca, abogada" width="356" height="820" loading="lazy"></div>
+        <div class="eq-card-txt">
+          <span class="folio">ABOGADA · DERECHO DE FAMILIA</span>
+          <h3>Kerly Adama Machaca</h3>
+          <p>Acompaña los procesos de familia junto a la Dra. Rodas: pensión de alimentos, tenencia, régimen de visitas y divorcio. Prepara los escritos y te mantiene al tanto de cada avance.</p>
+          <ul class="eq-tags sm"><li>Alimentos</li><li>Tenencia</li><li>Divorcio</li></ul>
+        </div>
       </article>
-      <article class="miembro rv d1">
-        <div class="m-arco"><span class="ring"></span><img src="img/eq-kerly.webp" alt="Kerly Adama Machaca, abogada" width="356" height="820" loading="lazy"></div>
-        <div class="m-txt"><span class="folio">ABOGADA · DERECHO DE FAMILIA</span><h3>Kerly Adama Machaca</h3><p>Brinda apoyo en los casos de familia: alimentos, tenencia, régimen de visitas y divorcio.</p></div>
-      </article>
-      <article class="miembro rv d2">
-        <div class="m-arco"><span class="ring"></span><img src="img/eq-angie.webp" alt="Angie Yachas Arrieta, bachiller en Derecho" width="488" height="820" loading="lazy"></div>
-        <div class="m-txt"><span class="folio">BACHILLER EN DERECHO</span><h3>Angie Yachas Arrieta</h3><p>Brinda apoyo en todas las áreas del estudio y acompaña cada expediente.</p></div>
+      <article class="eq-card rv d2">
+        <div class="eq-card-foto"><img src="img/eq-angie.webp" alt="Angie Yachas Arrieta, bachiller en Derecho" width="488" height="820" loading="lazy"></div>
+        <div class="eq-card-txt">
+          <span class="folio">BACHILLER EN DERECHO · APOYO LEGAL</span>
+          <h3>Angie Yachas Arrieta</h3>
+          <p>Da soporte en todas las áreas del estudio: revisa documentos, organiza los expedientes y hace seguimiento a los trámites para que ningún plazo se quede en espera.</p>
+          <ul class="eq-tags sm"><li>Todas las áreas</li><li>Seguimiento</li><li>Documentos</li></ul>
+        </div>
       </article>
     </div>
+
     <figure class="grupo rv">
       <div class="grupo-txt">
-        <span class="folio">RODAS &amp; ABOGADAS</span>
+        <span class="folio">RODAS &amp; ABOGADAS · LA MOLINA</span>
         <p>Tres miradas, <em>una sola estrategia.</em></p>
-        <small>Tu caso lo revisa el equipo completo y lo dirige la Dra. Johana Rodas.</small>
+        <ul class="grupo-lista">
+          <li><b>Consulta personal y reservada</b><span>Te escuchamos con calma y en confianza.</span></li>
+          <li><b>Una sola línea de trabajo</b><span>Todo el equipo conoce tu caso y habla el mismo idioma.</span></li>
+          <li><b>Seguimiento en cada etapa</b><span>Sabes qué se presentó, qué falta y qué esperar.</span></li>
+        </ul>
       </div>
       <img src="img/equipo.webp" alt="Equipo del Estudio Legal Johana Rodas: Kerly Adama, Johana Rodas y Angie Yachas" width="881" height="1100" loading="lazy">
     </figure>
