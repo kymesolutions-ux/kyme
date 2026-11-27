@@ -346,6 +346,136 @@ a.dato:hover{background:rgba(201,162,84,.08);border-color:rgba(201,162,84,.4)}
 .wa svg{width:31px;height:31px}
 .wa::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #1fa855;animation:onda 2.4s ease-out infinite}
 @keyframes onda{to{transform:scale(1.6);opacity:0}}
+
+/* tachado dorado de "juicio" */
+.tachado{position:relative;display:inline-block}
+.tachado::after{content:"";position:absolute;left:-3%;right:-3%;top:55%;height:.075em;background:var(--gold-grad);border-radius:99px;transform:scaleX(0) rotate(-4deg);transform-origin:left;box-shadow:0 2px 10px rgba(201,162,84,.5)}
+.js .tachado::after{animation:tacha .9s var(--ease) 1.5s forwards}
+html:not(.js) .tachado::after{transform:scaleX(1) rotate(-4deg)}
+@keyframes tacha{to{transform:scaleX(1) rotate(-4deg)}}
+
+/* ---------- BALANZA (escena con scroll) ---------- */
+.balanza-sec{background:var(--paper);position:relative}
+.balanza-pin{height:260vh;position:relative}
+.balanza-vista{position:sticky;top:0;height:100svh;display:grid;align-items:center;overflow:hidden}
+.balanza-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,5vw,80px);align-items:center}
+.fases{list-style:none;margin:34px 0 0;padding:0;display:grid;gap:6px}
+.fases li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;padding:14px 0;border-top:1px solid var(--line);opacity:.35;transition:opacity .5s var(--ease)}
+.fases li.on{opacity:1}
+.fases .k{font-family:var(--serif);font-size:30px;line-height:1;color:var(--gold-lo)}
+.fases b{display:block;font-family:var(--serif);font-weight:400;font-size:23px;color:var(--navy-3);line-height:1.15}
+.fases p{color:var(--ink-2);font-size:15.5px;font-weight:300;margin-top:4px}
+.escena{position:relative}
+.escena svg{width:100%;height:auto;display:block;overflow:visible}
+.escena .viga{transition:none}
+.escena .lbl{font-family:var(--sans);font-size:15px;font-weight:600;fill:var(--navy-3);text-anchor:middle}
+.escena .lbl2{font-family:var(--sans);font-size:12px;fill:var(--ink-2);text-anchor:middle;letter-spacing:.08em;text-transform:uppercase}
+.escena .acuerdo{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(1.6) rotate(-14deg);transition:opacity .4s,transform .6s var(--ease)}
+.escena.listo .acuerdo{opacity:1;transform:scale(1) rotate(-8deg)}
+.escena .peso{transition:transform .2s linear}
+.progreso{position:absolute;left:0;right:0;bottom:-24px;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.progreso i{display:block;height:100%;background:var(--gold-grad);transform-origin:left;transform:scaleX(var(--p,0))}
+@media (max-width:900px){.balanza-pin{height:240vh}.balanza-grid{grid-template-columns:1fr;gap:16px}.balanza-vista .h2{font-size:32px}.fases{margin-top:14px}.fases li{padding:8px 0}.fases li:not(.on){display:none}.fases p{font-size:14.5px}}
+@media (prefers-reduced-motion:reduce){.balanza-pin{height:auto}.balanza-vista{position:static;height:auto;padding:90px 0}.fases li{opacity:1}}
+
+/* ---------- COMPARATIVA ---------- */
+.compara{background:var(--navy-3);color:var(--on-navy);overflow:hidden}
+.compara::before{content:"";position:absolute;inset:0;background:radial-gradient(45% 60% at 100% 100%,rgba(201,162,84,.14),transparent 70%);pointer-events:none}
+.tabla-c{position:relative;display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1fr) minmax(0,1fr);border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.tabla-c>div{padding:22px 26px;border-top:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;justify-content:center;gap:10px}
+.tabla-c .th{border-top:0;font-family:var(--serif);font-size:26px;padding-top:28px;padding-bottom:26px}
+.tabla-c .th small{display:block;font-family:var(--sans);font-size:13px;color:var(--on-navy-2);margin-top:2px}
+.tabla-c .col-j{background:rgba(255,255,255,.02);color:var(--on-navy-2)}
+.tabla-c .col-c{background:linear-gradient(180deg,rgba(201,162,84,.16),rgba(201,162,84,.06));color:var(--on-navy)}
+.tabla-c .th.col-c{color:var(--gold-hi)}
+.tabla-c .crit{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-hi);font-weight:600}
+.barra-t{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.barra-t i{display:block;height:100%;border-radius:99px;transform-origin:left;transform:scaleX(0);transition:transform 1.6s var(--ease) .3s}
+.col-j .barra-t i{background:#7d879b;width:100%}
+.col-c .barra-t i{background:var(--gold-grad);width:14%}
+.tabla-c.in .barra-t i{transform:scaleX(1)}
+.tabla-c .mark{display:inline-flex;align-items:center;gap:10px;font-size:16px}
+.tabla-c .mark svg{width:20px;height:20px;flex:none}
+.col-j .mark svg{stroke:#7d879b}.col-c .mark svg{stroke:var(--gold-hi)}
+@media (max-width:760px){.tabla-c{grid-template-columns:1fr 1fr}.tabla-c .crit{grid-column:1/-1;padding-bottom:4px;background:rgba(255,255,255,.03)}.tabla-c .th.vacio{display:none}.tabla-c>div{padding:16px 16px}.tabla-c .th{font-size:21px}.tabla-c .mark{font-size:14.5px}}
+
+/* ---------- BUSCADOR ---------- */
+.buscador{position:relative;margin:0 0 clamp(40px,5vw,60px);background:var(--navy-3);border-radius:28px;padding:clamp(26px,4vw,48px);color:var(--on-navy);overflow:hidden;isolation:isolate}
+.buscador::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 120% at 100% 0%,rgba(201,162,84,.2),transparent 60%)}
+.buscador label{display:block;font-family:var(--serif);font-size:clamp(24px,2.4vw,34px);margin-bottom:18px}
+.buscador label em{font-style:normal;color:var(--gold-hi)}
+.caja{display:flex;align-items:center;gap:14px;border-bottom:2px solid rgba(201,162,84,.6);padding:6px 2px 12px}
+.caja svg{width:26px;height:26px;flex:none;stroke:var(--gold-hi);fill:none;stroke-width:1.8}
+.caja input{flex:1;min-width:0;background:transparent;border:0;outline:none;color:#fff;font:inherit;font-size:clamp(18px,1.8vw,24px);font-weight:300;padding:8px 0}
+.caja input::placeholder{color:rgba(238,241,246,.45)}
+.caja:focus-within{border-bottom-color:var(--gold-hi)}
+.sugerencias{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;min-height:46px}
+.sugerencias a{display:inline-flex;align-items:center;gap:10px;padding:11px 16px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(201,162,84,.4);color:var(--on-navy);text-decoration:none;font-size:15px;font-weight:500;transition:background .3s,transform .4s var(--ease);animation:aparece .5s var(--ease) both}
+.sugerencias a:hover{background:var(--gold);color:#1b1608;transform:translateY(-2px)}
+.sugerencias a small{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-hi)}
+.sugerencias a:hover small{color:#1b1608}
+.sugerencias .vacio{color:var(--on-navy-2);font-size:15px;align-self:center}
+.sugerencias .vacio a{display:inline;padding:0;border:0;background:none;color:var(--gold-hi);text-decoration:underline;animation:none}
+.ejemplos{margin-top:14px;font-size:14px;color:var(--on-navy-2)}
+.ejemplos button{font:inherit;font-size:14px;color:var(--gold-hi);background:none;border:0;padding:4px 2px;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(236,212,154,.4);text-underline-offset:3px;min-height:32px}
+
+/* hero centrado (v3) */
+.hero{flex-direction:column;justify-content:center}
+.hero::before{background:radial-gradient(70% 70% at 50% 45%,rgba(22,29,43,.62),rgba(22,29,43,.93) 75%),linear-gradient(0deg,rgba(22,29,43,.95),transparent 40%)!important}
+.hero::after{background:radial-gradient(40% 40% at 50% 30%,rgba(201,162,84,.16),transparent 70%)}
+.hero-c{display:grid;justify-items:center;text-align:center;padding-top:118px;padding-bottom:150px;width:100%}
+.hero-iso{width:clamp(110px,11vw,150px);height:auto;filter:drop-shadow(0 14px 30px rgba(0,0,0,.5));margin-bottom:18px}
+.hero-c .tag{margin-bottom:22px}
+.hero-c h1{font-size:clamp(44px,6.8vw,104px);line-height:1.02}
+.hero-c .lead{margin:26px auto 36px;max-width:56ch}
+.hero-c .ctas{justify-content:center}
+.hero-barra{position:absolute;left:0;right:0;bottom:0;background:rgba(22,29,43,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid rgba(201,162,84,.3)}
+.hero-barra .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+.hero-barra .wrap>div{display:flex;gap:14px;align-items:center;padding:20px 22px;font-size:13.5px;color:var(--on-navy-2);line-height:1.35}
+.hero-barra .wrap>div+div{border-left:1px solid rgba(255,255,255,.1)}
+.hero-barra b{display:block;color:var(--on-navy);font-size:15px;font-weight:600}
+.hero-barra svg{width:30px;height:30px;flex:none;stroke:var(--gold-hi);fill:none;stroke-width:1.4}
+.js .hero-iso{animation:emblema 1.4s var(--ease) .1s both}
+.js .hero-barra{animation:aparece 1s var(--ease) .9s both}
+@media (max-width:800px){.hero-barra{position:static;background:var(--navy-4)}.hero-barra .wrap{grid-template-columns:1fr}.hero-barra .wrap>div+div{border-left:0;border-top:1px solid rgba(255,255,255,.08)}.hero-c{padding-bottom:70px}.hero{min-height:0}}
+
+/* valores (v3) */
+.val-dos{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(40px,6vw,100px);align-items:start;position:relative}
+.val-cab{position:sticky;top:120px}
+.val-cab p{color:var(--on-navy-2);font-weight:300;margin-top:20px;max-width:40ch}
+.val-cab img{width:140px;margin-top:40px;opacity:.9}
+.val-lista{list-style:none;margin:0;padding:0;counter-reset:v}
+.val-lista li{display:grid;grid-template-columns:64px minmax(0,.9fr) minmax(0,1.1fr);gap:24px;align-items:center;padding:30px 0;border-top:1px solid rgba(201,162,84,.22);transition:padding .5s var(--ease)}
+.val-lista li:last-child{border-bottom:1px solid rgba(201,162,84,.22)}
+.val-lista li:hover{padding-left:12px}
+.val-lista .ic{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(201,162,84,.45);transition:background .5s}
+.val-lista .ic svg{width:27px;height:27px;stroke:var(--gold-hi);fill:none;stroke-width:1.4}
+.val-lista li:hover .ic{background:rgba(201,162,84,.16)}
+.val-lista h3{font-family:var(--serif);font-size:25px;line-height:1.15}
+.val-lista p{color:var(--on-navy-2);font-size:15.5px;font-weight:300}
+@media (max-width:900px){.val-dos{grid-template-columns:1fr}.val-cab{position:static}.val-cab img{display:none}.val-lista li{grid-template-columns:56px 1fr;gap:6px 18px}.val-lista p{grid-column:2}}
+
+/* materias (v3) */
+.mat-wrap{grid-template-columns:1fr!important;gap:22px}
+.mat-nav{position:static!important;grid-template-columns:repeat(3,1fr)!important}
+.mat-lista{grid-template-columns:repeat(3,1fr)}
+@media (max-width:960px){.mat-lista{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.mat-nav{grid-template-columns:1fr!important}.mat-lista{grid-template-columns:1fr}}
+
+/* proceso (v3): línea de tiempo */
+.pasos{position:relative;gap:0!important}
+.pasos::before{content:"";position:absolute;left:0;right:0;top:44px;height:1px;background:linear-gradient(90deg,transparent,var(--gold) 8%,var(--gold) 92%,transparent)}
+.paso{background:none!important;border:0!important;border-radius:0!important;padding:0 26px 0 0!important;box-shadow:none!important;transform:none!important}
+.paso::after{display:none!important}
+.paso .num{width:88px;height:88px;border-radius:50%;display:grid!important;place-items:center;background:var(--paper);border:1px solid var(--gold);font-size:34px!important;color:var(--gold-lo)!important;margin-bottom:26px!important;position:relative;z-index:1;transition:background .5s,color .5s}
+.paso:hover .num{background:var(--navy-3);color:var(--gold-hi)!important}
+@media (max-width:1000px){.pasos::before{display:none}.pasos{gap:34px 20px!important}}
+
+/* preguntas (v3) */
+.faq-cab{text-align:center;display:grid;justify-items:center;margin-bottom:clamp(40px,5vw,64px)}
+.faq-dos{display:grid;grid-template-columns:1fr 1fr;gap:0 60px}
+.faq-dos details:first-of-type{border-top:1px solid var(--line)}
+@media (max-width:860px){.faq-dos{grid-template-columns:1fr}.faq-dos>div+div details:first-of-type{border-top:0}}
 </style>
 </head>
 <body>
@@ -378,24 +508,21 @@ a.dato:hover{background:rgba(201,162,84,.08);border-color:rgba(201,162,84,.4)}
 <main id="contenido">
 <section class="hero" id="inicio" aria-labelledby="hT">
   <div class="hero-foto" aria-hidden="true"><img src="img/hero.webp" alt="" width="2000" height="1500" fetchpriority="high"></div>
-  <div class="wrap hero-grid">
-    <div>
-      <p class="tag sello-txt">Centro de conciliación extrajudicial · Comas</p>
-      <h1 id="hT"><span class="ln"><span>Resuelve tu conflicto</span></span><span class="ln"><span><em>sin llegar</em></span></span><span class="ln"><span><em>a juicio.</em></span></span></h1>
-      <p class="lead">En Lex Concerta sentamos a las dos partes en una misma mesa, con un conciliador neutral, para que lleguen a un acuerdo que queda firmado en un <b>acta con valor legal</b>. Más rápido, más económico y con total reserva.</p>
-      <div class="ctas">
-        <a class="btn btn-oro" href="https://wa.me/51967228977?text=Hola%2C%20quisiera%20solicitar%20una%20conciliaci%C3%B3n." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3a2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Escríbenos · 967 228 977</a>
-        <a class="btn btn-vidrio" href="#materias">Ver qué conciliamos</a>
-      </div>
-    </div>
-    <div class="hero-emblema" aria-hidden="true">
-      <span class="halo"></span><span class="aro"></span><span class="aro b"></span>
-      <img src="img/emblema-dorado.png" alt="" width="541" height="375">
-      <div class="flota f1"><svg viewBox="0 0 48 48"><path d="M14 6h16l8 8v28H14z"/><path d="M30 6v8h8M19 22h14M19 28h14M19 34h8"/></svg><span><b>Acta con valor legal</b>Título de ejecución</span></div>
-      <div class="flota f2"><svg viewBox="0 0 48 48"><path d="M24 5l15 6v11c0 10-6.5 17-15 21-8.5-4-15-11-15-21V11z"/><path d="M17 24l5 5 9-10"/></svg><span><b>Confidencial y seguro</b>Tu caso, con reserva</span></div>
+  <div class="wrap hero-c">
+    <img class="hero-iso" src="img/emblema-dorado.png" alt="" width="541" height="375">
+    <p class="tag sello-txt">Centro de conciliación extrajudicial · Comas, Lima</p>
+    <h1 id="hT"><span class="ln"><span>Resuelve tu conflicto</span></span><span class="ln"><span><em>sin llegar a <span class="tachado">juicio</span>.</em></span></span></h1>
+    <p class="lead">Sentamos a las dos partes en una misma mesa, con un conciliador neutral, para que lleguen a un acuerdo firmado en un <b>acta con valor legal</b>.</p>
+    <div class="ctas">
+      <a class="btn btn-oro" href="https://wa.me/51967228977?text=Hola%2C%20quisiera%20solicitar%20una%20conciliaci%C3%B3n." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3a2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Escríbenos · 967 228 977</a>
+      <a class="btn btn-vidrio" href="#materias">Ver qué conciliamos</a>
     </div>
   </div>
-  <a class="bajar" href="#nosotros" aria-label="Bajar a la siguiente sección"><i></i>Desliza</a>
+  <div class="hero-barra"><div class="wrap">
+    <div><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 6h16l8 8v28H14z"/><path d="M30 6v8h8M19 22h14M19 28h14M19 34h8"/></svg><span><b>Acta con valor legal</b>Mérito de título de ejecución</span></div>
+    <div><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l15 6v11c0 10-6.5 17-15 21-8.5-4-15-11-15-21V11z"/><path d="M17 24l5 5 9-10"/></svg><span><b>Confidencial y seguro</b>Lo que se habla, queda en la sala</span></div>
+    <div><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 43s14-12 14-23a14 14 0 0 0-28 0c0 11 14 23 14 23Z"/><circle cx="24" cy="20" r="5"/></svg><span><b>Av. Túpac Amaru 5379</b>Urb. Huaquillay II Etapa, Comas</span></div>
+  </div></div>
 </section>
 
 <div class="cinta" aria-hidden="true"><div>
@@ -424,17 +551,78 @@ a.dato:hover{background:rgba(201,162,84,.08);border-color:rgba(201,162,84,.4)}
 </section>
 
 <section class="sec valores oscuro" aria-labelledby="vT">
+  <div class="wrap val-dos">
+    <div class="val-cab"><div class="marcador sello-txt rv"><i></i>Por qué Lex Concerta</div><h2 class="h2 rv d1" id="vT">Cinco compromisos <em>en cada caso</em></h2><p class="rv d2">Lo que encuentras desde que entras por nuestra puerta hasta que firmas el acta.</p><img class="rv d3" src="img/emblema-dorado.png" alt="" width="541" height="375"></div>
+    <ol class="val-lista"><li class="rv"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l15 6v11c0 10-6.5 17-15 21-8.5-4-15-11-15-21V11z"/><path d="M17 24l5 5 9-10"/></svg></span><h3>Legal y confiable</h3><p>Procedimiento conforme a la Ley de Conciliación, a cargo de conciliadores acreditados.</p></li><li class="rv"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="26" r="16"/><path d="M24 16v10l7 5M19 4h10M24 4v6"/></svg></span><h3>Rápido y eficiente</h3><p>Se resuelve en días, en una audiencia, en lugar de años de proceso judicial.</p></li><li class="rv"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 6h16l8 8v28H13z"/><path d="M29 6v8h8M18 22h14M18 28h14"/><circle cx="31" cy="36" r="5"/></svg></span><h3>Acuerdos con valor legal</h3><p>El acta con acuerdo tiene mérito de título de ejecución y se puede exigir ante el juez.</p></li><li class="rv"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="21" width="24" height="19" rx="3"/><path d="M17 21v-5a7 7 0 0 1 14 0v5M24 29v4"/></svg></span><h3>Confidencial y seguro</h3><p>Lo que se conversa en la audiencia queda entre las partes y el conciliador.</p></li><li class="rv"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="15" r="6"/><circle cx="33" cy="15" r="6"/><path d="M6 40c0-8 5-14 11-14s11 6 11 14M22 40c0-8 5-14 11-14s9 5 9 12"/></svg></span><h3>Profesionales especializados</h3><p>Un equipo que conoce cada materia y te explica todo en simple.</p></li></ol>
+  </div>
+</section>
+
+
+<section class="balanza-sec" aria-labelledby="bT">
+  <div class="balanza-pin" id="balPin">
+    <div class="balanza-vista">
+      <div class="wrap balanza-grid">
+        <div>
+          <div class="marcador sello-txt"><i></i>Cómo se concilia</div>
+          <h2 class="h2" id="bT">Del conflicto <em>al equilibrio</em></h2>
+          <ol class="fases" id="fases">
+            <li class="on"><span class="k">I</span><div><b>Cada parte llega con su versión</b><p>Las posturas están lejos. Es normal: por eso existe la conciliación.</p></div></li>
+            <li><span class="k">II</span><div><b>El conciliador equilibra la conversación</b><p>Un tercero neutral ordena el diálogo y ayuda a encontrar puntos en común.</p></div></li>
+            <li><span class="k">III</span><div><b>Ambos firman un acuerdo</b><p>Lo pactado queda en un acta con valor legal. Nadie pierde un juicio.</p></div></li>
+          </ol>
+        </div>
+        <div class="escena" id="escena" aria-hidden="true">
+          <svg viewBox="0 0 600 440">
+            <defs>
+              <linearGradient id="oro" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f1dca0"/><stop offset=".45" stop-color="#c9a254"/><stop offset="1" stop-color="#9b7631"/></linearGradient>
+              <path id="cs" d="M300,350 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/>
+            </defs>
+            <ellipse cx="300" cy="412" rx="150" ry="10" fill="rgba(30,39,56,.12)"/>
+            <path d="M240 410h120l-18-26h-84z" fill="#1e2738"/>
+            <rect x="292" y="112" width="16" height="276" rx="4" fill="url(#oro)"/>
+            <g class="viga" id="viga">
+              <rect x="80" y="104" width="440" height="10" rx="5" fill="url(#oro)"/>
+              <circle cx="300" cy="109" r="16" fill="#1e2738" stroke="url(#oro)" stroke-width="4"/>
+            </g>
+            <g class="peso" id="platoA">
+              <path d="M0 0L-58 110M0 0L58 110" stroke="#9b7631" stroke-width="1.6"/>
+              <path d="M-76 110h152a76 22 0 0 1-152 0z" fill="#26314a"/>
+              <ellipse cx="0" cy="110" rx="76" ry="9" fill="#313e56"/>
+              <text class="lbl" x="0" y="160">Tu postura</text>
+            </g>
+            <g class="peso" id="platoB">
+              <path d="M0 0L-58 110M0 0L58 110" stroke="#9b7631" stroke-width="1.6"/>
+              <path d="M-76 110h152a76 22 0 0 1-152 0z" fill="#26314a"/>
+              <ellipse cx="0" cy="110" rx="76" ry="9" fill="#313e56"/>
+              <text class="lbl" x="0" y="160">La otra parte</text>
+            </g>
+            <g class="acuerdo">
+              <circle cx="300" cy="350" r="58" fill="#f4f5f5" stroke="#9b7631" stroke-width="2.5"/>
+              <circle cx="300" cy="350" r="36" fill="none" stroke="#9b7631" stroke-width="1"/>
+              <text style="font-family:Archivo,sans-serif;font-stretch:125%;font-weight:700;font-size:10px;letter-spacing:2.4px;fill:#9b7631"><textPath href="#cs">ACUERDO · LEX CONCERTA ·</textPath></text>
+              <path d="M286 338l10 12 20-22" fill="none" stroke="#9b7631" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(0,6)"/>
+            </g>
+          </svg>
+          <span class="progreso"><i id="balProg"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec compara oscuro" aria-labelledby="cmT">
   <div class="wrap" style="position:relative">
     <div class="cab">
-      <div><div class="marcador sello-txt rv"><i></i>Por qué Lex Concerta</div><h2 class="h2 rv d1" id="vT">Cinco compromisos <em>en cada caso</em></h2></div>
-      <p class="rv d2">Lo que encuentras desde que entras por nuestra puerta hasta que firmas el acta.</p>
+      <div><div class="marcador sello-txt rv"><i></i>La diferencia</div><h2 class="h2 rv d1" id="cmT">Juicio o conciliación: <em>tú eliges</em></h2></div>
+      <p class="rv d2">Antes de entrar a un proceso judicial, compara. La mayoría de conflictos se resuelven mejor conversando.</p>
     </div>
-    <div class="val-grid">
-      <article class="val rv"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l15 6v11c0 10-6.5 17-15 21-8.5-4-15-11-15-21V11z"/><path d="M17 24l5 5 9-10"/></svg></span><h3>Legal y confiable</h3><p>Procedimiento conforme a la Ley de Conciliación, a cargo de conciliadores acreditados.</p></article>
-      <article class="val rv d1"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="26" r="16"/><path d="M24 16v10l7 5M19 4h10M24 4v6"/></svg></span><h3>Rápido y eficiente</h3><p>Se resuelve en días, en una audiencia, en lugar de años de proceso judicial.</p></article>
-      <article class="val rv d2"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 6h16l8 8v28H13z"/><path d="M29 6v8h8M18 22h14M18 28h14"/><circle cx="31" cy="36" r="5"/></svg></span><h3>Acuerdos con valor legal</h3><p>El acta con acuerdo tiene mérito de título de ejecución y se puede exigir ante el juez.</p></article>
-      <article class="val rv d3"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="21" width="24" height="19" rx="3"/><path d="M17 21v-5a7 7 0 0 1 14 0v5M24 29v4"/></svg></span><h3>Confidencial y seguro</h3><p>Lo que se conversa en la audiencia queda entre las partes y el conciliador.</p></article>
-      <article class="val rv d4"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="15" r="6"/><circle cx="33" cy="15" r="6"/><path d="M6 40c0-8 5-14 11-14s11 6 11 14M22 40c0-8 5-14 11-14s9 5 9 12"/></svg></span><h3>Profesionales especializados</h3><p>Un equipo que conoce cada materia y te explica todo en simple.</p></article>
+    <div class="tabla-c rv" id="tablaC">
+      <div class="th vacio"></div><div class="th col-j">Juicio<small>Proceso judicial</small></div><div class="th col-c">Conciliación<small>Lex Concerta</small></div>
+      <div class="crit">Tiempo</div><div class="col-j"><span class="barra-t"><i></i></span><span>Puede tomar años</span></div><div class="col-c"><span class="barra-t"><i></i></span><span>Se resuelve en días</span></div>
+      <div class="crit">Costo</div><div class="col-j"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>Honorarios, tasas y gastos que se acumulan</span></div><div class="col-c"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Un solo procedimiento, más económico</span></div>
+      <div class="crit">Quién decide</div><div class="col-j"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>Un juez dicta la sentencia</span></div><div class="col-c"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Las partes deciden el acuerdo</span></div>
+      <div class="crit">La relación</div><div class="col-j"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>Suele terminar enfrentada</span></div><div class="col-c"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Se cuida, clave en temas de familia</span></div>
+      <div class="crit">Privacidad</div><div class="col-j"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>Expediente judicial</span></div><div class="col-c"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Confidencial</span></div>
     </div>
   </div>
 </section>
@@ -444,6 +632,12 @@ a.dato:hover{background:rgba(201,162,84,.08);border-color:rgba(201,162,84,.4)}
     <div class="cab">
       <div><div class="marcador sello-txt rv"><i></i>Materias conciliables</div><h2 class="h2 rv d1" id="mT">¿Qué podemos <em>resolver contigo?</em></h2></div>
       <p class="rv d2">Elige el tipo de conflicto y toca tu caso: te abrimos WhatsApp con el mensaje listo. Si no lo ves en la lista, consúltanos igual.</p>
+    </div>
+    <div class="buscador rv">
+      <label for="busca">Cuéntanos tu problema <em>con tus palabras</em></label>
+      <div class="caja"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="busca" type="search" autocomplete="off" placeholder="Ej.: me deben dinero y no me pagan" aria-describedby="sugT"></div>
+      <div class="sugerencias" id="sug" aria-live="polite"><span class="vacio" id="sugT">Te sugerimos la materia que corresponde y te abrimos WhatsApp con el mensaje listo.</span></div>
+      <p class="ejemplos">Prueba: <button type="button">quiero ver a mi hijo</button> · <button type="button">no me paga el alquiler</button> · <button type="button">herencia de mis padres</button> · <button type="button">obra con la municipalidad</button></p>
     </div>
     <div class="mat-wrap">
       <div class="mat-nav rv" role="tablist" aria-label="Tipos de materia" id="matNav"></div>
@@ -516,16 +710,9 @@ a.dato:hover{background:rgba(201,162,84,.08);border-color:rgba(201,162,84,.4)}
 </section>
 
 <section class="sec" id="preguntas" aria-labelledby="fT">
-  <div class="wrap faq-grid">
-    <div><div class="marcador sello-txt rv"><i></i>Preguntas frecuentes</div><h2 class="h2 rv d1" id="fT">Antes de tu <em>audiencia</em></h2></div>
-    <div class="rv d1">
-      <details><summary>¿Qué es la conciliación extrajudicial?<i aria-hidden="true"></i></summary><p>Es una forma de resolver conflictos fuera del Poder Judicial. Un conciliador acreditado ayuda a las partes a conversar y a llegar a un acuerdo, que queda escrito en un acta.</p></details>
-      <details><summary>¿Es obligatorio conciliar antes de demandar?<i aria-hidden="true"></i></summary><p>En muchas materias civiles y de familia, sí: la ley pide intentar conciliar antes de presentar la demanda. Consúltanos tu caso y te confirmamos si aplica.</p></details>
-      <details><summary>¿Qué valor tiene el acta?<i aria-hidden="true"></i></summary><p>El acta con acuerdo tiene mérito de título de ejecución (Ley N.° 26872). Si la otra parte no cumple lo que firmó, puedes pedir al juez que lo haga cumplir.</p></details>
-      <details><summary>¿Qué pasa si la otra parte no asiste?<i aria-hidden="true"></i></summary><p>Se deja constancia de la inasistencia en el acta. Con ella quedas habilitado para iniciar el proceso judicial si lo necesitas.</p></details>
-      <details><summary>¿Qué debo traer?<i aria-hidden="true"></i></summary><p>Tu DNI, los documentos que sustentan tu pedido (por ejemplo, partidas, contratos o recibos) y la dirección de la otra parte para enviarle la invitación.</p></details>
-      <details><summary>¿Lo que digo en la audiencia es confidencial?<i aria-hidden="true"></i></summary><p>Sí. Lo conversado en la conciliación es reservado entre las partes y el conciliador.</p></details>
-    </div>
+  <div class="wrap">
+    <div class="faq-cab"><div class="marcador sello-txt rv"><i></i>Preguntas frecuentes<i></i></div><h2 class="h2 rv d1" id="fT">Antes de tu <em>audiencia</em></h2></div>
+    <div class="faq-dos rv d1"><div><details><summary>¿Qué es la conciliación extrajudicial?<i aria-hidden="true"></i></summary><p>Es una forma de resolver conflictos fuera del Poder Judicial. Un conciliador acreditado ayuda a las partes a conversar y a llegar a un acuerdo, que queda escrito en un acta.</p></details><details><summary>¿Es obligatorio conciliar antes de demandar?<i aria-hidden="true"></i></summary><p>En muchas materias civiles y de familia, sí: la ley pide intentar conciliar antes de presentar la demanda. Consúltanos tu caso y te confirmamos si aplica.</p></details><details><summary>¿Qué valor tiene el acta?<i aria-hidden="true"></i></summary><p>El acta con acuerdo tiene mérito de título de ejecución (Ley N.° 26872). Si la otra parte no cumple lo que firmó, puedes pedir al juez que lo haga cumplir.</p></details></div><div><details><summary>¿Qué pasa si la otra parte no asiste?<i aria-hidden="true"></i></summary><p>Se deja constancia de la inasistencia en el acta. Con ella quedas habilitado para iniciar el proceso judicial si lo necesitas.</p></details><details><summary>¿Qué debo traer?<i aria-hidden="true"></i></summary><p>Tu DNI, los documentos que sustentan tu pedido (por ejemplo, partidas, contratos o recibos) y la dirección de la otra parte para enviarle la invitación.</p></details><details><summary>¿Lo que digo en la audiencia es confidencial?<i aria-hidden="true"></i></summary><p>Sí. Lo conversado en la conciliación es reservado entre las partes y el conciliador.</p></details></div></div>
   </div>
 </section>
 
@@ -629,6 +816,56 @@ a.dato:hover{background:rgba(201,162,84,.08);border-color:rgba(201,162,84,.4)}
   function cierra(){visor.classList.remove('on');if(ult)ult.focus()}
   $('visorX').addEventListener('click',cierra);visor.addEventListener('click',function(e){if(e.target===visor)cierra()});
   addEventListener('keydown',function(e){if(e.key==='Escape'&&visor.classList.contains('on'))cierra()});
+
+  /* buscador de materias */
+  function norm(t){return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
+  var TODAS=[];MAT.forEach(function(m){m.items.forEach(function(it){TODAS.push({t:typeof it==='string'?it:it[0],g:m.nombre})})});
+  var SIN=[
+    [['dinero','deuda','debe','deben','prest','pagar','pague','pagan','cobrar','plata','sencillo'],['Obligación de dar suma de dinero','Ofrecimiento de pago']],
+    [['alquiler','inquilin','arrend','desaloj','desocup','cuarto','departamento','vivienda','casa'],['Desalojo']],
+    [['ver a mi','visita','visitar','fines de semana','no me deja ver'],['Régimen de visitas','Variación del régimen de visitas']],
+    [['hijo','hija','pension','manutencion','alimento','menor','bebe'],['Pensión de alimentos','Aumento o reducción de alimentos','Exoneración de alimentos']],
+    [['tenencia','custodia','vivir con'],['Tenencia']],
+    [['embaraz','gestante'],['Gastos de embarazo, tenencia y alimentos']],
+    [['divorc','separa','esposo','esposa','conyuge','matrimonio','gananciales'],['Liquidación de sociedad de gananciales','Pensión de alimentos a favor del cónyuge']],
+    [['convivi','union de hecho','pareja'],['Liquidación de bienes de la unión de hecho','Indemnización']],
+    [['contrato','incumpl','no cumpl','acuerdo roto'],['Incumplimiento de contrato','Resolución de contrato','Obligación de dar, hacer y no hacer']],
+    [['terreno','lindero','medida','area','metros'],['Rectificación de áreas y linderos','División y partición']],
+    [['herencia','herede','fallec','murio','padres','sucesion'],['Petición de herencia','División y partición']],
+    [['escritura','notari','minuta','compraventa','firmar la venta'],['Otorgamiento de escritura']],
+    [['estado','municipal','entidad','obra','licitac','contratista','ministerio','gobierno','valoriz','metrado'],['Resolución de contrato','Ampliación del plazo contractual','Valorizaciones o metrados','Liquidación de contrato','Pagos'],'Estado'],
+    [['dano','perjuicio','choque','chocaron','choco','accidente','romp','malogr'],['Indemnización']],
+    [['invad','recuperar','ocupa mi','apropi'],['Reivindicación','Interdicto de retener o recobrar']],
+    [['mejora','construi','remodel'],['Pago de mejoras']],
+    [['vender','venta','preferencia','retracto'],['Retracto']]];
+  function grupoDe(t){var r=TODAS.filter(function(x){return x.t===t})[0];return r?r.g:''}
+  function busca(q){
+    var n=norm(q).trim(),out=[],gr={};if(n.length<3){$('sug').innerHTML='<span class="vacio">Te sugerimos la materia que corresponde y te abrimos WhatsApp con el mensaje listo.</span>';return}
+    SIN.forEach(function(r){if(r[0].some(function(k){return n.indexOf(k)>-1}))r[1].forEach(function(t){if(out.indexOf(t)<0){out.push(t);if(r[2])gr[t]=r[2]}})});
+    TODAS.forEach(function(x){var nt=norm(x.t);if(n.split(/\s+/).some(function(w){return w.length>3&&nt.indexOf(w)>-1})&&out.indexOf(x.t)<0)out.push(x.t)});
+    out=out.slice(0,5);
+    $('sug').innerHTML=out.length?out.map(function(t){return '<a href="'+wa('Hola, quisiera conciliar: '+t+'. Mi caso: '+q.trim())+'" target="_blank" rel="noopener"><small>'+esc(gr[t]||grupoDe(t))+'</small>'+esc(t)+'</a>'}).join(''):
+      '<span class="vacio">No encontramos una materia exacta, pero puede que sí se pueda conciliar. <a href="'+wa('Hola, quisiera consultar si mi caso se puede conciliar: '+q.trim())+'" target="_blank" rel="noopener">Escríbenos tu caso</a>.</span>';
+  }
+  var bi=$('busca');bi.addEventListener('input',function(){busca(bi.value)});
+  [].forEach.call(document.querySelectorAll('.ejemplos button'),function(b){b.addEventListener('click',function(){bi.value=b.textContent;busca(bi.value);bi.focus()})});
+
+  /* balanza que se equilibra con el scroll */
+  var pin=$('balPin'),viga=$('viga'),pA=$('platoA'),pB=$('platoB'),esc_=$('escena'),fs=[].slice.call(document.querySelectorAll('#fases li')),prog=$('balProg');
+  function balanza(){
+    var r=pin.getBoundingClientRect(),tot=pin.offsetHeight-innerHeight,p=RM?1:Math.min(1,Math.max(0,-r.top/Math.max(1,tot)));
+    var e=p<.12?0:p>.82?1:(p-.12)/.7; e=1-Math.pow(1-e,3);
+    var ang=-15*(1-e), rad=ang*Math.PI/180, L=210;
+    viga.setAttribute('transform','rotate('+ang.toFixed(2)+' 300 109)');
+    pA.setAttribute('transform','translate('+(300-L*Math.cos(rad)).toFixed(1)+' '+(109-L*Math.sin(rad)).toFixed(1)+')');
+    pB.setAttribute('transform','translate('+(300+L*Math.cos(rad)).toFixed(1)+' '+(109+L*Math.sin(rad)).toFixed(1)+')');
+    var f=p<.35?0:p<.7?1:2;fs.forEach(function(li,i){li.classList.toggle('on',RM||i===f)});
+    esc_.classList.toggle('listo',e>=.98);prog.style.setProperty('--p',p.toFixed(3));
+  }
+  addEventListener('scroll',balanza,{passive:true});addEventListener('resize',balanza);balanza();
+
+  /* barras de la comparativa */
+  var tc=$('tablaC');new IntersectionObserver(function(es,o){if(es[0].isIntersecting){tc.classList.add('in');o.disconnect()}},{threshold:.3}).observe(tc);
   $('anio').textContent=new Date().getFullYear();
 })();
 </script>
