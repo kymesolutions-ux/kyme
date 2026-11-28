@@ -15,7 +15,7 @@
 <meta property="og:image" content="img/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cinzel:wght@500;600;700&family=Oswald:wght@500;600&family=Great+Vibes&family=Albert+Sans:wght@300;400;500;600;700&family=Archivo:wdth,wght@125,600;125,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cinzel:wght@500;600;700&family=Playfair+Display:wght@500;600;700&family=Oswald:wght@500;600&family=Great+Vibes&family=Albert+Sans:wght@300;400;500;600;700&family=Archivo:wdth,wght@125,600;125,700&display=swap">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LegalService","name":"Centro de Conciliación Extrajudicial Lex Concerta","image":"img/fachada.webp","telephone":["+51967228977","+5117482706"],"email":"lexconcerta@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Av. Túpac Amaru 5379, Urb. Huaquillay II Etapa","addressLocality":"Comas","addressRegion":"Lima","addressCountry":"PE"},"areaServed":"Lima Norte"}
 </script>
@@ -599,6 +599,53 @@ a.dato:hover{background:#fbf8f1;border-color:var(--gold)}
 .form{background:#fff;border:1.5px solid var(--gold);box-shadow:0 50px 80px -50px rgba(30,39,56,.5)}
 /* pie */
 .pie{border-top:3px solid var(--gold)}
+
+/* ================= v5 · modelo de la referencia de la clienta (28/11) ================= */
+:root{--serif:"Playfair Display","Times New Roman",serif;--gold-txt:linear-gradient(180deg,#f3dc9c 0%,#d6ae5d 38%,#a87d2f 62%,#e7c675 100%)}
+.h2,.hero-claro h1,.mat-btn b,.mat-panel h3,.val-lista h3,.fases b,.paso h3,summary,.acta-cab b,.form h3,.cta h2,.manif-txt blockquote,.buscador label,.tabla-c .th,.foto figcaption b{font-weight:600}
+.h2{letter-spacing:-.015em}
+.btn-oro{background:linear-gradient(180deg,#f4dfa2 0%,#d8b161 46%,#b98d3e 54%,#e4c47c 100%);color:#1d1606;box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 14px 30px -14px rgba(169,125,47,.9)}
+.btn-oro:hover{background:linear-gradient(180deg,#f7e6b4 0%,#dcb769 46%,#bf9344 54%,#e9cb86 100%)}
+.btn-linea{gap:.45em}.btn-linea svg{width:18px;height:18px}
+.marcador{color:var(--gold-lo);font-weight:700}
+.marcador i{height:1.5px;background:linear-gradient(90deg,var(--gold),var(--gold-hi))}
+/* hero */
+.hero-claro .hero-foto img{opacity:1;filter:none;object-position:50% 62%;animation:none;transform:none}
+.hero-claro::before{background:radial-gradient(46% 60% at 50% 44%,rgba(255,255,255,.93) 0%,rgba(255,255,255,.78) 52%,rgba(255,255,255,.12) 100%)!important}
+.hero-claro::after{display:none}
+.hero-claro h1{font-size:clamp(36px,4.6vw,70px);line-height:1.04;letter-spacing:-.02em;margin-top:22px}
+.hero-claro .lead{color:#2a3346;font-weight:400}
+.hero-marca{filter:drop-shadow(0 2px 1px rgba(120,86,25,.25))}
+.hero-lateral{position:absolute;left:clamp(30px,3.2vw,64px);top:150px;z-index:2;color:var(--navy-3);font-size:12px;letter-spacing:.32em;line-height:1.75}
+.hero-lateral p{margin:0 0 30px}
+.hero-lateral p::after{content:"";display:block;width:54px;height:2px;margin-top:14px;background:var(--gold-grad)}
+.hero-frase{top:150px;bottom:auto;right:clamp(40px,4.5vw,90px);font-size:clamp(34px,3.3vw,54px);transform:rotate(-13deg);text-align:left;line-height:1.08}
+.hero-frase::after{height:3px;margin:10px 0 0 10%;background:linear-gradient(90deg,transparent,#d6ae5d 30%,#a87d2f);border-radius:9px;transform:rotate(-4deg)}
+.sw-a{width:clamp(300px,38vw,640px);height:clamp(170px,21vw,350px)}
+.sw-b{width:clamp(260px,32vw,540px);height:clamp(150px,18vw,300px)}
+.hero-claro .hero-barra{background:rgba(255,255,255,.95)}
+@media (max-width:1180px){.hero-lateral{display:none}}
+@media (max-width:800px){.hero-claro .hero-foto img{object-position:12% 70%}.hero-claro::before{background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.82) 70%,rgba(255,255,255,.55))!important}}
+/* curvas en otras secciones */
+.con-curva{position:relative;overflow:hidden}
+.con-curva::after{content:"";position:absolute;width:clamp(200px,26vw,430px);height:clamp(110px,14vw,240px);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 340' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='n' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%232c3a57'/%3E%3Cstop offset='1' stop-color='%23141b2a'/%3E%3C/linearGradient%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23f1dca0'/%3E%3Cstop offset='.5' stop-color='%23c9a254'/%3E%3Cstop offset='1' stop-color='%239b7631'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M600 0H250C370 40 470 130 600 300Z' fill='url(%23n)'/%3E%3Cpath d='M226 0C360 44 468 136 600 318' fill='none' stroke='url(%23g)' stroke-width='7'/%3E%3Cpath d='M290 0C400 34 492 110 600 250' fill='none' stroke='url(%23g)' stroke-width='1.6' opacity='.7'/%3E%3C/svg%3E") center/100% 100% no-repeat;pointer-events:none;z-index:0;filter:drop-shadow(0 10px 16px rgba(30,39,56,.22))}
+.cc-a::after{top:0;right:0}
+.cc-b::after{bottom:0;left:0;transform:rotate(180deg)}
+.con-curva>.wrap{position:relative;z-index:1}
+.valores{background:linear-gradient(90deg,#fff 34%,rgba(255,255,255,.86) 62%,rgba(255,255,255,.7)),url(img/fondo-oficina-sm.webp) right 40%/cover}
+.valores::before{display:none}
+.cta::before{background:linear-gradient(90deg,rgba(20,27,42,.95),rgba(30,39,56,.86) 55%,rgba(30,39,56,.7))}
+
+.cta{border-top:0;border-bottom:0}
+.cta::after{content:"";position:absolute;left:0;right:0;height:3px;top:0;background:var(--gold-grad)}
+.contacto{background:linear-gradient(180deg,#fff,#fbf9f4)}
+@media (max-width:800px){.con-curva::after{width:44vw;height:24vw}.cc-b::after{display:none}}
+.hero-claro .hero-foto{inset:0 0 86px 0}
+.hero-claro .hero-marca{font-size:clamp(44px,6vw,92px)}
+.hero-frase{top:190px;right:clamp(28px,3.2vw,60px);font-size:clamp(26px,2.3vw,40px);max-width:300px}
+.sw-b{bottom:86px;width:clamp(180px,20vw,340px);height:clamp(80px,9vw,150px)}
+@media (max-width:800px){.hero-claro .hero-foto{inset:0}.sw-b{display:none}}
+@media (max-width:800px){.hero-claro .hero-marca{font-size:clamp(28px,8.4vw,56px)}.hero-claro::before{background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.8) 55%,rgba(255,255,255,.35))!important}}
 </style>
 </head>
 <body>
@@ -630,20 +677,20 @@ a.dato:hover{background:#fbf8f1;border-color:var(--gold)}
 
 <main id="contenido">
 <section class="hero hero-claro" id="inicio" aria-labelledby="hT">
-  <div class="hero-foto" aria-hidden="true"><img src="img/hero.webp" alt="" width="2000" height="1500" fetchpriority="high"></div>
-  <svg class="swoop sw-a" viewBox="0 0 600 340" preserveAspectRatio="none" aria-hidden="true"><path d="M600 0H250C370 40 470 130 600 300Z" fill="#1e2738"/><path d="M226 0C360 44 468 136 600 318" fill="none" stroke="url(#swg)" stroke-width="7"/><path d="M290 0C400 34 492 110 600 250" fill="none" stroke="url(#swg)" stroke-width="1.6" opacity=".7"/><defs><linearGradient id="swg" x1="0" x2="1"><stop offset="0" stop-color="#f1dca0"/><stop offset=".5" stop-color="#c9a254"/><stop offset="1" stop-color="#9b7631"/></linearGradient></defs></svg>
-  <svg class="swoop sw-b" viewBox="0 0 600 340" preserveAspectRatio="none" aria-hidden="true"><path d="M600 0H250C370 40 470 130 600 300Z" fill="#1e2738"/><path d="M226 0C360 44 468 136 600 318" fill="none" stroke="url(#swg2)" stroke-width="7"/><path d="M290 0C400 34 492 110 600 250" fill="none" stroke="url(#swg2)" stroke-width="1.6" opacity=".7"/><defs><linearGradient id="swg2" x1="0" x2="1"><stop offset="0" stop-color="#f1dca0"/><stop offset=".5" stop-color="#c9a254"/><stop offset="1" stop-color="#9b7631"/></linearGradient></defs></svg>
-  <span class="marco-oro" aria-hidden="true"></span>
+  <div class="hero-foto" aria-hidden="true"><img src="img/fondo-oficina.webp" alt="" width="2448" height="1400" fetchpriority="high"></div>
+  <svg class="swoop sw-a" viewBox="0 0 600 340" preserveAspectRatio="none" aria-hidden="true"><path d="M600 0H250C370 40 470 130 600 300Z" fill="url(#swn)"/><path d="M226 0C360 44 468 136 600 318" fill="none" stroke="url(#swg)" stroke-width="7"/><path d="M290 0C400 34 492 110 600 250" fill="none" stroke="url(#swg)" stroke-width="1.6" opacity=".7"/><defs><linearGradient id="swn" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#2c3a57"/><stop offset="1" stop-color="#141b2a"/></linearGradient><linearGradient id="swg" x1="0" x2="1"><stop offset="0" stop-color="#f1dca0"/><stop offset=".5" stop-color="#c9a254"/><stop offset="1" stop-color="#9b7631"/></linearGradient></defs></svg>
+  <svg class="swoop sw-b" viewBox="0 0 600 340" preserveAspectRatio="none" aria-hidden="true"><path d="M600 0H250C370 40 470 130 600 300Z" fill="url(#swn2)"/><path d="M226 0C360 44 468 136 600 318" fill="none" stroke="url(#swg2)" stroke-width="7"/><path d="M290 0C400 34 492 110 600 250" fill="none" stroke="url(#swg2)" stroke-width="1.6" opacity=".7"/><defs><linearGradient id="swn2" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#2c3a57"/><stop offset="1" stop-color="#141b2a"/></linearGradient><linearGradient id="swg2" x1="0" x2="1"><stop offset="0" stop-color="#f1dca0"/><stop offset=".5" stop-color="#c9a254"/><stop offset="1" stop-color="#9b7631"/></linearGradient></defs></svg>
+  <div class="hero-lateral sello-txt" aria-hidden="true"><p>Conflictos<br>Diferencias<br>Soluciones</p><p>Personas<br>Acuerdos<br>Comunidades<br>más fuertes</p></div>
   <div class="wrap hero-c">
     <img class="hero-iso" src="img/iso-color.png" alt="" width="400" height="287">
     <p class="hero-centro">Centro de Conciliación Extrajudicial</p>
     <p class="hero-marca">LEX CONCERTA</p>
     <p class="hero-lema"><i></i><span>Promoviendo soluciones consensuadas<br>y una cultura de paz</span><i></i></p>
-    <h1 id="hT"><span class="ln"><span>Resuelve tu conflicto</span></span><span class="ln"><span><em>sin llegar a <span class="tachado">juicio</span>.</em></span></span></h1>
+    <h1 id="hT"><span class="ln"><span>Resuelve tu conflicto</span></span><span class="ln"><span><em>sin llegar a juicio.</em></span></span></h1>
     <p class="lead">Sentamos a las dos partes en una misma mesa, con un conciliador neutral, para que lleguen a un acuerdo firmado en un <b>acta con valor legal</b>.</p>
     <div class="ctas">
       <a class="btn btn-oro" href="https://wa.me/51967228977?text=Hola%2C%20quisiera%20solicitar%20una%20conciliaci%C3%B3n." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3a2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Escríbenos · 967 228 977</a>
-      <a class="btn btn-linea" href="#materias">Ver qué conciliamos</a>
+      <a class="btn btn-linea" href="#materias">Ver qué conciliamos<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
     </div>
   </div>
   <p class="hero-frase" aria-hidden="true">El diálogo<br>siempre es el mejor camino</p>
@@ -679,7 +726,7 @@ a.dato:hover{background:#fbf8f1;border-color:var(--gold)}
   </div>
 </section>
 
-<section class="sec valores oscuro" aria-labelledby="vT">
+<section class="sec valores oscuro con-curva cc-a" aria-labelledby="vT">
   <div class="wrap val-dos">
     <div class="val-cab"><div class="marcador sello-txt rv"><i></i>Por qué Lex Concerta</div><h2 class="h2 rv d1" id="vT">Cinco compromisos <em>en cada caso</em></h2><p class="rv d2">Lo que encuentras desde que entras por nuestra puerta hasta que firmas el acta.</p><img class="rv d3" src="img/emblema-dorado.png" alt="" width="541" height="375"></div>
     <ol class="val-lista"><li class="rv"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l15 6v11c0 10-6.5 17-15 21-8.5-4-15-11-15-21V11z"/><path d="M17 24l5 5 9-10"/></svg></span><h3>Legal y confiable</h3><p>Procedimiento conforme a la Ley de Conciliación, a cargo de conciliadores acreditados.</p></li><li class="rv"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="26" r="16"/><path d="M24 16v10l7 5M19 4h10M24 4v6"/></svg></span><h3>Rápido y eficiente</h3><p>Se resuelve en días, en una audiencia, en lugar de años de proceso judicial.</p></li><li class="rv"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 6h16l8 8v28H13z"/><path d="M29 6v8h8M18 22h14M18 28h14"/><circle cx="31" cy="36" r="5"/></svg></span><h3>Acuerdos con valor legal</h3><p>El acta con acuerdo tiene mérito de título de ejecución y se puede exigir ante el juez.</p></li><li class="rv"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="21" width="24" height="19" rx="3"/><path d="M17 21v-5a7 7 0 0 1 14 0v5M24 29v4"/></svg></span><h3>Confidencial y seguro</h3><p>Lo que se conversa en la audiencia queda entre las partes y el conciliador.</p></li><li class="rv"><span class="ic"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="15" r="6"/><circle cx="33" cy="15" r="6"/><path d="M6 40c0-8 5-14 11-14s11 6 11 14M22 40c0-8 5-14 11-14s9 5 9 12"/></svg></span><h3>Profesionales especializados</h3><p>Un equipo que conoce cada materia y te explica todo en simple.</p></li></ol>
@@ -846,14 +893,14 @@ a.dato:hover{background:#fbf8f1;border-color:var(--gold)}
 </section>
 
 <section class="cta" aria-labelledby="ctaT">
-  <img class="fondo" src="img/despacho-2.webp" alt="" width="1400" height="1156" loading="lazy">
+  <img class="fondo" src="img/fondo-oficina-sm.webp" alt="" width="1224" height="700" loading="lazy">
   <div class="wrap cta-in">
     <div><h2 class="rv" id="ctaT">El primer paso es <em>una conversación.</em></h2><p class="rv d1">Escríbenos, cuéntanos tu caso y te explicamos cómo resolverlo.</p></div>
     <a class="btn btn-oro rv d2" href="https://wa.me/51967228977?text=Hola%2C%20quisiera%20solicitar%20una%20conciliaci%C3%B3n." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3a2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Escribir por WhatsApp</a>
   </div>
 </section>
 
-<section class="sec contacto oscuro" id="contacto" aria-labelledby="coT">
+<section class="sec contacto oscuro con-curva cc-b" id="contacto" aria-labelledby="coT">
   <div class="wrap con-grid">
     <div>
       <div class="marcador sello-txt rv"><i></i>Contacto</div>
