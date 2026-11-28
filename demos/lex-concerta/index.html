@@ -6,7 +6,7 @@
 <title>Lex Concerta · Centro de Conciliación Extrajudicial en Comas</title>
 <meta name="description" content="Centro de Conciliación Extrajudicial Lex Concerta en Comas, Lima. Resuelve tu conflicto de familia, civil o de contrataciones con el Estado sin llegar a juicio. WhatsApp 967 228 977.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#1e2738">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -15,7 +15,7 @@
 <meta property="og:image" content="img/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Albert+Sans:wght@300;400;500;600;700&family=Archivo:wdth,wght@125,600;125,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cinzel:wght@500;600;700&family=Oswald:wght@500;600&family=Great+Vibes&family=Albert+Sans:wght@300;400;500;600;700&family=Archivo:wdth,wght@125,600;125,700&display=swap">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LegalService","name":"Centro de Conciliación Extrajudicial Lex Concerta","image":"img/fachada.webp","telephone":["+51967228977","+5117482706"],"email":"lexconcerta@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Av. Túpac Amaru 5379, Urb. Huaquillay II Etapa","addressLocality":"Comas","addressRegion":"Lima","addressCountry":"PE"},"areaServed":"Lima Norte"}
 </script>
@@ -476,6 +476,129 @@ html:not(.js) .tachado::after{transform:scaleX(1) rotate(-4deg)}
 .faq-dos{display:grid;grid-template-columns:1fr 1fr;gap:0 60px}
 .faq-dos details:first-of-type{border-top:1px solid var(--line)}
 @media (max-width:860px){.faq-dos{grid-template-columns:1fr}.faq-dos>div+div details:first-of-type{border-top:0}}
+
+/* ================= v4 · estilo de los afiches (blanco, bordes dorados, azul marino) ================= */
+:root{--cinzel:"Cinzel","Marcellus",serif;--cond:"Oswald","Archivo",sans-serif;--script:"Great Vibes",cursive;--gold-txt:linear-gradient(180deg,#e9cf8a 0%,#c9a254 45%,#9b7631 70%,#d9b768 100%)}
+::-webkit-scrollbar-track{background:#e9ecf0}::-webkit-scrollbar-thumb{border-color:#e9ecf0}
+body{background:#fff}
+.h2{color:var(--navy-3)}
+.h2 em{background:var(--gold-txt);-webkit-background-clip:text;background-clip:text;color:transparent}
+.oscuro .h2{color:var(--navy-3)}.oscuro .marcador{color:var(--gold-lo)}.oscuro .cab p{color:var(--ink-2)}
+/* nav */
+.nav .marca{color:var(--navy-3)}
+.marca small{color:var(--ink-2)}
+.menu a{color:var(--navy-3)}
+.nav.solida{background:rgba(255,255,255,.95);box-shadow:0 1px 0 rgba(201,162,84,.6),0 10px 30px -20px rgba(30,39,56,.35)}
+.burger{border-color:rgba(49,62,86,.3);background:#fff;color:var(--navy-3)}
+@media (max-width:1060px){.menu.abierto{background:#fff;box-shadow:0 30px 40px -20px rgba(30,39,56,.35);border-bottom:2px solid var(--gold)}.menu.abierto a{border-bottom-color:var(--line)}}
+.btn-linea{color:var(--navy-3);box-shadow:inset 0 0 0 1.5px var(--gold);background:#fff}
+.btn-linea:hover{background:var(--navy-3);color:#fff;transform:translateY(-2px)}
+/* hero */
+.hero-claro{background:#fff;color:var(--ink)}
+.hero-claro .hero-foto img{opacity:.22;filter:saturate(.6)}
+.hero-claro::before{background:radial-gradient(70% 75% at 50% 45%,rgba(255,255,255,.5),rgba(255,255,255,.9) 80%)!important}
+.hero-claro::after{background:radial-gradient(40% 35% at 50% 30%,rgba(201,162,84,.12),transparent 70%)}
+.marco-oro{position:absolute;inset:14px;border:1.5px solid rgba(201,162,84,.8);border-radius:4px;pointer-events:none;z-index:1;box-shadow:inset 0 0 0 5px rgba(255,255,255,.6),inset 0 0 0 6px rgba(201,162,84,.35)}
+.swoop{position:absolute;z-index:0;pointer-events:none;filter:drop-shadow(0 10px 18px rgba(30,39,56,.25))}
+.sw-a{top:0;right:0;width:clamp(260px,34vw,560px);height:clamp(150px,19vw,320px)}
+.sw-b{bottom:0;left:0;width:clamp(240px,30vw,500px);height:clamp(140px,17vw,280px);transform:rotate(180deg)}
+.esquina{position:absolute;top:104px;right:clamp(36px,4vw,64px);z-index:1;color:#fff;text-align:right;line-height:1.9;font-size:11px;letter-spacing:.3em}
+.hero-claro .hero-c{position:relative;z-index:2;padding-top:108px;padding-bottom:140px}
+.hero-claro .hero-iso{width:clamp(130px,12vw,176px);filter:drop-shadow(0 12px 22px rgba(155,118,49,.25));margin-bottom:10px}
+.hero-centro{font-family:var(--cond);font-weight:600;text-transform:uppercase;color:var(--navy-3);font-size:clamp(17px,1.7vw,25px);letter-spacing:.04em;line-height:1.1}
+.hero-marca{font-family:var(--cinzel);font-weight:700;font-size:clamp(44px,7vw,104px);line-height:1;letter-spacing:.02em;background:var(--gold-txt);-webkit-background-clip:text;background-clip:text;color:transparent;margin:4px 0 12px}
+.hero-lema{display:flex;align-items:center;gap:16px;color:var(--navy-3);font-size:clamp(11px,.95vw,13.5px);letter-spacing:.26em;text-transform:uppercase;line-height:1.7;font-weight:500}
+.hero-lema i{width:clamp(30px,6vw,90px);height:1.5px;background:var(--gold);flex:none}
+.hero-claro h1{color:var(--navy-3);font-size:clamp(30px,3.6vw,54px);margin-top:28px}
+.hero-claro h1 em{background:var(--gold-txt);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-claro .tachado::after{background:var(--navy-3);box-shadow:none;height:.06em}
+.hero-claro .lead{color:var(--ink-2);font-weight:400;margin:16px auto 30px}
+.hero-claro .lead b{color:var(--navy-3);font-weight:600}
+.hero-frase{position:absolute;right:clamp(30px,4vw,80px);bottom:120px;z-index:2;font-family:var(--script);font-size:clamp(26px,2.4vw,38px);line-height:1.05;color:var(--navy-3);text-align:right;transform:rotate(-6deg)}
+.hero-frase::after{content:"";display:block;height:2px;margin:8px 0 0 30%;background:linear-gradient(90deg,transparent,var(--gold))}
+.hero-claro .hero-barra{z-index:3;background:rgba(255,255,255,.88);border-top:1.5px solid var(--gold);box-shadow:0 -14px 30px -24px rgba(30,39,56,.4)}
+.hero-claro .hero-barra .wrap>div{color:var(--ink-2)}
+.hero-claro .hero-barra .wrap>div+div{border-left-color:rgba(201,162,84,.35)}
+.hero-claro .hero-barra b{color:var(--navy-3)}
+.aro-ic{width:52px;height:52px;flex:none;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--gold);background:radial-gradient(circle,#fffaf0,#f3e7cc)}
+.hero-claro .hero-barra svg,.aro-ic svg{width:26px;height:26px;stroke:var(--gold-lo);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:1100px){.hero-frase,.esquina{display:none}}
+@media (max-width:800px){.hero-claro .hero-barra{background:#fff;position:relative}.hero-claro .hero-barra .wrap>div+div{border-left:0;border-top:1px solid rgba(201,162,84,.3)}.sw-a{width:46vw;height:24vw}.sw-b{display:none}.hero-claro .hero-c{padding-bottom:56px;padding-top:100px}.marco-oro{inset:8px}.hero-lema{letter-spacing:.14em;gap:10px}.hero-marca{font-size:clamp(30px,9.6vw,60px);white-space:nowrap}.hero-centro{font-size:clamp(14px,4.2vw,20px)}}
+/* cinta */
+.cinta{background:var(--navy-3);color:#fff;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold)}
+.cinta span{color:var(--gold-hi)}.cinta span::after{background:var(--gold);opacity:1}
+/* sello de nosotros */
+.sello-grande{background:#fff;border:1.5px solid var(--gold)}
+.sello-grande text{fill:var(--gold-lo)}
+/* valores claro */
+.valores{background:linear-gradient(180deg,#fff,#f6f4ee);color:var(--ink);border-top:1px solid rgba(201,162,84,.35)}
+.valores::before{background:radial-gradient(45% 55% at 90% 0%,rgba(201,162,84,.14),transparent 70%)}
+.val-cab p{color:var(--ink-2)}
+.val-lista li{border-top-color:rgba(201,162,84,.45)}.val-lista li:last-child{border-bottom-color:rgba(201,162,84,.45)}
+.val-lista .ic{border:1.5px solid var(--gold);background:radial-gradient(circle,#fffaf0,#f3e7cc)}
+.val-lista .ic svg{stroke:var(--gold-lo)}
+.val-lista li:hover .ic{background:var(--navy-3)}.val-lista li:hover .ic svg{stroke:var(--gold-hi)}
+.val-lista h3{color:var(--navy-3)}.val-lista p{color:var(--ink-2)}
+/* comparativa clara */
+.compara{background:#fff;color:var(--ink)}
+.compara::before{background:radial-gradient(45% 60% at 0% 100%,rgba(201,162,84,.1),transparent 70%)}
+.tabla-c{border:1.5px solid var(--gold);box-shadow:0 40px 70px -50px rgba(30,39,56,.5)}
+.tabla-c>div{border-top-color:rgba(49,62,86,.1)}
+.tabla-c .crit{color:var(--gold-lo);background:#fbf8f1}
+.tabla-c .col-j{background:#fff;color:var(--ink-2)}
+.tabla-c .th small{color:var(--ink-2)}
+.tabla-c .th.col-j{color:var(--navy-3)}
+.tabla-c .col-c{background:var(--navy-3);color:#fff;border-top-color:rgba(255,255,255,.08)}
+.tabla-c .th.col-c small{color:var(--on-navy-2)}
+.barra-t{background:rgba(49,62,86,.1)}.col-c .barra-t{background:rgba(255,255,255,.12)}
+/* buscador claro */
+.buscador{background:#fff;color:var(--ink);border:1.5px solid var(--gold);box-shadow:0 40px 70px -50px rgba(30,39,56,.45),inset 0 0 0 6px #fff,inset 0 0 0 7px rgba(201,162,84,.3)}
+.buscador::before{background:radial-gradient(50% 120% at 100% 0%,rgba(201,162,84,.12),transparent 60%)}
+.buscador label{color:var(--navy-3)}
+.buscador label em{background:var(--gold-txt);-webkit-background-clip:text;background-clip:text;color:transparent}
+.caja svg{stroke:var(--gold-lo)}
+.caja input{color:var(--navy-3)}.caja input::placeholder{color:rgba(49,62,86,.45)}
+.sugerencias a{background:#fff;color:var(--navy-3);border-color:var(--gold)}
+.sugerencias a small{color:var(--gold-lo)}
+.sugerencias .vacio,.ejemplos{color:var(--ink-2)}
+.sugerencias .vacio a,.ejemplos button{color:var(--gold-lo)}
+.mat-btn[aria-selected="true"]{box-shadow:0 30px 50px -30px rgba(22,29,43,.6),inset 0 -3px 0 var(--gold)}
+.mat-panel{border:1.5px solid rgba(201,162,84,.55)}
+/* acta clara */
+.acta-sec{background:#f6f4ee;color:var(--ink)}
+.acta-sec::before{opacity:.12}
+.acta-sec::after{background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.93) 45%,rgba(246,244,238,.8) 100%)}
+.acta-txt>p{color:var(--ink-2)}
+.casos button{color:var(--navy-3);background:#fff;border-color:rgba(201,162,84,.6)}
+.casos button:hover{border-color:var(--gold-lo)}
+.acta{box-shadow:0 50px 80px -40px rgba(30,39,56,.45),0 20px 30px -20px rgba(30,39,56,.25)}
+.acta-hoja2{background:#e9e3d3;box-shadow:0 30px 50px -30px rgba(30,39,56,.35)}
+/* proceso */
+.paso .num{background:#fff;border-width:1.5px}
+.resultados{background:#fff;color:var(--ink);border:1.5px solid var(--gold)}
+.resultados div+div{border-left-color:rgba(201,162,84,.35)}
+.resultados b{color:var(--navy-3)}.resultados p{color:var(--ink-2)}
+@media (max-width:1000px){.resultados div+div{border-top-color:rgba(201,162,84,.35)}}
+/* galería */
+.centro{background:linear-gradient(180deg,#f6f4ee,#fff)}
+.foto{box-shadow:0 0 0 1.5px rgba(201,162,84,.6)}
+/* CTA: franja azul con filo dorado */
+.cta{border-top:3px solid var(--gold);border-bottom:3px solid var(--gold)}
+.cta::before{background:linear-gradient(90deg,rgba(30,39,56,.97),rgba(30,39,56,.9) 55%,rgba(30,39,56,.78))}
+.cta h2 em{background:var(--gold-txt);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* contacto claro */
+.contacto{background:#fff;color:var(--ink)}
+.dato{background:#fff;border:1.5px solid rgba(201,162,84,.45)}
+a.dato:hover{background:#fbf8f1;border-color:var(--gold)}
+.dato .ic{background:radial-gradient(circle,#fffaf0,#f3e7cc);border:1.5px solid var(--gold)}
+.dato .ic svg{stroke:var(--gold-lo)}
+.dato small{color:var(--gold-lo)}
+.dato span span{color:var(--navy-3);font-weight:500}
+.dato em{color:var(--ink-2)}
+.mapa{border:1.5px solid rgba(201,162,84,.55)}
+.form{background:#fff;border:1.5px solid var(--gold);box-shadow:0 50px 80px -50px rgba(30,39,56,.5)}
+/* pie */
+.pie{border-top:3px solid var(--gold)}
 </style>
 </head>
 <body>
@@ -485,7 +608,7 @@ html:not(.js) .tachado::after{transform:scaleX(1) rotate(-4deg)}
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="marca" href="#inicio" aria-label="Lex Concerta, inicio">
-      <img src="img/iso-dorado.png" alt="" width="400" height="190">
+      <img src="img/iso-color.png" alt="" width="400" height="287">
       <span><b>LEX CONCERTA</b><small>Centro de conciliación extrajudicial</small></span>
     </a>
     <nav aria-label="Principal">
@@ -506,22 +629,28 @@ html:not(.js) .tachado::after{transform:scaleX(1) rotate(-4deg)}
 </header>
 
 <main id="contenido">
-<section class="hero" id="inicio" aria-labelledby="hT">
+<section class="hero hero-claro" id="inicio" aria-labelledby="hT">
   <div class="hero-foto" aria-hidden="true"><img src="img/hero.webp" alt="" width="2000" height="1500" fetchpriority="high"></div>
+  <svg class="swoop sw-a" viewBox="0 0 600 340" preserveAspectRatio="none" aria-hidden="true"><path d="M600 0H250C370 40 470 130 600 300Z" fill="#1e2738"/><path d="M226 0C360 44 468 136 600 318" fill="none" stroke="url(#swg)" stroke-width="7"/><path d="M290 0C400 34 492 110 600 250" fill="none" stroke="url(#swg)" stroke-width="1.6" opacity=".7"/><defs><linearGradient id="swg" x1="0" x2="1"><stop offset="0" stop-color="#f1dca0"/><stop offset=".5" stop-color="#c9a254"/><stop offset="1" stop-color="#9b7631"/></linearGradient></defs></svg>
+  <svg class="swoop sw-b" viewBox="0 0 600 340" preserveAspectRatio="none" aria-hidden="true"><path d="M600 0H250C370 40 470 130 600 300Z" fill="#1e2738"/><path d="M226 0C360 44 468 136 600 318" fill="none" stroke="url(#swg2)" stroke-width="7"/><path d="M290 0C400 34 492 110 600 250" fill="none" stroke="url(#swg2)" stroke-width="1.6" opacity=".7"/><defs><linearGradient id="swg2" x1="0" x2="1"><stop offset="0" stop-color="#f1dca0"/><stop offset=".5" stop-color="#c9a254"/><stop offset="1" stop-color="#9b7631"/></linearGradient></defs></svg>
+  <span class="marco-oro" aria-hidden="true"></span>
   <div class="wrap hero-c">
-    <img class="hero-iso" src="img/emblema-dorado.png" alt="" width="541" height="375">
-    <p class="tag sello-txt">Centro de conciliación extrajudicial · Comas, Lima</p>
+    <img class="hero-iso" src="img/iso-color.png" alt="" width="400" height="287">
+    <p class="hero-centro">Centro de Conciliación Extrajudicial</p>
+    <p class="hero-marca">LEX CONCERTA</p>
+    <p class="hero-lema"><i></i><span>Promoviendo soluciones consensuadas<br>y una cultura de paz</span><i></i></p>
     <h1 id="hT"><span class="ln"><span>Resuelve tu conflicto</span></span><span class="ln"><span><em>sin llegar a <span class="tachado">juicio</span>.</em></span></span></h1>
     <p class="lead">Sentamos a las dos partes en una misma mesa, con un conciliador neutral, para que lleguen a un acuerdo firmado en un <b>acta con valor legal</b>.</p>
     <div class="ctas">
       <a class="btn btn-oro" href="https://wa.me/51967228977?text=Hola%2C%20quisiera%20solicitar%20una%20conciliaci%C3%B3n." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3a2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Escríbenos · 967 228 977</a>
-      <a class="btn btn-vidrio" href="#materias">Ver qué conciliamos</a>
+      <a class="btn btn-linea" href="#materias">Ver qué conciliamos</a>
     </div>
   </div>
+  <p class="hero-frase" aria-hidden="true">El diálogo<br>siempre es el mejor camino</p>
   <div class="hero-barra"><div class="wrap">
-    <div><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 6h16l8 8v28H14z"/><path d="M30 6v8h8M19 22h14M19 28h14M19 34h8"/></svg><span><b>Acta con valor legal</b>Mérito de título de ejecución</span></div>
-    <div><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l15 6v11c0 10-6.5 17-15 21-8.5-4-15-11-15-21V11z"/><path d="M17 24l5 5 9-10"/></svg><span><b>Confidencial y seguro</b>Lo que se habla, queda en la sala</span></div>
-    <div><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 43s14-12 14-23a14 14 0 0 0-28 0c0 11 14 23 14 23Z"/><circle cx="24" cy="20" r="5"/></svg><span><b>Av. Túpac Amaru 5379</b>Urb. Huaquillay II Etapa, Comas</span></div>
+    <div><span class="aro-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8v32M14 40h20M10 14h28"/><path d="M10 14l-6 12a6 6 0 0 0 12 0zM38 14l-6 12a6 6 0 0 0 12 0z"/></svg></span><span><b>Diálogo y respeto</b>Un conciliador neutral guía la conversación</span></div>
+    <div><span class="aro-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 22l8-8 8 4 6-4 6 4 8-4 4 8"/><path d="M12 26l8 8a3 3 0 0 0 4-4M18 30l6 6a3 3 0 0 0 4-4M24 30l4 4a3 3 0 0 0 4-4l-8-8M40 26l-6 6"/></svg></span><span><b>Acuerdo y confianza</b>Acta con valor legal y confidencial</span></div>
+    <div><span class="aro-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 43s14-12 14-23a14 14 0 0 0-28 0c0 11 14 23 14 23Z"/><circle cx="24" cy="20" r="5"/></svg></span><span><b>Av. Túpac Amaru 5379</b>Urb. Huaquillay II Etapa, Comas</span></div>
   </div></div>
 </section>
 
@@ -536,7 +665,7 @@ html:not(.js) .tachado::after{transform:scaleX(1) rotate(-4deg)}
       <div class="marco"><img src="img/oficina.webp" alt="Interior del Centro de Conciliación Lex Concerta: recepción, sala de espera y despachos" width="1200" height="1600" loading="lazy" style="object-position:50% 45%"></div>
       <div class="sello-grande" aria-hidden="true">
         <svg viewBox="0 0 132 132"><defs><path id="cg" d="M66,66 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs><text><textPath href="#cg">LEGAL · CONFIABLE · CONFIDENCIAL · CONCILIAR ·</textPath></text></svg>
-        <img src="img/iso-dorado.png" alt="" width="400" height="190">
+        <img src="img/iso-color.png" alt="" width="400" height="287">
       </div>
     </figure>
     <div class="manif-txt">
@@ -733,6 +862,7 @@ html:not(.js) .tachado::after{transform:scaleX(1) rotate(-4deg)}
         <a class="dato" href="https://wa.me/51967228977" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M9 9.5c.3 1.8 2.6 4.7 5.5 5.5"/></svg></span><span><small>WhatsApp</small><span>967 228 977</span></span></a>
         <div class="dato"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span><small>Teléfono</small><span>01 748 2706</span></span></div>
         <a class="dato" href="mailto:lexconcerta@gmail.com"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span><small>Correo</small><span>lexconcerta@gmail.com</span></span></a>
+        <a class="dato" href="https://www.tiktok.com/@conciliacion_lexconcerta" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg></span><span><small>TikTok</small><span>@conciliacion_lexconcerta</span><em>Consejos legales y cultura de paz</em></span></a>
         <a class="dato" href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20T%C3%BApac%20Amaru%205379%2C%20Comas%2C%20Lima" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6 7-11.5a7 7 0 0 0-14 0C5 15 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span><small>Dirección</small><span>Av. Túpac Amaru 5379, Urb. Huaquillay II Etapa, Comas</span><em>Entre la financiera Pro Empresa y la tienda Toyota</em></span></a>
       </div>
       <div class="mapa rv d3"><iframe title="Mapa: Av. Túpac Amaru 5379, Comas" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Av.%20T%C3%BApac%20Amaru%205379%2C%20Comas%2C%20Lima&amp;z=16&amp;hl=es&amp;output=embed"></iframe></div>
@@ -753,7 +883,7 @@ html:not(.js) .tachado::after{transform:scaleX(1) rotate(-4deg)}
 <footer class="pie">
   <div class="wrap">
     <div class="pie-top"><img src="img/logo-dorado.webp" alt="Centro de Conciliación Extrajudicial Lex Concerta" width="900" height="605" loading="lazy"><p>Conciliar es la mejor forma de resolver conflictos <em>sin llegar a juicio.</em></p></div>
-    <div class="pie-bot"><span>© <span id="anio">2026</span> Lex Concerta · Av. Túpac Amaru 5379, Comas, Lima</span><span><a href="https://wa.me/51967228977" target="_blank" rel="noopener">967 228 977</a> · <a href="mailto:lexconcerta@gmail.com">lexconcerta@gmail.com</a></span></div>
+    <div class="pie-bot"><span>© <span id="anio">2026</span> Lex Concerta · Av. Túpac Amaru 5379, Comas, Lima</span><span><a href="https://wa.me/51967228977" target="_blank" rel="noopener">967 228 977</a> · <a href="mailto:lexconcerta@gmail.com">lexconcerta@gmail.com</a> · <a href="https://www.tiktok.com/@conciliacion_lexconcerta" target="_blank" rel="noopener">TikTok</a></span></div>
   </div>
 </footer>
 
@@ -771,8 +901,8 @@ html:not(.js) .tachado::after{transform:scaleX(1) rotate(-4deg)}
     civil:'<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 22L24 8l17 14M12 18v22h24V18M20 40V29h8v11"/></svg>',
     estado:'<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 18L24 8l18 10M9 18h30M11 22v14M19 22v14M29 22v14M37 22v14M6 40h36"/></svg>'};
   var MAT=[
-    {id:'familia',nombre:'Familia',sub:'Hijos, alimentos y bienes',titulo:'Materia de familia',txt:'Acuerdos sobre los hijos, los alimentos y los bienes de la pareja, pensando primero en el bienestar de la familia.',items:['Pensión de alimentos','Pensión de alimentos a favor del cónyuge',['Aumento o reducción de alimentos','Cuando fue fijada en un acta de conciliación'],'Exoneración de alimentos','Régimen de visitas',['Variación del régimen de visitas','Cuando fue fijado en un acta de conciliación'],'Tenencia','Gastos de embarazo, tenencia y alimentos','Liquidación de sociedad de gananciales','Liquidación de bienes de la unión de hecho']},
-    {id:'civil',nombre:'Civil',sub:'Deudas, contratos y propiedad',titulo:'Materia civil',txt:'Deudas, contratos, propiedades y alquileres: se conversan, se acuerdan y quedan por escrito.',items:['Obligación de dar suma de dinero','Obligación de dar, hacer y no hacer','Desalojo','Resolución de contrato','Incumplimiento de contrato','Otorgamiento de escritura','Rectificación de áreas y linderos','Ofrecimiento de pago','División y partición','Indemnización','Retracto','Petición de herencia','Interdicto de retener o recobrar','Reivindicación','Pago de mejoras']},
+    {id:'familia',nombre:'Familia',sub:'Hijos, alimentos y bienes',titulo:'Materia de familia',txt:'Acuerdos sobre los hijos, los alimentos y los bienes de la pareja, pensando primero en el bienestar de la familia.',items:['Pensión de alimentos','Pensión de alimentos a favor del conviviente',['Aumento o reducción de alimentos','Cuando fue fijada en un acta de conciliación'],'Exoneración de alimentos','Régimen de visitas',['Variación del régimen de visitas','Cuando fue fijado en un acta de conciliación'],'Tenencia','Gastos de embarazo, tenencia y alimentos','Liquidación de sociedad de gananciales','Liquidación de bienes de la unión de hecho']},
+    {id:'civil',nombre:'Civil',sub:'Deudas, contratos y propiedad',titulo:'Materia civil',txt:'Deudas, contratos, propiedades y alquileres: se conversan, se acuerdan y quedan por escrito.',items:['Obligación de dar suma de dinero','Obligación de dar, hacer y no hacer','Desalojo','Resolución de contrato','Incumplimiento de contrato','Otorgamiento de escritura','Rectificación de áreas y linderos','Ofrecimiento de pago','División y partición','Indemnización','Indemnización por separación unilateral de unión de hecho','Retracto','Petición de herencia','Interdicto de retener o recobrar','Reivindicación','Pago de mejoras']},
     {id:'estado',nombre:'Estado',sub:'Contrataciones públicas',titulo:'Contrataciones con el Estado',txt:'Controversias entre contratistas y entidades públicas durante la ejecución de un contrato.',items:['Resolución de contrato','Ampliación del plazo contractual','Recepción y conformidad','Valorizaciones o metrados','Liquidación de contrato','Obligaciones posteriores al pago','Pagos','Resarcimiento de daños y perjuicios']}];
   $('matNav').innerHTML=MAT.map(function(m,i){return '<button class="mat-btn" role="tab" id="t-'+m.id+'" aria-controls="p-'+m.id+'" aria-selected="'+(i===0)+'" tabindex="'+(i?-1:0)+'"><span class="ic">'+IC[m.id]+'</span><span><b>'+m.nombre+'</b><small>'+m.sub+'</small></span><span class="n">'+m.items.length+'</span></button>'}).join('');
   $('matPaneles').innerHTML=MAT.map(function(m,i){return '<div class="mat-panel" role="tabpanel" id="p-'+m.id+'" aria-labelledby="t-'+m.id+'"'+(i?' hidden':'')+'><h3>'+m.titulo+'</h3><p>'+m.txt+'</p><ul class="mat-lista">'+m.items.map(function(it){var t=typeof it==='string'?it:it[0],s=typeof it==='string'?'':it[1];return '<li><a href="'+wa('Hola, quisiera conciliar: '+t+'.')+'" target="_blank" rel="noopener"><span>'+esc(t)+(s?'<small>'+esc(s)+'</small>':'')+'</span></a></li>'}).join('')+'</ul><div class="mat-pie"><span>¿Tu caso es de '+m.nombre.toLowerCase()+'? Te orientamos sin compromiso.</span><a class="btn btn-oro" href="'+wa('Hola, quisiera una consulta sobre '+m.titulo.toLowerCase()+'.')+'" target="_blank" rel="noopener">Consultar ahora</a></div></div>'}).join('');
@@ -827,7 +957,7 @@ html:not(.js) .tachado::after{transform:scaleX(1) rotate(-4deg)}
     [['hijo','hija','pension','manutencion','alimento','menor','bebe'],['Pensión de alimentos','Aumento o reducción de alimentos','Exoneración de alimentos']],
     [['tenencia','custodia','vivir con'],['Tenencia']],
     [['embaraz','gestante'],['Gastos de embarazo, tenencia y alimentos']],
-    [['divorc','separa','esposo','esposa','conyuge','matrimonio','gananciales'],['Liquidación de sociedad de gananciales','Pensión de alimentos a favor del cónyuge']],
+    [['divorc','separa','esposo','esposa','conyuge','matrimonio','gananciales'],['Liquidación de sociedad de gananciales','Pensión de alimentos a favor del conviviente']],
     [['convivi','union de hecho','pareja'],['Liquidación de bienes de la unión de hecho','Indemnización']],
     [['contrato','incumpl','no cumpl','acuerdo roto'],['Incumplimiento de contrato','Resolución de contrato','Obligación de dar, hacer y no hacer']],
     [['terreno','lindero','medida','area','metros'],['Rectificación de áreas y linderos','División y partición']],
